@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comparison - Mahaurja</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Mukta:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    .page-header { margin-top: 100px; text-align: center; padding: 3rem 5%; background: var(--white); }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <i data-lucide="leaf" class="text-accent" style="width: 32px; height: 32px;"></i>
+      <div class="nav-brand-text">
+        <span class="brand-title">MAHAURJA</span>
+        <span class="brand-subtitle">BHARAT INDUSTRIAL & RENEWABLES</span>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html" data-i18n="nav_home">होम</a></li>
+      <li><a href="about.html" data-i18n="nav_about">हमारे बारे में</a></li>
+      <li><a href="why-biomass.html" data-i18n="nav_why">बायोमास क्यों?</a></li>
+      <li><a href="comparison.html" class="active" data-i18n="nav_comparison">तुलना</a></li>
+      <li><a href="contact.html" data-i18n="nav_contact">संपर्क</a></li>
+      <li><button id="lang-toggle" class="lang-btn">EN</button></li>
+    </ul>
+    <button id="mobile-menu-btn" class="mobile-menu-btn">
+      <i data-lucide="menu"></i>
+    </button>
+  </nav>
+
+  <header class="page-header fade-in">
+    <h1 class="section-title" data-i18n="comp_title">तुलनात्मक अध्ययन</h1>
+    <h2 style="color: var(--text-light); margin-top: -2rem;" data-i18n="comp_subtitle">बायोमास पेलेट्स बनाम अन्य ईंधन</h2>
+  </header>
+
+  <section class="section-padding">
+    <div class="table-container fade-in">
+      <table>
+        <thead>
+          <tr>
+            <th data-i18n="comp_feat">विशेषताएँ</th>
+            <th class="highlight" data-i18n="comp_agro">बायोमास पेलेट्स (Agro Residue)</th>
+            <th data-i18n="comp_coal">कोयला (Coal)</th>
+            <th data-i18n="comp_wood">लकड़ी (Wood)</th>
+            <th data-i18n="comp_lpg">LPG</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-i18n="comp_energy">ऊर्जा क्षमता (kcal/kg)</td>
+            <td class="highlight">3800-4800</td>
+            <td>5500-6500</td>
+            <td>1500-1800</td>
+            <td>11000</td>
+          </tr>
+          <tr>
+            <td data-i18n="comp_efficiency">ऊर्जा दक्षता</td>
+            <td class="highlight">-</td>
+            <td data-i18n="val_better_coal">कोयले से 2 गुना बेहतर</td>
+            <td data-i18n="val_better_wood">लकड़ी से 3 गुना बेहतर</td>
+            <td data-i18n="val_better_lpg">LPG से 4 गुना बेहतर</td>
+          </tr>
+          <tr>
+            <td data-i18n="comp_combustion">दहन</td>
+            <td class="highlight" data-i18n="val_combustion_full">पूर्ण एवं समान</td>
+            <td data-i18n="val_combustion_partial">अपूर्ण</td>
+            <td data-i18n="val_combustion_partial">अपूर्ण</td>
+            <td data-i18n="val_combustion_full">पूर्ण</td>
+          </tr>
+          <tr>
+            <td data-i18n="comp_smoke">धुआँ</td>
+            <td class="highlight" data-i18n="val_smoke_low">बहुत कम</td>
+            <td data-i18n="val_smoke_high">अधिक</td>
+            <td data-i18n="val_smoke_high">अधिक</td>
+            <td data-i18n="val_smoke_low">बहुत कम</td>
+          </tr>
+          <tr>
+            <td data-i18n="comp_ash">राख (%)</td>
+            <td class="highlight">< 2-5%</td>
+            <td>20-40%</td>
+            <td>15-30%</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td data-i18n="comp_moisture">नमी (%)</td>
+            <td class="highlight">2-5%</td>
+            <td>20-25%</td>
+            <td>25-35%</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td data-i18n="comp_storage">भंडारण</td>
+            <td class="highlight" data-i18n="val_storage_easy">आसान</td>
+            <td data-i18n="val_storage_hard">कठिन</td>
+            <td data-i18n="val_storage_veryhard">अत्यधिक कठिन</td>
+            <td data-i18n="val_storage_lpg">सिलेंडर पर निर्भर</td>
+          </tr>
+          <tr>
+            <td data-i18n="comp_env">पर्यावरण प्रभाव</td>
+            <td class="highlight" data-i18n="val_smoke_low">बहुत कम</td>
+            <td data-i18n="val_smoke_high">अधिक</td>
+            <td data-i18n="val_env_max">अधिकतम</td>
+            <td data-i18n="val_smoke_low">कम</td>
+          </tr>
+          <tr>
+            <td data-i18n="comp_cost">लागत तुलना</td>
+            <td class="highlight" data-i18n="val_cost_cheap">किफायती</td>
+            <td data-i18n="val_cost_coal">2 गुना महँगा</td>
+            <td data-i18n="val_cost_wood">3 गुना महँगा</td>
+            <td data-i18n="val_cost_lpg">4 गुना महँगा</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="nav-brand" style="margin-bottom: 1.5rem;">
+          <i data-lucide="leaf" class="text-accent" style="width: 32px; height: 32px;"></i>
+          <div class="nav-brand-text">
+            <span class="brand-title" style="color: white;">MAHAURJA</span>
+            <span class="brand-subtitle" style="color: #cbd5e1;">BHARAT INDUSTRIAL & RENEWABLES</span>
+          </div>
+        </div>
+        <p data-i18n="hero_tagline">स्वच्छ ऊर्जा • सशक्त भविष्य</p>
+      </div>
+      <div>
+        <h3 data-i18n="contact_title">संपर्क करें</h3>
+        <p><strong><span data-i18n="contact_name">हर्ष जैन</span></strong> - <span data-i18n="contact_role">संस्थापक और निदेशक</span></p>
+        <p><i data-lucide="phone" style="width: 16px; display: inline-block;"></i> +91 9340212401</p>
+        <p><i data-lucide="mail" style="width: 16px; display: inline-block;"></i> harsh@bharatindustrialrenewables.com</p>
+        <p><i data-lucide="map-pin" style="width: 16px; display: inline-block;"></i> 288, Lokmanya Tilak Path, Ujjain Road, Railway Crossing ke paas, Badnagar, Jila Ujjain (M.P.) 456771</p>
+      </div>
+    </div>
+    <div class="footer-tags" data-i18n="footer_tagline">
+      स्वच्छ ईंधन | बेहतर भविष्य | आर्थिक लाभ | पर्यावरण संरक्षण | टिकाऊ विकास
+    </div>
+  </footer>
+
+  <script src="js/translations.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
