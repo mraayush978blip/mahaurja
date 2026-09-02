@@ -118,7 +118,7 @@ h1, h2, h3, h4 {
   100% { opacity: 0; visibility: hidden; }
 }
 
-.home-page .nav-brand {
+.home-nav .nav-brand {
   transform-origin: center center;
   animation: logoIntro 2.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
   position: relative;
@@ -163,7 +163,7 @@ h1, h2, h3, h4 {
   list-style: none;
 }
 
-.home-page .nav-links {
+.home-nav .nav-links {
   opacity: 0;
   animation: fadeIn 1s ease-out 1.8s forwards;
 }
@@ -193,7 +193,7 @@ h1, h2, h3, h4 {
   box-shadow: var(--shadow-sm);
 }
 
-.home-page .lang-btn {
+.home-nav .lang-btn {
   opacity: 0;
   animation: fadeIn 1s ease-out 1.8s forwards;
 }
@@ -216,7 +216,7 @@ h1, h2, h3, h4 {
   cursor: pointer;
 }
 
-.home-page .mobile-menu-btn {
+.home-nav .mobile-menu-btn {
   opacity: 0;
   animation: fadeIn 1s ease-out 1.8s forwards;
 }
@@ -592,7 +592,7 @@ footer {
     text-align: center;
   }
   
-  .home-page .nav-links {
+  .home-nav .nav-links {
     animation: none; /* Disable desktop intro fade for mobile menu */
   }
   
@@ -613,7 +613,7 @@ footer {
     transform: rotate(180deg);
   }
   
-  .home-page .mobile-menu-btn {
+  .home-nav .mobile-menu-btn {
     opacity: 0;
   }
   

@@ -25,7 +25,7 @@ export function Navbar() {
   }, []);
 
   return (
-    <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
+    <nav className={`navbar ${isScrolled ? "scrolled" : ""} ${pathname === "/" ? "home-nav" : ""}`}>
       <div className="nav-brand">
         <Leaf className="text-accent" style={{ width: "32px", height: "32px", color: "var(--accent-color)" }} />
         <div className="nav-brand-text">
