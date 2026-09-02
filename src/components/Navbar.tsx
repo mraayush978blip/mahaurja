@@ -47,13 +47,23 @@ export function Navbar() {
           </Link>
         </li>
         <li>
+          <Link href="/services" className={pathname === "/services" ? "active" : ""}>
+            {t("nav_services")}
+          </Link>
+        </li>
+        <li>
+          <Link href="/sustainability" className={pathname === "/sustainability" ? "active" : ""}>
+            {t("nav_sustainability")}
+          </Link>
+        </li>
+        <li>
           <Link href="/contact" className={pathname === "/contact" ? "active" : ""}>
             {t("nav_contact")}
           </Link>
         </li>
         <li>
-          <button onClick={toggleLang} className="lang-btn">
-            {lang === "hi" ? "EN" : "HI"}
+          <button onClick={toggleLang} className="lang-btn" style={{ fontWeight: 600, padding: "0.5rem 1rem", background: "rgba(0,0,0,0.05)", borderRadius: "20px" }}>
+            EN | हिंदी
           </button>
         </li>
       </ul>
@@ -87,11 +97,13 @@ export function Navbar() {
               gap: "1rem"
             }}
           >
-            <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>{t("nav_home")}</Link>
-            <Link href="/about" onClick={() => setIsMobileMenuOpen(false)}>{t("nav_about")}</Link>
-            <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>{t("nav_contact")}</Link>
-            <button onClick={toggleLang} style={{ alignSelf: "flex-start", padding: "0.5rem 1rem", background: "var(--primary-color)", color: "white", border: "none", borderRadius: "5px" }}>
-              {lang === "hi" ? "English" : "हिंदी"}
+            <Link href="/" onClick={() => setIsMobileMenuOpen(false)} style={{ padding: "0.5rem 0", borderBottom: "1px solid #eee", fontSize: "1.1rem" }}>{t("nav_home")}</Link>
+            <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} style={{ padding: "0.5rem 0", borderBottom: "1px solid #eee", fontSize: "1.1rem" }}>{t("nav_about")}</Link>
+            <Link href="/services" onClick={() => setIsMobileMenuOpen(false)} style={{ padding: "0.5rem 0", borderBottom: "1px solid #eee", fontSize: "1.1rem" }}>{t("nav_services")}</Link>
+            <Link href="/sustainability" onClick={() => setIsMobileMenuOpen(false)} style={{ padding: "0.5rem 0", borderBottom: "1px solid #eee", fontSize: "1.1rem" }}>{t("nav_sustainability")}</Link>
+            <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} style={{ padding: "0.5rem 0", borderBottom: "1px solid #eee", fontSize: "1.1rem" }}>{t("nav_contact")}</Link>
+            <button onClick={toggleLang} style={{ alignSelf: "flex-start", padding: "0.75rem 1.5rem", background: "var(--primary-color)", color: "white", border: "none", borderRadius: "30px", fontWeight: 600, marginTop: "0.5rem" }}>
+              EN | हिंदी
             </button>
           </motion.div>
         )}

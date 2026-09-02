@@ -17,11 +17,11 @@ export function Footer() {
               <span className="brand-subtitle" style={{ color: "#cbd5e1" }}>BHARAT INDUSTRIAL & RENEWABLES</span>
             </div>
           </div>
-          <p>{t("hero_tagline")}</p>
+          <p>{t("contact_subtitle")}</p>
         </div>
         <div>
           <h3>{t("contact_title")}</h3>
-          <p><strong>{t("contact_name")}</strong> - {t("contact_role")}</p>
+          <p><strong>{t("contact_name")}</strong> - Founder & Director</p>
           <p><Phone style={{ width: "16px", display: "inline-block", verticalAlign: "middle", marginRight: "8px" }} /> +91 9340212401</p>
           <p><Mail style={{ width: "16px", display: "inline-block", verticalAlign: "middle", marginRight: "8px" }} /> harsh@bharatindustrialrenewables.com</p>
           <p style={{ display: "flex", gap: "8px", alignItems: "flex-start" }}>

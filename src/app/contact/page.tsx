@@ -53,7 +53,7 @@ export default function Contact() {
             <div style={{ position: "absolute", bottom: "-50px", left: "-50px", width: "200px", height: "200px", background: "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%)", borderRadius: "50%", backdropFilter: "blur(10px)" }} />
             
             <h2 style={{ fontSize: "2.8rem", marginBottom: "1.5rem", color: "white", position: "relative", zIndex: 1 }}>{t("contact_title")}</h2>
-            <p style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.7)", marginBottom: "3rem", lineHeight: 1.8, position: "relative", zIndex: 1 }}>{t("why_tagline")}</p>
+            <p style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.7)", marginBottom: "3rem", lineHeight: 1.8, position: "relative", zIndex: 1 }}>{t("contact_subtitle")}</p>
             
             <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem", position: "relative", zIndex: 1 }}>
               <div style={{ display: "flex", alignItems: "flex-start", gap: "1.5rem" }}>
@@ -62,7 +62,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <div style={{ fontWeight: 600, fontSize: "1.2rem", color: "white", marginBottom: "4px" }}>{t("contact_name")}</div>
-                  <div style={{ fontSize: "0.95rem", color: "rgba(255,255,255,0.6)" }}>{t("contact_role")}</div>
+                  <div style={{ fontSize: "0.95rem", color: "rgba(255,255,255,0.6)" }}>Founder & Director</div>
                 </div>
               </div>
               
@@ -129,7 +129,19 @@ export default function Contact() {
               </div>
               
               <div>
-                <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.9rem", fontWeight: 600, color: "var(--text-dark)" }}>Your Message</label>
+                <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.9rem", fontWeight: 600, color: "var(--text-dark)" }}>{t("contact_inquiry")}</label>
+                <select required style={{ width: "100%", padding: "1rem 1.2rem", border: "1px solid #e2e8f0", borderRadius: "12px", background: "#f8fafc", fontFamily: "inherit", fontSize: "1rem", outline: "none", transition: "all 0.3s ease", appearance: "none" }} onFocus={(e) => { e.target.style.borderColor = "var(--secondary-color)"; e.target.style.background = "#ffffff"; e.target.style.boxShadow = "0 0 0 4px rgba(5,150,105,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#e2e8f0"; e.target.style.background = "#f8fafc"; e.target.style.boxShadow = "none"; }}>
+                  <option value="">Select an option</option>
+                  <option value="buy">{t("contact_opt_buy")}</option>
+                  <option value="sell">{t("contact_opt_sell")}</option>
+                  <option value="sustainability">{t("contact_opt_sus")}</option>
+                  <option value="media">{t("contact_opt_media")}</option>
+                  <option value="hr">{t("contact_opt_hr")}</option>
+                </select>
+              </div>
+
+              <div>
+                <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.9rem", fontWeight: 600, color: "var(--text-dark)" }}>{t("contact_msg")}</label>
                 <textarea placeholder="How can we help you?" required rows={4} style={{ width: "100%", padding: "1rem 1.2rem", border: "1px solid #e2e8f0", borderRadius: "12px", background: "#f8fafc", fontFamily: "inherit", fontSize: "1rem", outline: "none", resize: "vertical", transition: "all 0.3s ease" }} onFocus={(e) => { e.target.style.borderColor = "var(--secondary-color)"; e.target.style.background = "#ffffff"; e.target.style.boxShadow = "0 0 0 4px rgba(5,150,105,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#e2e8f0"; e.target.style.background = "#f8fafc"; e.target.style.boxShadow = "none"; }} />
               </div>
               
@@ -140,7 +152,7 @@ export default function Contact() {
                 whileHover={{ scale: 1.02, backgroundColor: "var(--secondary-color)" }}
                 whileTap={{ scale: 0.98 }}
               >
-                Send Message <Send style={{ width: "18px", marginLeft: "8px" }} />
+                {t("contact_submit")} <Send style={{ width: "18px", marginLeft: "8px" }} />
               </motion.button>
             </form>
           </motion.div>

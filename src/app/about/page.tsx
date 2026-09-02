@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslation } from "@/hooks/useTranslation";
-import { Award, Droplets, Truck, HeartHandshake, TreePine } from "lucide-react";
+import { Building, Factory, Anchor } from "lucide-react";
 import { motion } from "framer-motion";
 
 const fadeUpVariant = {
@@ -23,77 +23,95 @@ export default function About() {
   const { t } = useTranslation();
 
   return (
-    <main>
-      <header className="page-header">
-        <motion.h1 
-          className="section-title"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          {t("about_title")}
-        </motion.h1>
-      </header>
+    <main className="page-padding">
+      <div className="container">
+        <header className="text-center mb-16">
+          <motion.h1 
+            className="section-title"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            {t("about_title")}
+          </motion.h1>
+        </header>
 
-      <section className="section-padding">
-        <motion.div 
-          className="grid-2"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={staggerContainer}
-        >
-          <motion.div variants={fadeUpVariant}>
-            <p style={{ fontSize: "1.2rem", marginBottom: "1.5rem" }}>{t("about_desc1")}</p>
-            <p style={{ fontSize: "1.2rem", marginBottom: "1.5rem" }}>{t("about_desc2")}</p>
-            <p style={{ fontSize: "1.2rem" }}>{t("about_desc3")}</p>
+        {/* Our Mission */}
+        <section className="mb-20 decor-bg relative py-12 rounded-2xl bg-white shadow-sm border border-gray-100">
+          <motion.div 
+            className="text-center max-w-4xl mx-auto px-6 relative z-10"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUpVariant}
+          >
+            <h2 className="text-3xl font-bold mb-6 text-primary">{t("about_mission_title")}</h2>
+            <p className="text-xl text-gray-700 leading-relaxed">
+              {t("about_mission_desc")}
+            </p>
           </motion.div>
-          <motion.div variants={fadeUpVariant}>
-            <motion.div 
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              style={{ background: "url('/assets/images/about-img.jpg') center/cover", height: "400px", borderRadius: "20px", boxShadow: "var(--shadow-lg)", backgroundColor: "#cbd5e1" }} 
-            />
-          </motion.div>
-        </motion.div>
-      </section>
+        </section>
 
-      <section className="section-padding bg-light">
-        <motion.h2 
-          className="section-title"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUpVariant}
-        >
-          {t("features_title")}
-        </motion.h2>
-        <motion.div 
-          className="grid-3"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          variants={staggerContainer}
-        >
-          {[
-            { icon: Award, title: "feat_1" },
-            { icon: Droplets, title: "feat_2" },
-            { icon: Truck, title: "feat_3" },
-            { icon: HeartHandshake, title: "feat_5" },
-            { icon: TreePine, title: "feat_4" }
-          ].map((item, idx) => (
+        {/* Locations & Facilities */}
+        <section className="bg-light p-10 md:p-16 rounded-3xl">
+          <motion.h2 
+            className="text-3xl font-bold mb-12 text-center text-primary"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUpVariant}
+          >
+            {t("about_loc_title")}
+          </motion.h2>
+
+          <motion.div 
+            className="grid-3"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+          >
+            {/* Headquarters */}
             <motion.div 
-              key={idx} 
-              className="card" 
+              className="bg-white p-8 rounded-xl shadow-md border-t-4 border-primary"
               variants={fadeUpVariant}
-              whileHover={{ y: -8, boxShadow: "0 15px 30px rgba(0,0,0,0.1)" }}
+              whileHover={{ y: -5, boxShadow: "var(--shadow-lg)" }}
             >
-              <div className="card-icon"><item.icon /></div>
-              <h3>{t(item.title as any)}</h3>
+              <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6 text-primary">
+                <Building className="w-7 h-7" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">{t("about_hq_title")}</h3>
+              <p className="text-gray-600 leading-relaxed">{t("about_hq_desc")}</p>
             </motion.div>
-          ))}
-        </motion.div>
-      </section>
+
+            {/* Manufacturing */}
+            <motion.div 
+              className="bg-white p-8 rounded-xl shadow-md border-t-4 border-accent"
+              variants={fadeUpVariant}
+              whileHover={{ y: -5, boxShadow: "var(--shadow-lg)" }}
+            >
+              <div className="w-14 h-14 bg-accent/10 rounded-full flex items-center justify-center mb-6 text-accent">
+                <Factory className="w-7 h-7" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">{t("about_mfg_title")}</h3>
+              <p className="text-gray-600 leading-relaxed">{t("about_mfg_desc")}</p>
+            </motion.div>
+
+            {/* Terminals */}
+            <motion.div 
+              className="bg-white p-8 rounded-xl shadow-md border-t-4 border-primary"
+              variants={fadeUpVariant}
+              whileHover={{ y: -5, boxShadow: "var(--shadow-lg)" }}
+            >
+              <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6 text-primary">
+                <Anchor className="w-7 h-7" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">{t("about_term_title")}</h3>
+              <p className="text-gray-600 leading-relaxed">{t("about_term_desc")}</p>
+            </motion.div>
+          </motion.div>
+        </section>
+      </div>
     </main>
   );
 }
