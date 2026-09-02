@@ -1,4 +1,4 @@
-const translations = {
+export const translations = {
   en: {
     nav_home: "Home",
     nav_about: "About Us",
@@ -51,7 +51,16 @@ const translations = {
     contact_name: "HARSH JAIN",
     contact_role: "Founder & Director",
     footer_tagline: "Clean Fuel | Better Future | Economic Benefit | Environmental Protection | Sustainable Development",
-    // Table values
+    what_is_biomass_title: "What are Biomass Briquettes / Pellets?",
+    what_is_biomass_desc1: "Biomass briquettes and pellets are eco-friendly solid fuels made by compressing agricultural and forestry waste under high pressure.",
+    what_is_biomass_desc2: "It is an excellent and clean alternative to traditional fuels like coal and wood, which not only reduces pollution but also provides high energy efficiency.",
+    why_choose_us_title: "Why Choose Us?",
+    wcu_1_title: "Premium Quality",
+    wcu_1_desc: "We ensure the highest standard of biomass products.",
+    wcu_2_title: "Timely Delivery",
+    wcu_2_desc: "Fast and safe delivery with our strong supply chain.",
+    wcu_3_title: "Reliable Partner",
+    wcu_3_desc: "A trusted energy solution provider for industries.",
     val_better_coal: "2 times better than coal",
     val_better_wood: "3 times better than wood",
     val_better_lpg: "4 times better than LPG",
@@ -121,7 +130,16 @@ const translations = {
     contact_name: "हर्ष जैन",
     contact_role: "संस्थापक और निदेशक",
     footer_tagline: "स्वच्छ ईंधन | बेहतर भविष्य | आर्थिक लाभ | पर्यावरण संरक्षण | टिकाऊ विकास",
-    // Table values
+    what_is_biomass_title: "बायोमास ब्रिकेट्स / पेलेट्स क्या हैं?",
+    what_is_biomass_desc1: "बायोमास ब्रिकेट्स और पेलेट्स कृषि एवं वानिकी अपशिष्टों को उच्च दबाव में संपीड़ित करके बनाए गए पर्यावरण-अनुकूल ठोस ईंधन हैं।",
+    what_is_biomass_desc2: "यह कोयला और लकड़ी जैसे पारंपरिक ईंधनों का एक उत्कृष्ट और स्वच्छ विकल्प है, जो न केवल प्रदूषण को कम करता है बल्कि उच्च ऊर्जा दक्षता भी प्रदान करता है।",
+    why_choose_us_title: "हमें क्यों चुनें?",
+    wcu_1_title: "प्रीमियम गुणवत्ता",
+    wcu_1_desc: "हम उच्चतम मानक के बायोमास उत्पाद सुनिश्चित करते हैं।",
+    wcu_2_title: "समय पर डिलीवरी",
+    wcu_2_desc: "हमारी मजबूत आपूर्ति श्रृंखला के साथ त्वरित और सुरक्षित डिलीवरी।",
+    wcu_3_title: "विश्वसनीय साझेदार",
+    wcu_3_desc: "उद्योगों के लिए एक भरोसेमंद ऊर्जा समाधान प्रदाता।",
     val_better_coal: "कोयले से 2 गुना बेहतर",
     val_better_wood: "लकड़ी से 3 गुना बेहतर",
     val_better_lpg: "LPG से 4 गुना बेहतर",
@@ -140,3 +158,5 @@ const translations = {
     val_cost_lpg: "4 गुना महँगा"
   }
 };
+
+export type TranslationKey = keyof typeof translations.en;
