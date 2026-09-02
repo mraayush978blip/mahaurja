@@ -41,7 +41,7 @@ export default function Home() {
       </header>
 
       {/* What is Biomass Briquettes? */}
-      <section className="section-padding" id="what-is-biomass">
+      <section className="section-padding decor-bg" id="what-is-biomass">
         <motion.div 
           className="grid-2 align-center"
           initial="hidden"
@@ -71,7 +71,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="section-padding bg-light" id="why-choose-us">
+      <section className="section-padding bg-light decor-bg" id="why-choose-us">
         <motion.h2 
           className="section-title"
           initial="hidden"
@@ -108,7 +108,7 @@ export default function Home() {
       </section>
 
       {/* Why Biomass */}
-      <section className="section-padding" id="why-biomass">
+      <section className="section-padding decor-bg" id="why-biomass">
         <motion.h2 
           className="section-title"
           initial="hidden"
@@ -147,7 +147,7 @@ export default function Home() {
       </section>
 
       {/* Comparison */}
-      <section className="section-padding bg-light" id="comparison">
+      <section className="section-padding bg-light decor-bg" id="comparison">
         <motion.div 
           style={{ textAlign: "center", marginBottom: "3rem" }}
           initial="hidden"

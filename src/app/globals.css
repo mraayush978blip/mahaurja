@@ -358,6 +358,40 @@ h1, h2, h3, h4 {
   padding: 6rem 5%;
 }
 
+.bg-light {
+  background-color: var(--bg-light);
+  background-image: radial-gradient(rgba(6, 78, 59, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.decor-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.decor-bg::before, .decor-bg::after {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.decor-bg::before {
+  top: -200px;
+  left: -150px;
+  background: rgba(5, 150, 105, 0.04);
+}
+
+.decor-bg::after {
+  bottom: -200px;
+  right: -150px;
+  background: rgba(245, 158, 11, 0.04);
+}
+
 .section-title {
   text-align: center;
   font-size: 2.5rem;
@@ -399,7 +433,7 @@ h1, h2, h3, h4 {
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border: 1px solid rgba(0,0,0,0.03);
   position: relative;
-  z-index: 1;
+  z-index: 10;
   overflow: hidden;
   transform-style: preserve-3d;
 }
