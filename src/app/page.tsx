@@ -84,14 +84,9 @@ export default function Home() {
               Replace with your pellet/biomass video later by placing your file
               at /public/assets/hero-bg.mp4 and updating the src below.
             */}
-            {/* Primary: UHD Aerial Green Fields + Harvest */}
+            {/* Primary: Local Optimized Video (Fast Loading) */}
             <source
-              src="https://videos.pexels.com/video-files/3571264/3571264-uhd_2560_1440_30fps.mp4"
-              type="video/mp4"
-            />
-            {/* Fallback: HD version if UHD is slow */}
-            <source
-              src="https://videos.pexels.com/video-files/3571264/3571264-hd_1920_1080_30fps.mp4"
+              src="/hero-bg-optimized.mp4"
               type="video/mp4"
             />
           </video>
