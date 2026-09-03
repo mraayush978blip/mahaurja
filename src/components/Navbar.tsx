@@ -35,13 +35,9 @@ export function Navbar() {
 
   return (
     <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
-      <div className="nav-brand">
-        <Leaf className="text-accent" style={{ width: "32px", height: "32px", color: "var(--accent-color)" }} />
-        <div className="nav-brand-text">
-          <span className="brand-title">MAHAURJA</span>
-          <span className="brand-subtitle">BHARAT INDUSTRIAL & RENEWABLES</span>
-        </div>
-      </div>
+      <Link href="/" className="nav-brand">
+        <img src="/assets/images/logo.png" alt="Mahaurja Logo" style={{ height: "72px", objectFit: "contain" }} />
+      </Link>
       
       {/* Desktop Links */}
       <ul className="nav-links">
@@ -125,10 +121,9 @@ export function Navbar() {
             }}
           >
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "3rem" }}>
-              <div className="nav-brand" style={{ gap: "0.5rem" }}>
-                <Leaf className="text-accent" style={{ width: "24px", height: "24px", color: "var(--accent-color)" }} />
-                <span className="brand-title" style={{ fontSize: "1.2rem" }}>MAHAURJA</span>
-              </div>
+              <Link href="/" className="nav-brand" style={{ gap: "0.5rem" }} onClick={() => setIsMobileMenuOpen(false)}>
+                <img src="/assets/images/logo.png" alt="Mahaurja Logo" style={{ height: "56px", objectFit: "contain" }} />
+              </Link>
               <button onClick={() => setIsMobileMenuOpen(false)} style={{ background: "none", border: "none", cursor: "pointer", color: "var(--text-dark)" }}>
                 <X size={28} />
               </button>

@@ -18,13 +18,7 @@ export function Footer() {
           {/* Brand Column */}
           <div className="md:col-span-5 flex flex-col items-center md:items-start text-center md:text-left">
             <Link href="/" className="inline-flex items-center gap-3 mb-6 hover:opacity-90 transition-opacity">
-              <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center border border-white/20">
-                <Leaf className="text-accent w-7 h-7" />
-              </div>
-              <div className="flex flex-col items-start">
-                <span className="text-2xl font-black tracking-widest text-white leading-none">MAHAURJA</span>
-                <span className="text-[0.65rem] font-bold text-accent tracking-[0.25em] mt-1.5 uppercase">Bharat Industrial & Renewables</span>
-              </div>
+              <img src="/assets/images/logo2.png" alt="Mahaurja Logo" style={{ height: "48px", objectFit: "contain" }} />
             </Link>
             <p className="text-slate-300 text-[0.95rem] leading-relaxed max-w-md mb-8">
               {t("contact_subtitle") || "Leading India's transition to green thermal power with premium, high-efficiency biomass pellets."}

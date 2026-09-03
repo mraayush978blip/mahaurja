@@ -14,6 +14,8 @@ export const metadata: Metadata = {
   description: "Clean Energy • Empowered Future",
 };
 
+import { Splash } from "@/components/Splash";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -23,6 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} ${mukta.variable} ${notoSans.variable}`}>
         <TranslationProvider>
+          <Splash />
           <Navbar />
           {children}
           <Footer />

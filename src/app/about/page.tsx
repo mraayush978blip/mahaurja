@@ -221,8 +221,8 @@ export default function About() {
             
             {/* Avatar & Name */}
             <div style={{ flex: "1 1 200px", textAlign: "center", minWidth: "200px" }}>
-              <div style={{ width: "120px", height: "120px", borderRadius: "50%", background: "#0c5836", margin: "0 auto 1.5rem", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <Users size={60} color="white" />
+              <div style={{ width: "120px", height: "120px", borderRadius: "50%", margin: "0 auto 1.5rem", overflow: "hidden", border: "4px solid #0c5836", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <img src="/assets/images/ceo.jpg" alt="Harsh Jain" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
               </div>
               <h2 style={{ fontSize: "1.8rem", fontWeight: 800, color: "#111", margin: "0 0 4px 0" }}>Harsh Jain</h2>
               <div style={{ fontSize: "0.85rem", fontWeight: 700, color: "#ea580c", textTransform: "uppercase", letterSpacing: "1px" }}>FOUNDER & DIRECTOR</div>

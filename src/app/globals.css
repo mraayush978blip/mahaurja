@@ -378,7 +378,8 @@ h1, h2, h3, h4 {
 /* --- Container --- */
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1440px;
+  padding: 0 4%;
   margin: 0 auto;
 }
 
