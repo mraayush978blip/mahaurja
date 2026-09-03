@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslation } from "@/hooks/useTranslation";
-import { User, Phone, Mail, MapPin, Send } from "lucide-react";
+import { User, Phone, Mail, MapPin, Send, Leaf, Building, Factory, Flame, Clock, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 
 const fadeUpVariant = {
@@ -13,149 +13,272 @@ export default function Contact() {
   const { t } = useTranslation();
 
   return (
-    <main>
-      <header className="page-header">
-        <motion.h1 
-          className="section-title"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          {t("contact_title")}
-        </motion.h1>
-      </header>
-
-      <section className="section-padding bg-light" style={{ minHeight: "80vh", display: "flex", alignItems: "center", position: "relative" }}>
-        
-        {/* Decorative Background Elements */}
-        <div style={{ position: "absolute", top: "10%", left: "5%", width: "400px", height: "400px", background: "radial-gradient(circle, rgba(5, 150, 105, 0.05) 0%, transparent 70%)", borderRadius: "50%", pointerEvents: "none" }} />
-        <div style={{ position: "absolute", bottom: "10%", right: "5%", width: "600px", height: "600px", background: "radial-gradient(circle, rgba(245, 158, 11, 0.03) 0%, transparent 70%)", borderRadius: "50%", pointerEvents: "none" }} />
-
-        <motion.div 
-          className="grid-2" 
-          style={{ background: "#ffffff", borderRadius: "24px", boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.05)", overflow: "hidden", maxWidth: "1200px", margin: "0 auto", padding: 0, position: "relative", zIndex: 1, border: "1px solid rgba(0,0,0,0.03)" }}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{
-            hidden: { opacity: 0 },
-            visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
-          }}
-        >
-          
-          {/* Left Side: Contact Details */}
-          <motion.div 
-            variants={fadeUpVariant}
-            style={{ padding: "5rem 4rem", background: "var(--primary-color)", color: "white", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "center" }}
-          >
-            {/* Elegant glassmorphism shapes */}
-            <div style={{ position: "absolute", top: "-100px", right: "-100px", width: "300px", height: "300px", background: "linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%)", borderRadius: "50%", backdropFilter: "blur(10px)" }} />
-            <div style={{ position: "absolute", bottom: "-50px", left: "-50px", width: "200px", height: "200px", background: "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%)", borderRadius: "50%", backdropFilter: "blur(10px)" }} />
-            
-            <h2 style={{ fontSize: "2.8rem", marginBottom: "1.5rem", color: "white", position: "relative", zIndex: 1 }}>{t("contact_title")}</h2>
-            <p style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.7)", marginBottom: "3rem", lineHeight: 1.8, position: "relative", zIndex: 1 }}>{t("contact_subtitle")}</p>
-            
-            <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem", position: "relative", zIndex: 1 }}>
-              <div style={{ display: "flex", alignItems: "flex-start", gap: "1.5rem" }}>
-                <div style={{ background: "rgba(255,255,255,0.1)", padding: "12px", borderRadius: "12px" }}>
-                  <User style={{ color: "white", width: "24px", height: "24px" }} />
-                </div>
-                <div>
-                  <div style={{ fontWeight: 600, fontSize: "1.2rem", color: "white", marginBottom: "4px" }}>{t("contact_name")}</div>
-                  <div style={{ fontSize: "0.95rem", color: "rgba(255,255,255,0.6)" }}>Founder & Director</div>
-                </div>
-              </div>
-              
-              <div style={{ display: "flex", alignItems: "flex-start", gap: "1.5rem" }}>
-                <div style={{ background: "rgba(255,255,255,0.1)", padding: "12px", borderRadius: "12px" }}>
-                  <Phone style={{ color: "white", width: "24px", height: "24px" }} />
-                </div>
-                <div style={{ display: "flex", alignItems: "center", height: "48px" }}>
-                  <span style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.9)" }}>+91 9340212401</span>
-                </div>
-              </div>
-              
-              <div style={{ display: "flex", alignItems: "flex-start", gap: "1.5rem" }}>
-                <div style={{ background: "rgba(255,255,255,0.1)", padding: "12px", borderRadius: "12px" }}>
-                  <Mail style={{ color: "white", width: "24px", height: "24px" }} />
-                </div>
-                <div style={{ display: "flex", alignItems: "center", height: "48px" }}>
-                  <a href="mailto:harsh@bharatindustrialrenewables.com" style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.9)", textDecoration: "none" }}>harsh@bharatindustrialrenewables.com</a>
-                </div>
-              </div>
-              
-              <div style={{ display: "flex", alignItems: "flex-start", gap: "1.5rem" }}>
-                <div style={{ background: "rgba(255,255,255,0.1)", padding: "12px", borderRadius: "12px" }}>
-                  <MapPin style={{ color: "white", width: "24px", height: "24px" }} />
-                </div>
-                <div style={{ display: "flex", alignItems: "center", minHeight: "48px" }}>
-                  <span style={{ fontSize: "1.05rem", color: "rgba(255,255,255,0.9)", lineHeight: 1.6 }}>288, Lokmanya Tilak Path, Ujjain Road, Railway Crossing ke paas, Badnagar, Jila Ujjain (M.P.) 456771</span>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Right Side: Contact Form */}
-          <motion.div 
-            variants={fadeUpVariant}
-            style={{ padding: "5rem 4rem", background: "#ffffff" }}
-          >
-            <h3 style={{ fontSize: "2rem", marginBottom: "1rem", color: "var(--text-dark)", fontWeight: 700 }}>Send us a message</h3>
-            <p style={{ color: "var(--text-light)", marginBottom: "3rem", fontSize: "1.1rem" }}>Fill out the form below and we will get back to you shortly.</p>
-            
-            <form 
-              onSubmit={(e) => { e.preventDefault(); alert('Message Sent Successfully!'); }} 
-              style={{ display: "flex", flexDirection: "column", gap: "1.8rem" }}
-            >
-              <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
-                <div style={{ flex: "1 1 45%" }}>
-                  <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.9rem", fontWeight: 600, color: "var(--text-dark)" }}>First Name</label>
-                  <input type="text" placeholder="John" required style={{ width: "100%", padding: "1rem 1.2rem", border: "1px solid #e2e8f0", borderRadius: "12px", background: "#f8fafc", fontFamily: "inherit", fontSize: "1rem", outline: "none", transition: "all 0.3s ease" }} onFocus={(e) => { e.target.style.borderColor = "var(--secondary-color)"; e.target.style.background = "#ffffff"; e.target.style.boxShadow = "0 0 0 4px rgba(5,150,105,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#e2e8f0"; e.target.style.background = "#f8fafc"; e.target.style.boxShadow = "none"; }} />
-                </div>
-                <div style={{ flex: "1 1 45%" }}>
-                  <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.9rem", fontWeight: 600, color: "var(--text-dark)" }}>Last Name</label>
-                  <input type="text" placeholder="Doe" required style={{ width: "100%", padding: "1rem 1.2rem", border: "1px solid #e2e8f0", borderRadius: "12px", background: "#f8fafc", fontFamily: "inherit", fontSize: "1rem", outline: "none", transition: "all 0.3s ease" }} onFocus={(e) => { e.target.style.borderColor = "var(--secondary-color)"; e.target.style.background = "#ffffff"; e.target.style.boxShadow = "0 0 0 4px rgba(5,150,105,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#e2e8f0"; e.target.style.background = "#f8fafc"; e.target.style.boxShadow = "none"; }} />
-                </div>
-              </div>
-              
-              <div>
-                <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.9rem", fontWeight: 600, color: "var(--text-dark)" }}>Email Address</label>
-                <input type="email" placeholder="john@company.com" required style={{ width: "100%", padding: "1rem 1.2rem", border: "1px solid #e2e8f0", borderRadius: "12px", background: "#f8fafc", fontFamily: "inherit", fontSize: "1rem", outline: "none", transition: "all 0.3s ease" }} onFocus={(e) => { e.target.style.borderColor = "var(--secondary-color)"; e.target.style.background = "#ffffff"; e.target.style.boxShadow = "0 0 0 4px rgba(5,150,105,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#e2e8f0"; e.target.style.background = "#f8fafc"; e.target.style.boxShadow = "none"; }} />
-              </div>
-              
-              <div>
-                <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.9rem", fontWeight: 600, color: "var(--text-dark)" }}>Phone Number</label>
-                <input type="tel" placeholder="+91 00000 00000" style={{ width: "100%", padding: "1rem 1.2rem", border: "1px solid #e2e8f0", borderRadius: "12px", background: "#f8fafc", fontFamily: "inherit", fontSize: "1rem", outline: "none", transition: "all 0.3s ease" }} onFocus={(e) => { e.target.style.borderColor = "var(--secondary-color)"; e.target.style.background = "#ffffff"; e.target.style.boxShadow = "0 0 0 4px rgba(5,150,105,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#e2e8f0"; e.target.style.background = "#f8fafc"; e.target.style.boxShadow = "none"; }} />
-              </div>
-              
-              <div>
-                <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.9rem", fontWeight: 600, color: "var(--text-dark)" }}>{t("contact_inquiry")}</label>
-                <select required style={{ width: "100%", padding: "1rem 1.2rem", border: "1px solid #e2e8f0", borderRadius: "12px", background: "#f8fafc", fontFamily: "inherit", fontSize: "1rem", outline: "none", transition: "all 0.3s ease", appearance: "none" }} onFocus={(e) => { e.target.style.borderColor = "var(--secondary-color)"; e.target.style.background = "#ffffff"; e.target.style.boxShadow = "0 0 0 4px rgba(5,150,105,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#e2e8f0"; e.target.style.background = "#f8fafc"; e.target.style.boxShadow = "none"; }}>
-                  <option value="">Select an option</option>
-                  <option value="buy">{t("contact_opt_buy")}</option>
-                  <option value="sell">{t("contact_opt_sell")}</option>
-                  <option value="sustainability">{t("contact_opt_sus")}</option>
-                </select>
-              </div>
-
-              <div>
-                <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.9rem", fontWeight: 600, color: "var(--text-dark)" }}>{t("contact_msg")}</label>
-                <textarea placeholder="How can we help you?" required rows={4} style={{ width: "100%", padding: "1rem 1.2rem", border: "1px solid #e2e8f0", borderRadius: "12px", background: "#f8fafc", fontFamily: "inherit", fontSize: "1rem", outline: "none", resize: "vertical", transition: "all 0.3s ease" }} onFocus={(e) => { e.target.style.borderColor = "var(--secondary-color)"; e.target.style.background = "#ffffff"; e.target.style.boxShadow = "0 0 0 4px rgba(5,150,105,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#e2e8f0"; e.target.style.background = "#f8fafc"; e.target.style.boxShadow = "none"; }} />
-              </div>
-              
-              <motion.button 
-                type="submit" 
-                className="btn" 
-                style={{ border: "none", width: "100%", justifyContent: "center", marginTop: "1rem", padding: "1.2rem", fontSize: "1.1rem", cursor: "pointer", background: "var(--primary-color)", color: "white", borderRadius: "12px" }}
-                whileHover={{ scale: 1.02, backgroundColor: "var(--secondary-color)" }}
-                whileTap={{ scale: 0.98 }}
-              >
-                {t("contact_submit")} <Send style={{ width: "18px", marginLeft: "8px" }} />
-              </motion.button>
-            </form>
-          </motion.div>
-
+    <main style={{ backgroundColor: "#f8fafc", paddingBottom: "6rem", minHeight: "100vh" }}>
+      
+      {/* HEADER SECTION */}
+      <section style={{ padding: "8rem 0 3rem 0", textAlign: "center" }}>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+          <h1 style={{ fontSize: "3rem", fontWeight: 800, color: "#06402b", marginBottom: "1rem" }}>
+            {t("nav_contact" as any)}
+          </h1>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "1rem", marginBottom: "2rem" }}>
+            <div style={{ height: "1px", width: "40px", background: "#16a34a" }} />
+            <Leaf size={16} color="#16a34a" />
+            <div style={{ height: "1px", width: "40px", background: "#16a34a" }} />
+          </div>
+          <p style={{ fontSize: "1.1rem", color: "#4b5563", maxWidth: "600px", margin: "0 auto", lineHeight: 1.6 }}>
+            Connect with our team for better biomass energy solutions.
+          </p>
         </motion.div>
+      </section>
+
+      {/* MAIN CARD */}
+      <section style={{ padding: "0 1rem" }}>
+        <div className="container" style={{ maxWidth: "1100px", padding: 0 }}>
+          <motion.div 
+            style={{ 
+              background: "#ffffff", 
+              borderRadius: "24px", 
+              boxShadow: "0 20px 40px rgba(0, 0, 0, 0.08)", 
+              overflow: "hidden", 
+              display: "flex", 
+              flexWrap: "wrap",
+              border: "1px solid rgba(0,0,0,0.03)" 
+            }}
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
+            }}
+          >
+            
+            {/* LEFT SIDE: Contact Info */}
+            <motion.div 
+              variants={fadeUpVariant}
+              style={{ 
+                flex: "1 1 400px", 
+                position: "relative",
+                background: "#06402b",
+                color: "white", 
+                display: "flex", 
+                flexDirection: "column",
+                overflow: "hidden"
+              }}
+            >
+              {/* Abstract Light Green Curves at Top Right */}
+              <div style={{ position: "absolute", top: "-50px", right: "-50px", width: "200px", height: "200px", borderRadius: "50%", background: "#4ade80", opacity: 0.2 }} />
+              <div style={{ position: "absolute", top: "-100px", right: "-10px", width: "250px", height: "250px", borderRadius: "50%", background: "#16a34a", opacity: 0.2 }} />
+              <div style={{ position: "absolute", top: "20px", right: "-80px", width: "150px", height: "150px", borderRadius: "50%", background: "#86efac", opacity: 0.1 }} />
+
+              {/* Dotted pattern overlay */}
+              <div style={{ position: "absolute", top: "2rem", left: "2rem", width: "100px", height: "100px", backgroundImage: "radial-gradient(rgba(255,255,255,0.2) 2px, transparent 2px)", backgroundSize: "15px 15px", opacity: 0.5 }} />
+              <div style={{ position: "absolute", bottom: "4rem", left: "2rem", width: "100px", height: "100px", backgroundImage: "radial-gradient(rgba(255,255,255,0.2) 2px, transparent 2px)", backgroundSize: "15px 15px", opacity: 0.5 }} />
+
+              {/* Factory Image Blended at the Bottom */}
+              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "60%", backgroundImage: "url('/assets/images/about.png')", backgroundSize: "cover", backgroundPosition: "center bottom", zIndex: 0 }} />
+              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "65%", background: "linear-gradient(to bottom, #06402b 0%, rgba(6,64,43,0.7) 40%, rgba(6,64,43,0.85) 100%)", zIndex: 0 }} />
+
+              <div style={{ position: "relative", zIndex: 2, padding: "4rem 3rem" }}>
+                <h2 style={{ fontSize: "2.2rem", fontWeight: 800, color: "white", marginBottom: "0.5rem", lineHeight: 1.2 }}>
+                  Let's work together
+                </h2>
+                <h2 style={{ fontSize: "2.2rem", fontWeight: 800, color: "#86efac", marginBottom: "0.2rem", lineHeight: 1.2 }}>
+                  To build a green future.
+                </h2>
+                
+                <div style={{ width: "40px", height: "3px", background: "#f59e0b", margin: "1.5rem 0", borderRadius: "2px" }} />
+                
+                <p style={{ fontSize: "1.05rem", color: "rgba(255,255,255,0.9)", marginBottom: "0.5rem", lineHeight: 1.6, fontWeight: 500 }}>
+                  Connect with our expert team.
+                </p>
+                <p style={{ fontSize: "1.05rem", color: "rgba(255,255,255,0.9)", marginBottom: "3rem", lineHeight: 1.6, fontWeight: 500 }}>
+                  We are always ready for your questions, suggestions, and collaboration opportunities.
+                </p>
+                
+                <div style={{ display: "flex", flexDirection: "column", gap: "1.8rem" }}>
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: "1.2rem" }}>
+                    <div style={{ width: "42px", height: "42px", borderRadius: "12px", background: "rgba(255,255,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, border: "1px solid rgba(255,255,255,0.15)" }}>
+                      <User size={18} color="white" />
+                    </div>
+                    <div>
+                      <div style={{ fontWeight: 700, fontSize: "1.05rem", color: "white", marginBottom: "2px" }}>Harsh Jain</div>
+                      <div style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.7)" }}>Founder & Director</div>
+                    </div>
+                  </div>
+                  
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: "1.2rem" }}>
+                    <div style={{ width: "42px", height: "42px", borderRadius: "12px", background: "rgba(255,255,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, border: "1px solid rgba(255,255,255,0.15)" }}>
+                      <Phone size={18} color="white" />
+                    </div>
+                    <div style={{ display: "flex", alignItems: "center", minHeight: "42px" }}>
+                      <span style={{ fontSize: "1rem", color: "rgba(255,255,255,0.9)", fontWeight: 500 }}>+91 9340212401</span>
+                    </div>
+                  </div>
+                  
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: "1.2rem" }}>
+                    <div style={{ width: "42px", height: "42px", borderRadius: "12px", background: "rgba(255,255,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, border: "1px solid rgba(255,255,255,0.15)" }}>
+                      <Mail size={18} color="white" />
+                    </div>
+                    <div style={{ display: "flex", alignItems: "center", minHeight: "42px" }}>
+                      <a href="mailto:harsh@bharatindustrialrenewables.com" style={{ fontSize: "0.95rem", color: "rgba(255,255,255,0.9)", textDecoration: "none", wordBreak: "break-all" }}>harsh@bharatindustrialrenewables.com</a>
+                    </div>
+                  </div>
+                  
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: "1.2rem" }}>
+                    <div style={{ width: "42px", height: "42px", borderRadius: "12px", background: "rgba(255,255,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, border: "1px solid rgba(255,255,255,0.15)" }}>
+                      <MapPin size={18} color="white" />
+                    </div>
+                    <div style={{ display: "flex", alignItems: "center", minHeight: "42px" }}>
+                      <span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.8)", lineHeight: 1.5 }}>288, Lokmanya Tilak Path, Ujjain Road,<br/>Railway Crossing ke paas, Badnagar,<br/>Jila Ujjain (M.P.) 456771</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Bottom Left decorative leaf */}
+              <div style={{ position: "absolute", bottom: "-20px", left: "-20px", zIndex: 1 }}>
+                <Leaf size={150} color="#166534" fill="#166534" style={{ opacity: 0.5, transform: "rotate(45deg)" }} />
+              </div>
+            </motion.div>
+
+            {/* RIGHT SIDE: Contact Form */}
+            <motion.div 
+              variants={fadeUpVariant}
+              style={{ flex: "1 1 500px", padding: "4rem", background: "#ffffff" }}
+            >
+              <h3 style={{ fontSize: "1.8rem", marginBottom: "0.5rem", color: "#111", fontWeight: 800 }}>Send us a message</h3>
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "2rem" }}>
+                <div style={{ width: "30px", height: "2px", background: "#f59e0b" }} />
+                <span style={{ color: "#6b7280", fontSize: "0.9rem" }}>Fill in your details, our team will contact you shortly.</span>
+              </div>
+              
+              <form 
+                onSubmit={(e) => { e.preventDefault(); alert('Your information has been successfully sent!'); }} 
+                style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
+              >
+                <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
+                  <div style={{ flex: "1 1 45%" }}>
+                    <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.85rem", fontWeight: 600, color: "#374151" }}>
+                      {t("rfq_name" as any)} <span style={{ color: "#ef4444" }}>*</span>
+                    </label>
+                    <div style={{ position: "relative" }}>
+                      <div style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "#9ca3af" }}>
+                        <User size={18} />
+                      </div>
+                      <input type="text" placeholder="Rajesh Kumar" required style={{ width: "100%", padding: "0.8rem 1rem 0.8rem 2.5rem", border: "1px solid #d1d5db", borderRadius: "8px", background: "#ffffff", fontFamily: "inherit", fontSize: "0.95rem", outline: "none", transition: "all 0.2s" }} onFocus={(e) => { e.target.style.borderColor = "#16a34a"; e.target.style.boxShadow = "0 0 0 3px rgba(22,163,74,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; e.target.style.boxShadow = "none"; }} />
+                    </div>
+                  </div>
+                  <div style={{ flex: "1 1 45%" }}>
+                    <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.85rem", fontWeight: 600, color: "#374151" }}>
+                      {t("rfq_company" as any)} <span style={{ color: "#ef4444" }}>*</span>
+                    </label>
+                    <div style={{ position: "relative" }}>
+                      <div style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "#9ca3af" }}>
+                        <Building size={18} />
+                      </div>
+                      <input type="text" placeholder="ABC Steel Industries" required style={{ width: "100%", padding: "0.8rem 1rem 0.8rem 2.5rem", border: "1px solid #d1d5db", borderRadius: "8px", background: "#ffffff", fontFamily: "inherit", fontSize: "0.95rem", outline: "none", transition: "all 0.2s" }} onFocus={(e) => { e.target.style.borderColor = "#16a34a"; e.target.style.boxShadow = "0 0 0 3px rgba(22,163,74,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; e.target.style.boxShadow = "none"; }} />
+                    </div>
+                  </div>
+                </div>
+                
+                <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
+                  <div style={{ flex: "1 1 45%" }}>
+                    <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.85rem", fontWeight: 600, color: "#374151" }}>
+                      {t("rfq_phone" as any)} <span style={{ color: "#ef4444" }}>*</span>
+                    </label>
+                    <div style={{ position: "relative" }}>
+                      <div style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "#9ca3af" }}>
+                        <Phone size={18} />
+                      </div>
+                      <input type="tel" placeholder="+91 98765 43210" required style={{ width: "100%", padding: "0.8rem 1rem 0.8rem 2.5rem", border: "1px solid #d1d5db", borderRadius: "8px", background: "#ffffff", fontFamily: "inherit", fontSize: "0.95rem", outline: "none", transition: "all 0.2s" }} onFocus={(e) => { e.target.style.borderColor = "#16a34a"; e.target.style.boxShadow = "0 0 0 3px rgba(22,163,74,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; e.target.style.boxShadow = "none"; }} />
+                    </div>
+                  </div>
+                  <div style={{ flex: "1 1 45%" }}>
+                    <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.85rem", fontWeight: 600, color: "#374151" }}>
+                      {t("rfq_email" as any)} <span style={{ color: "#ef4444" }}>*</span>
+                    </label>
+                    <div style={{ position: "relative" }}>
+                      <div style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "#9ca3af" }}>
+                        <Mail size={18} />
+                      </div>
+                      <input type="email" placeholder="rajesh@company.com" required style={{ width: "100%", padding: "0.8rem 1rem 0.8rem 2.5rem", border: "1px solid #d1d5db", borderRadius: "8px", background: "#ffffff", fontFamily: "inherit", fontSize: "0.95rem", outline: "none", transition: "all 0.2s" }} onFocus={(e) => { e.target.style.borderColor = "#16a34a"; e.target.style.boxShadow = "0 0 0 3px rgba(22,163,74,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; e.target.style.boxShadow = "none"; }} />
+                    </div>
+                  </div>
+                </div>
+                
+                <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
+                  <div style={{ flex: "1 1 45%" }}>
+                    <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.85rem", fontWeight: 600, color: "#374151" }}>
+                      {t("rfq_boiler" as any)}
+                    </label>
+                    <div style={{ position: "relative" }}>
+                      <div style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "#9ca3af" }}>
+                        <Factory size={18} />
+                      </div>
+                      <input type="text" placeholder="e.g. 5 TPH Fire Tube Boiler" style={{ width: "100%", padding: "0.8rem 1rem 0.8rem 2.5rem", border: "1px solid #d1d5db", borderRadius: "8px", background: "#ffffff", fontFamily: "inherit", fontSize: "0.95rem", outline: "none", transition: "all 0.2s" }} onFocus={(e) => { e.target.style.borderColor = "#16a34a"; e.target.style.boxShadow = "0 0 0 3px rgba(22,163,74,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; e.target.style.boxShadow = "none"; }} />
+                    </div>
+                  </div>
+                  <div style={{ flex: "1 1 45%" }}>
+                    <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.85rem", fontWeight: 600, color: "#374151" }}>
+                      {t("rfq_size" as any)}
+                    </label>
+                    <div style={{ position: "relative" }}>
+                      <div style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "#9ca3af", pointerEvents: "none" }}>
+                        <Clock size={18} />
+                      </div>
+                      <select style={{ width: "100%", padding: "0.8rem 1rem 0.8rem 2.5rem", border: "1px solid #d1d5db", borderRadius: "8px", background: "#ffffff", fontFamily: "inherit", fontSize: "0.95rem", outline: "none", transition: "all 0.2s", appearance: "none" }} onFocus={(e) => { e.target.style.borderColor = "#16a34a"; e.target.style.boxShadow = "0 0 0 3px rgba(22,163,74,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; e.target.style.boxShadow = "none"; }}>
+                        <option value="">Select size</option>
+                        <option value="6mm">6mm - Industrial Use</option>
+                        <option value="8mm">8mm - High Efficiency</option>
+                        <option value="10mm">10mm - Large Plants</option>
+                        <option value="custom">Custom Size</option>
+                      </select>
+                      {/* Custom dropdown arrow */}
+                      <div style={{ position: "absolute", right: "12px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none" }}>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.85rem", fontWeight: 600, color: "#374151" }}>
+                    Target GCV (kcal/kg)
+                  </label>
+                  <div style={{ position: "relative" }}>
+                    <div style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "#9ca3af" }}>
+                      <Flame size={18} />
+                    </div>
+                    <input type="text" placeholder="e.g. 4500 kcal/kg" style={{ width: "100%", padding: "0.8rem 1rem 0.8rem 2.5rem", border: "1px solid #d1d5db", borderRadius: "8px", background: "#ffffff", fontFamily: "inherit", fontSize: "0.95rem", outline: "none", transition: "all 0.2s" }} onFocus={(e) => { e.target.style.borderColor = "#16a34a"; e.target.style.boxShadow = "0 0 0 3px rgba(22,163,74,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; e.target.style.boxShadow = "none"; }} />
+                  </div>
+                </div>
+
+                <div>
+                  <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.85rem", fontWeight: 600, color: "#374151" }}>
+                    Additional Information / Requirements
+                  </label>
+                  <textarea placeholder="Monthly quantity, delivery location..." rows={3} style={{ width: "100%", padding: "1rem", border: "1px solid #d1d5db", borderRadius: "8px", background: "#ffffff", fontFamily: "inherit", fontSize: "0.95rem", outline: "none", resize: "vertical", transition: "all 0.2s" }} onFocus={(e) => { e.target.style.borderColor = "#16a34a"; e.target.style.boxShadow = "0 0 0 3px rgba(22,163,74,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; e.target.style.boxShadow = "none"; }} />
+                </div>
+                
+                <motion.button 
+                  type="submit" 
+                  style={{ border: "none", width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", marginTop: "1rem", padding: "1rem", fontSize: "1rem", fontWeight: 600, cursor: "pointer", background: "#06402b", color: "white", borderRadius: "8px" }}
+                  whileHover={{ scale: 1.02, backgroundColor: "#047857" }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <Send size={18} /> Send Message 
+                </motion.button>
+                
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "6px", marginTop: "0.5rem" }}>
+                  <ShieldCheck size={14} color="#16a34a" />
+                  <span style={{ fontSize: "0.8rem", color: "#6b7280" }}>Your information is 100% safe and will be kept confidential.</span>
+                </div>
+              </form>
+            </motion.div>
+
+          </motion.div>
+        </div>
       </section>
     </main>
   );
