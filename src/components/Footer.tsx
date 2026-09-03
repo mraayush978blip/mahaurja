@@ -1,48 +1,90 @@
 "use client";
 
-import { Leaf, Phone, Mail, MapPin } from "lucide-react";
+import { Leaf, Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
+import Link from "next/link";
 
 export function Footer() {
   const { t } = useTranslation();
 
   return (
-    <footer className="bg-slate-900 text-white pt-16 pb-8 px-6">
-      <div className="container mx-auto max-w-5xl">
-        <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-10 border-b border-white/10 pb-12 mb-8">
+    <footer className="bg-gradient-to-br from-[#064e3b] via-[#022c22] to-[#0f172a] text-white pt-20 pb-8 relative overflow-hidden">
+      {/* Decorative background element */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 10% 20%, rgba(245, 158, 11, 0.4) 0%, transparent 40%)' }} />
+      
+      <div className="container mx-auto px-6 max-w-6xl relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 border-b border-white/10 pb-16 mb-8">
           
-          <div className="text-center md:text-left">
-            <div className="flex items-center justify-center md:justify-start gap-3 mb-4">
-              <Leaf className="text-accent w-8 h-8" />
-              <div className="flex flex-col items-start">
-                <span className="text-xl font-bold tracking-wider leading-none text-white">MAHAURJA</span>
-                <span className="text-[10px] font-semibold text-slate-400 tracking-widest mt-1">BHARAT INDUSTRIAL & RENEWABLES</span>
+          {/* Brand Column */}
+          <div className="md:col-span-5 flex flex-col items-center md:items-start text-center md:text-left">
+            <Link href="/" className="inline-flex items-center gap-3 mb-6 hover:opacity-90 transition-opacity">
+              <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center border border-white/20">
+                <Leaf className="text-accent w-7 h-7" />
               </div>
+              <div className="flex flex-col items-start">
+                <span className="text-2xl font-black tracking-widest text-white leading-none">MAHAURJA</span>
+                <span className="text-[0.65rem] font-bold text-accent tracking-[0.25em] mt-1.5 uppercase">Bharat Industrial & Renewables</span>
+              </div>
+            </Link>
+            <p className="text-slate-300 text-[0.95rem] leading-relaxed max-w-md mb-8">
+              {t("contact_subtitle") || "Leading India's transition to green thermal power with premium, high-efficiency biomass pellets."}
+            </p>
+            <div className="inline-block bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-sm text-slate-300 font-medium">
+              <span className="text-slate-400">LLPIN:</span> <span className="text-white">ACS-7398</span>
             </div>
-            <p className="text-slate-300 max-w-xs text-sm">{t("contact_subtitle")}</p>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-10 md:gap-16">
-            <div className="text-center md:text-left">
-              <h3 className="text-white font-bold mb-4 text-lg">{t("contact_title")}</h3>
-              <p className="text-slate-300 text-sm mb-2"><strong>{t("contact_name")}</strong> - Founder & Director</p>
-              <p className="text-slate-300 text-sm mb-2 flex items-center justify-center md:justify-start gap-2"><Phone className="w-4 h-4 text-slate-400" /> +91 9340212401</p>
-              <p className="text-slate-300 text-sm mb-2 flex items-center justify-center md:justify-start gap-2"><Mail className="w-4 h-4 text-slate-400" /> harsh@bharatindustrialrenewables.com</p>
-              <p className="text-slate-300 text-sm"><strong>LLPIN :</strong> ACS-7398</p>
+          {/* Contact Column */}
+          <div className="md:col-span-4 flex flex-col items-center md:items-start text-center md:text-left">
+            <h3 className="text-white font-bold text-lg mb-6 tracking-wide uppercase flex items-center gap-2">
+              <span className="w-8 h-[2px] bg-accent inline-block"></span> 
+              {t("contact_title")}
+            </h3>
+            <div className="space-y-5">
+              <div className="group">
+                <p className="text-accent font-semibold mb-1 text-sm">{t("contact_name")} <span className="text-slate-400 font-normal ml-1">— Founder & Director</span></p>
+              </div>
+              
+              <a href="tel:+919340212401" className="flex items-center justify-center md:justify-start gap-3 group transition-all">
+                <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-accent/20 border border-transparent group-hover:border-accent/30 transition-colors">
+                  <Phone className="w-4 h-4 text-slate-300 group-hover:text-accent" />
+                </div>
+                <span className="text-slate-200 text-sm font-medium group-hover:text-white">+91 9340212401</span>
+              </a>
+
+              <a href="mailto:harsh@bharatindustrialrenewables.com" className="flex items-center justify-center md:justify-start gap-3 group transition-all">
+                <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-accent/20 border border-transparent group-hover:border-accent/30 transition-colors">
+                  <Mail className="w-4 h-4 text-slate-300 group-hover:text-accent" />
+                </div>
+                <span className="text-slate-200 text-sm font-medium group-hover:text-white break-all">harsh@bharatindustrialrenewables.com</span>
+              </a>
             </div>
-            
-            <div className="text-center md:text-left max-w-xs">
-              <h3 className="text-white font-bold mb-4 text-lg">Location</h3>
-              <p className="text-slate-300 text-sm flex items-start justify-center md:justify-start gap-2 leading-relaxed">
-                <MapPin className="w-4 h-4 text-slate-400 shrink-0 mt-1" /> 
-                <span>288, Lokmanya Tilak Path, Ujjain Road, Railway Crossing ke paas, Badnagar, Jila Ujjain (M.P.) 456771</span>
+          </div>
+          
+          {/* Location Column */}
+          <div className="md:col-span-3 flex flex-col items-center md:items-start text-center md:text-left">
+            <h3 className="text-white font-bold text-lg mb-6 tracking-wide uppercase flex items-center gap-2">
+              <span className="w-8 h-[2px] bg-accent inline-block"></span> 
+              Location
+            </h3>
+            <div className="flex items-start justify-center md:justify-start gap-3 group">
+              <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center shrink-0 border border-white/5">
+                <MapPin className="w-4 h-4 text-slate-300" />
+              </div>
+              <p className="text-slate-300 text-[0.9rem] leading-relaxed pt-1.5">
+                288, Lokmanya Tilak Path, Ujjain Road, Railway Crossing ke paas, Badnagar, Jila Ujjain (M.P.) 456771
               </p>
             </div>
           </div>
 
         </div>
-        <div className="text-center text-slate-400 text-xs font-medium tracking-wide">
-          {t("footer_tagline")}
+
+        {/* Bottom Bar */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-slate-400 text-sm font-medium">
+          <p>© {new Date().getFullYear()} MAHAURJA. All rights reserved.</p>
+          <div className="flex items-center gap-2 opacity-80 tracking-wide text-xs uppercase">
+            {t("footer_tagline") || "Clean Fuel | Better Future | Economic Gain | Env Protection | Sust. Growth"}
+          </div>
         </div>
       </div>
     </footer>

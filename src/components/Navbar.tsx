@@ -61,11 +61,6 @@ export function Navbar() {
           </Link>
         </li>
         <li>
-          <Link href="/sustainability" className={pathname === "/sustainability" ? "active" : ""}>
-            {t("nav_sustainability")}
-          </Link>
-        </li>
-        <li>
           <Link href="/contact" className={pathname === "/contact" ? "active" : ""}>
             {t("nav_contact")}
           </Link>
@@ -143,7 +138,7 @@ export function Navbar() {
               <Link href="/" onClick={() => setIsMobileMenuOpen(false)} style={{ padding: "0.5rem 0", borderBottom: "1px solid rgba(0,0,0,0.05)", fontSize: "1.1rem", color: pathname === "/" ? "var(--primary-color)" : "var(--text-dark)", fontWeight: pathname === "/" ? 700 : 500 }}>{t("nav_home")}</Link>
               <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} style={{ padding: "0.5rem 0", borderBottom: "1px solid rgba(0,0,0,0.05)", fontSize: "1.1rem", color: pathname === "/about" ? "var(--primary-color)" : "var(--text-dark)", fontWeight: pathname === "/about" ? 700 : 500 }}>{t("nav_about")}</Link>
               <Link href="/services" onClick={() => setIsMobileMenuOpen(false)} style={{ padding: "0.5rem 0", borderBottom: "1px solid rgba(0,0,0,0.05)", fontSize: "1.1rem", color: pathname === "/services" ? "var(--primary-color)" : "var(--text-dark)", fontWeight: pathname === "/services" ? 700 : 500 }}>{t("nav_services")}</Link>
-              <Link href="/sustainability" onClick={() => setIsMobileMenuOpen(false)} style={{ padding: "0.5rem 0", borderBottom: "1px solid rgba(0,0,0,0.05)", fontSize: "1.1rem", color: pathname === "/sustainability" ? "var(--primary-color)" : "var(--text-dark)", fontWeight: pathname === "/sustainability" ? 700 : 500 }}>{t("nav_sustainability")}</Link>
+
               <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} style={{ padding: "0.5rem 0", borderBottom: "1px solid rgba(0,0,0,0.05)", fontSize: "1.1rem", color: pathname === "/contact" ? "var(--primary-color)" : "var(--text-dark)", fontWeight: pathname === "/contact" ? 700 : 500 }}>{t("nav_contact")}</Link>
             </div>
 

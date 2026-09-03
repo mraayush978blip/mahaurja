@@ -2,203 +2,208 @@
 
 import { useTranslation } from "@/hooks/useTranslation";
 import { motion } from "framer-motion";
-import { Flame, Factory, FlaskConical, TreePine, Recycle } from "lucide-react";
+import { Flame, FlaskConical, Leaf, Thermometer, Activity, CheckCircle } from "lucide-react";
 
-const fadeUpVariant = {
+const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
 };
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15
-    }
-  }
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.13 } }
 };
 
 export default function Services() {
   const { t } = useTranslation();
 
+  const process = [
+    {
+      icon: <Thermometer size={32} />,
+      title: t("serv_thermo_title"),
+      desc: t("serv_thermo_desc"),
+      color: "amber",
+    },
+    {
+      icon: <FlaskConical size={32} />,
+      title: t("serv_bio_title"),
+      desc: t("serv_bio_desc"),
+      color: "green",
+    },
+  ];
+
+  const feedstocks = [
+    {
+      title: t("serv_wood_title"),
+      desc: t("serv_wood_desc"),
+      specs: [
+        { label: "Dimensions", value: "6mm – 8mm diameter" },
+        { label: "Mechanical Durability", value: "> 97.5%" },
+        { label: "Ash Content", value: "< 1.5%" },
+      ],
+      color: "green",
+    },
+    {
+      title: t("serv_agro_title"),
+      desc: t("serv_agro_desc"),
+      specs: [
+        { label: "Shape", value: "Briquette / Pellet" },
+        { label: "Moisture", value: "< 10%" },
+        { label: "Density", value: "> 1.1 g/cc" },
+      ],
+      color: "amber",
+    },
+  ];
+
   return (
-    <main className="page-padding">
-      <div className="container">
-        <motion.h1 
-          className="section-title"
-          initial="hidden"
-          animate="visible"
-          variants={fadeUpVariant}
+    <main>
+      {/* Page Header */}
+      <section className="inner-page-hero services-hero">
+        <div className="inner-page-hero-overlay" />
+        <motion.div
+          className="inner-page-hero-content"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
         >
-          {t("services_title")}
-        </motion.h1>
+          <span className="inner-page-eyebrow"><Flame size={14} /> Engineering Green Fuel</span>
+          <h1>{t("services_title")}</h1>
+          <p>Precision-engineered biomass fuel solutions for industrial boilers across India</p>
+        </motion.div>
+      </section>
 
-        {/* Conversion Processes */}
-        <section className="mt-12">
-          <motion.h2 className="text-3xl font-bold mb-8 text-primary" variants={fadeUpVariant} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            {t("serv_conv_title")}
-          </motion.h2>
-          
-          <div className="grid-2">
-            <motion.div 
-              className="card border-l-4 border-accent"
-              variants={fadeUpVariant} 
-              initial="hidden" 
-              whileInView="visible" 
-              viewport={{ once: true }}
-              whileHover={{ y: -5, boxShadow: "var(--shadow-lg)" }}
-            >
-              <div className="flex items-center gap-4 mb-4">
-                <Flame className="w-10 h-10 text-accent" />
-                <h3 className="text-2xl font-semibold">{t("serv_thermo_title")}</h3>
-              </div>
-              <p className="text-gray-600 leading-relaxed">{t("serv_thermo_desc")}</p>
-            </motion.div>
-
-            <motion.div 
-              className="card border-l-4 border-primary"
-              variants={fadeUpVariant} 
-              initial="hidden" 
-              whileInView="visible" 
-              viewport={{ once: true }}
-              whileHover={{ y: -5, boxShadow: "var(--shadow-lg)" }}
-            >
-              <div className="flex items-center gap-4 mb-4">
-                <FlaskConical className="w-10 h-10 text-primary" />
-                <h3 className="text-2xl font-semibold">{t("serv_bio_title")}</h3>
-              </div>
-              <p className="text-gray-600 leading-relaxed">{t("serv_bio_desc")}</p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Feedstocks & Products */}
-        <section className="mt-16 decor-bg relative rounded-2xl p-8 bg-gray-50 border border-gray-100 shadow-sm">
-          <motion.h2 className="text-3xl font-bold mb-8 text-primary relative z-10" variants={fadeUpVariant} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            {t("serv_feed_title")}
-          </motion.h2>
-
-          <motion.div 
-            className="grid-2 relative z-10"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-          >
-            {/* Wood Pellets Tech Card */}
-            <motion.div className="bg-white rounded-xl shadow-md overflow-hidden" variants={fadeUpVariant}>
-              <div className="bg-primary text-white p-6 flex items-center gap-4">
-                <TreePine className="w-8 h-8" />
-                <h3 className="text-xl font-bold m-0 text-white">{t("serv_wood_title")}</h3>
-              </div>
-              <div className="p-6">
-                <p className="text-gray-600 mb-6">{t("serv_wood_desc")}</p>
-                <div className="bg-gray-50 rounded-lg p-4 border border-gray-100">
-                  <table className="w-full text-sm">
-                    <tbody>
-                      <tr className="border-b border-gray-200">
-                        <td className="py-2 font-semibold text-gray-700">Dimensions</td>
-                        <td className="py-2 text-right text-gray-600">6mm - 8mm</td>
-                      </tr>
-                      <tr className="border-b border-gray-200">
-                        <td className="py-2 font-semibold text-gray-700">Durability</td>
-                        <td className="py-2 text-right text-gray-600">{"> 97.5%"}</td>
-                      </tr>
-                      <tr>
-                        <td className="py-2 font-semibold text-gray-700">Ash Content</td>
-                        <td className="py-2 text-right text-gray-600">{"< 1.5%"}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Agro Residues Tech Card */}
-            <motion.div className="bg-white rounded-xl shadow-md overflow-hidden" variants={fadeUpVariant}>
-              <div className="bg-accent text-white p-6 flex items-center gap-4">
-                <Recycle className="w-8 h-8" />
-                <h3 className="text-xl font-bold m-0 text-white">{t("serv_agro_title")}</h3>
-              </div>
-              <div className="p-6">
-                <p className="text-gray-600 mb-6">{t("serv_agro_desc")}</p>
-                <div className="bg-gray-50 rounded-lg p-4 border border-gray-100">
-                  <table className="w-full text-sm">
-                    <tbody>
-                      <tr className="border-b border-gray-200">
-                        <td className="py-2 font-semibold text-gray-700">Shape</td>
-                        <td className="py-2 text-right text-gray-600">Briquette / Custom</td>
-                      </tr>
-                      <tr className="border-b border-gray-200">
-                        <td className="py-2 font-semibold text-gray-700">Moisture</td>
-                        <td className="py-2 text-right text-gray-600">{"< 10%"}</td>
-                      </tr>
-                      <tr>
-                        <td className="py-2 font-semibold text-gray-700">Density</td>
-                        <td className="py-2 text-right text-gray-600">{"> 1.1 g/cm³"}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </motion.div>
+      {/* Conversion Processes */}
+      <section className="section-padding">
+        <motion.div
+          className="container"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={stagger}
+        >
+          <motion.h2 variants={fadeUp} className="section-title">{t("serv_conv_title")}</motion.h2>
+          <motion.div variants={stagger} className="process-grid">
+            {process.map((p, i) => (
+              <motion.div key={i} variants={fadeUp} className={`process-card process-${p.color}`} whileHover={{ y: -5 }}>
+                <div className={`process-icon-wrap process-icon-${p.color}`}>{p.icon}</div>
+                <h3>{p.title}</h3>
+                <p>{p.desc}</p>
+              </motion.div>
+            ))}
           </motion.div>
-        </section>
-        {/* Technical Specifications Data Table */}
-        <section className="mt-16">
-          <motion.h2 className="text-3xl font-bold mb-8 text-primary" variants={fadeUpVariant} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            {t("specs_title" as any)}
-          </motion.h2>
+        </motion.div>
+      </section>
 
-          <motion.div 
-            className="table-container"
-            variants={fadeUpVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+      {/* Feedstocks & Products */}
+      <section className="section-padding bg-light">
+        <motion.div
+          className="container"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={stagger}
+        >
+          <motion.h2 variants={fadeUp} className="section-title">{t("serv_feed_title")}</motion.h2>
+          <motion.div variants={stagger} className="feedstock-product-grid">
+            {feedstocks.map((f, i) => (
+              <motion.div key={i} variants={fadeUp} className={`feedstock-product-card feedstock-${f.color}`} whileHover={{ y: -4 }}>
+                <div className={`feedstock-product-header feedstock-header-${f.color}`}>
+                  <Leaf size={20} />
+                  <h3>{f.title}</h3>
+                </div>
+                <p className="feedstock-desc">{f.desc}</p>
+                <div className="feedstock-specs">
+                  {f.specs.map((s, j) => (
+                    <div key={j} className="feedstock-spec-row">
+                      <span>{s.label}</span>
+                      <strong>{s.value}</strong>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Technical Specifications */}
+      <section className="section-padding">
+        <motion.div
+          className="container"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={stagger}
+        >
+          <motion.h2 variants={fadeUp} className="section-title">{t("spec_section_title")}</motion.h2>
+          <motion.div variants={fadeUp} className="table-container">
             <table>
               <thead>
                 <tr>
-                  <th>{t("specs_variant" as any)}</th>
-                  <th>{t("specs_gcv" as any)}</th>
-                  <th>{t("specs_moisture" as any)}</th>
-                  <th>{t("specs_ash" as any)}</th>
-                  <th>{t("specs_fines" as any)}</th>
-                  <th>{t("specs_feedstock" as any)}</th>
+                  <th>{t("spec_param")}</th>
+                  <th>{t("spec_standard")}</th>
+                  <th className="highlight">{t("spec_premium")}</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>{t("specs_6mm" as any)}</td>
-                  <td className="font-semibold">4000 - 5000+</td>
-                  <td>{"< 10%"}</td>
-                  <td>{"< 2 - 5%"}</td>
-                  <td>{"< 1%"}</td>
-                  <td>{t("specs_cashew" as any)} / {t("specs_wood" as any)}</td>
-                </tr>
-                <tr className="highlight">
-                  <td>{t("specs_8mm" as any)}</td>
-                  <td className="font-semibold">4000 - 5000+</td>
-                  <td>{"< 10%"}</td>
-                  <td>{"< 2 - 5%"}</td>
-                  <td>{"< 1%"}</td>
-                  <td>{t("specs_wood" as any)} / {t("specs_agro" as any)}</td>
+                  <td>{t("spec_gcv")}</td>
+                  <td>{t("spec_gcv_std")}</td>
+                  <td className="highlight">🔥 {t("spec_gcv_prem")}</td>
                 </tr>
                 <tr>
-                  <td>{t("specs_10mm" as any)}</td>
-                  <td className="font-semibold">3800 - 4500</td>
-                  <td>{"< 10%"}</td>
-                  <td>{"< 5%"}</td>
-                  <td>{"< 1%"}</td>
-                  <td>{t("specs_agro" as any)} / Custom</td>
+                  <td>{t("spec_size")}</td>
+                  <td>{t("spec_size_val")}</td>
+                  <td className="highlight">{t("spec_size_val")}</td>
+                </tr>
+                <tr>
+                  <td>{t("spec_moisture")}</td>
+                  <td>{t("spec_moisture_std")}</td>
+                  <td className="highlight">✅ {t("spec_moisture_prem")}</td>
+                </tr>
+                <tr>
+                  <td>{t("spec_ash")}</td>
+                  <td>{t("spec_ash_std")}</td>
+                  <td className="highlight">✅ {t("spec_ash_prem")}</td>
+                </tr>
+                <tr>
+                  <td>{t("spec_quality")}</td>
+                  <td>{t("spec_quality_std")}</td>
+                  <td className="highlight">🏆 {t("spec_quality_prem")}</td>
                 </tr>
               </tbody>
             </table>
           </motion.div>
-        </section>
-      </div>
+        </motion.div>
+      </section>
+
+      {/* Why MAHAURJA */}
+      <section className="section-padding services-why-section">
+        <motion.div
+          className="container"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={stagger}
+        >
+          <motion.h2 variants={fadeUp} className="section-title" style={{ color: "white" }}>
+            Why MAHAURJA is Different
+          </motion.h2>
+          <motion.div variants={stagger} className="why-grid">
+            {[
+              { icon: <Activity size={28} />, title: "Custom Engineered", desc: "We don't sell off-the-shelf. Every batch is blended to your specific boiler, GCV, and moisture requirements." },
+              { icon: <FlaskConical size={28} />, title: "Lab Verified Quality", desc: "Every single batch undergoes in-house testing for GCV, moisture, mechanical durability before dispatch." },
+              { icon: <CheckCircle size={28} />, title: "COA with Every Order", desc: "Receive a Certificate of Analysis with every shipment. Full transparency, zero guesswork." },
+              { icon: <Leaf size={28} />, title: "Carbon Neutral Process", desc: "Solar-powered manufacturing + zero-deforestation sourcing = the cleanest industrial fuel in the market." },
+            ].map((w, i) => (
+              <motion.div key={i} variants={fadeUp} className="why-card" whileHover={{ y: -5 }}>
+                <div className="why-icon">{w.icon}</div>
+                <h3>{w.title}</h3>
+                <p>{w.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+      </section>
     </main>
   );
 }

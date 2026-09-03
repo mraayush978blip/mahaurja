@@ -2,303 +2,453 @@
 
 import { useTranslation } from "@/hooks/useTranslation";
 import Link from "next/link";
-import { Zap, Leaf, Flame, Factory, Trees, CircleDollarSign, Building2, FlaskConical, Box } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import {
+  Flame, Factory, Leaf, Trees, Sun, FlaskConical,
+  CircleDollarSign, TrendingDown, ShieldCheck, Zap,
+  ChevronRight, Wheat, Package, ArrowRight
+} from "lucide-react";
+import { motion, AnimatePresence, useInView, type Variants } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
 
-const fadeUpVariant = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+// ─── Animation Variants ───────────────────────────────────
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7 } }
+};
+const stagger: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12 } }
 };
 
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15
-    }
-  }
-};
+// ─── Animated Counter ─────────────────────────────────────
+function AnimatedNumber({ value, suffix = "" }: { value: string; suffix?: string }) {
+  return (
+    <motion.span
+      initial={{ opacity: 0, scale: 0.5 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, type: "spring" }}
+      className="font-black text-5xl md:text-6xl text-white leading-none"
+    >
+      {value}
+      {suffix}
+    </motion.span>
+  );
+}
+
+// ─── Feedstock card ───────────────────────────────────────
+const feedItems = [
+  { icon: "🥜", key: "feed_1" },
+  { icon: "🌲", key: "feed_2" },
+  { icon: "🌾", key: "feed_3" },
+  { icon: "🌱", key: "feed_4" },
+];
+
+// ─── ROI Calculation ──────────────────────────────────────
+const savingsMultiplier: Record<string, number> = { coal: 0.55, diesel: 0.72, gas: 0.60 };
 
 export default function Home() {
   const { t } = useTranslation();
-  const [activeTab, setActiveTab] = useState(0);
-  const [fuelType, setFuelType] = useState<"coal" | "diesel" | "gas">("coal");
-  const [fuelAmount, setFuelAmount] = useState(1000);
-  const [currentRotatorIndex, setCurrentRotatorIndex] = useState(0);
+  const [rotatorIdx, setRotatorIdx] = useState(0);
+  const [fuelType, setFuelType] = useState<"coal" | "diesel" | "gas">("diesel");
+  const [monthlySpend, setMonthlySpend] = useState(200000);
+  const [activeFeed, setActiveFeed] = useState<number | null>(null);
 
+  // Rotator
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentRotatorIndex((prev) => (prev === 0 ? 1 : 0));
-    }, 4000);
-    return () => clearInterval(interval);
+    const id = setInterval(() => setRotatorIdx((p) => (p === 0 ? 1 : 0)), 4500);
+    return () => clearInterval(id);
   }, []);
 
-  // CO2 savings estimates per ton/liter of displaced fuel
-  const co2SavingsMap = {
-    coal: 2.3, // tons CO2 saved per ton of coal displaced
-    diesel: 2.68, // kg CO2 per liter (approx 0.00268 tons per liter, but let's assume tons for simplicity in the slider)
-    gas: 2.02, 
-  };
-  
-  // Adjusted multiplier for display purposes
-  const fuelMultiplier = fuelType === "coal" ? 2.3 : fuelType === "diesel" ? 2.68 : 2.02;
-  const estimatedCo2Savings = Math.round(fuelAmount * fuelMultiplier);
-  const estimatedCostSavings = "4x";
-
-  const industries = [
-    {
-      id: 0,
-      icon: Zap,
-      tabTitle: "ind_tab_1",
-      title: "ind_title_1",
-      desc: "ind_desc_1",
-      metric: "ind_metric_1"
-    },
-    {
-      id: 1,
-      icon: Factory,
-      tabTitle: "ind_tab_2",
-      title: "ind_title_2",
-      desc: "ind_desc_2",
-      metric: "ind_metric_2"
-    },
-    {
-      id: 2,
-      icon: Trees,
-      tabTitle: "ind_tab_3",
-      title: "ind_title_3",
-      desc: "ind_desc_3",
-      metric: "ind_metric_3"
-    }
-  ];
+  const savings = Math.round(monthlySpend * savingsMultiplier[fuelType]);
+  const co2Annual = Math.round((monthlySpend / 10000) * (fuelType === "coal" ? 2.3 : fuelType === "diesel" ? 2.68 : 2.02) * 12);
 
   return (
-    <main className="home-page">
-      {/* 1. Hero Section: The "AHA!" Moment */}
-      <header className="hero ultra-minimal">
-        <motion.div 
-          className="hero-content-centered"
+    <main>
+      {/* ═══════════════════════════════════════════════════════════
+          SECTION 1 — HERO (Video Background)
+      ══════════════════════════════════════════════════════════ */}
+      <section className="hero-video-section" id="home">
+        {/* Video Background — lazy loaded, muted, loop */}
+        <div className="video-bg-wrapper" aria-hidden="true">
+          <video
+            className="hero-video"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+          >
+            {/* 
+              🎬 HIGH-QUALITY PLACEHOLDER — cinematic green agriculture/harvest aerial.
+              Replace with your pellet/biomass video later by placing your file
+              at /public/assets/hero-bg.mp4 and updating the src below.
+            */}
+            {/* Primary: UHD Aerial Green Fields + Harvest */}
+            <source
+              src="https://videos.pexels.com/video-files/3571264/3571264-uhd_2560_1440_30fps.mp4"
+              type="video/mp4"
+            />
+            {/* Fallback: HD version if UHD is slow */}
+            <source
+              src="https://videos.pexels.com/video-files/3571264/3571264-hd_1920_1080_30fps.mp4"
+              type="video/mp4"
+            />
+          </video>
+          <div className="video-overlay" />
+        </div>
+
+        {/* Hero Content */}
+        <motion.div
+          className="hero-content-box"
           initial="hidden"
           animate="visible"
-          variants={staggerContainer}
+          variants={stagger}
         >
-          <motion.h1 variants={fadeUpVariant}>{t("hero_title")}</motion.h1>
-          <motion.h2 variants={fadeUpVariant}>{t("hero_subtitle")}</motion.h2>
-          
-          <motion.div variants={fadeUpVariant} style={{ height: "40px", margin: "1.5rem 0", position: "relative", display: "flex", justifyContent: "center" }}>
+          <motion.div variants={fadeUp} className="hero-badge">
+            <Leaf size={14} /> BHARAT INDUSTRIAL & RENEWABLES LLP
+          </motion.div>
+
+          <motion.h1 variants={fadeUp} className="hero-h1">
+            {t("hero_h1" as any)}
+          </motion.h1>
+
+          <motion.p variants={fadeUp} className="hero-h2">
+            {t("hero_h2" as any)}
+          </motion.p>
+
+          {/* Rotator */}
+          <motion.div variants={fadeUp} className="hero-rotator-wrap">
             <AnimatePresence mode="wait">
-              <motion.div
-                key={currentRotatorIndex}
-                initial={{ opacity: 0, y: 20 }}
+              <motion.span
+                key={rotatorIdx}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
-                style={{ position: "absolute", fontWeight: 600, color: "var(--accent-color)", fontSize: "1.2rem", background: "rgba(245, 158, 11, 0.1)", padding: "0.5rem 1.5rem", borderRadius: "30px" }}
+                exit={{ opacity: 0, y: -16 }}
+                transition={{ duration: 0.45 }}
+                className="hero-rotator-text"
               >
-                {currentRotatorIndex === 0 ? t("hero_rotator_1" as any) : t("hero_rotator_2" as any)}
-              </motion.div>
+                {rotatorIdx === 0 ? t("hero_rotator_1" as any) : t("hero_rotator_2" as any)}
+              </motion.span>
             </AnimatePresence>
           </motion.div>
 
-          <motion.div variants={fadeUpVariant} style={{ marginTop: "2rem" }}>
-            <Link href="#how-it-works" className="btn btn-primary">
-              {t("hero_cta")}
+          {/* CTAs */}
+          <motion.div variants={fadeUp} className="hero-ctas">
+            <Link href="#rfq" className="btn-hero-primary">
+              {t("hero_cta_primary" as any)} <ArrowRight size={18} />
+            </Link>
+            <Link href="#scale" className="btn-hero-secondary">
+              {t("hero_cta_secondary" as any)}
             </Link>
           </motion.div>
         </motion.div>
-      </header>
 
-      {/* 2. Interactive 3-Step Explanation */}
-      <section className="section-padding bg-light decor-bg" id="how-it-works">
-        <motion.div 
-          className="container"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-        >
-          <motion.h2 className="section-title" variants={fadeUpVariant}>
-            {t("home_step_title")}
-          </motion.h2>
-          
-          <div className="step-tracker">
-            <motion.div className="step-card" variants={fadeUpVariant} whileHover={{ y: -5 }}>
-              <div className="step-number">1</div>
-              <div className="step-icon"><Trees /></div>
-              <h3>{t("step_1_title")}</h3>
-              <p>{t("step_1_desc")}</p>
+        {/* Scroll indicator */}
+        <div className="scroll-indicator" aria-hidden="true">
+          <span />
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════
+          SECTION 2 — PROBLEM vs MAHAURJA WAY
+      ══════════════════════════════════════════════════════════ */}
+      <section className="pvs-section section-padding">
+        <motion.div className="container" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={stagger}>
+          <motion.h2 variants={fadeUp} className="section-title">{t("pvs_section_title" as any)}</motion.h2>
+          <div className="pvs-grid">
+            {/* Challenge */}
+            <motion.div variants={fadeUp} className="pvs-card pvs-challenge">
+              <div className="pvs-card-header">
+                <TrendingDown size={28} />
+                <h3>{t("pvs_challenge_title" as any)}</h3>
+              </div>
+              <ul className="pvs-list">
+                <li><span className="pvs-icon pvs-bad">✗</span>{t("pvs_challenge_p1" as any)}</li>
+                <li><span className="pvs-icon pvs-bad">✗</span>{t("pvs_challenge_p2" as any)}</li>
+              </ul>
             </motion.div>
-            
-            <motion.div className="step-connector" variants={fadeUpVariant}></motion.div>
-            
-            <motion.div className="step-card" variants={fadeUpVariant} whileHover={{ y: -5 }}>
-              <div className="step-number">2</div>
-              <div className="step-icon"><Factory /></div>
-              <h3>{t("step_2_title")}</h3>
-              <p>{t("step_2_desc")}</p>
-            </motion.div>
-            
-            <motion.div className="step-connector" variants={fadeUpVariant}></motion.div>
-            
-            <motion.div className="step-card" variants={fadeUpVariant} whileHover={{ y: -5 }}>
-              <div className="step-number">3</div>
-              <div className="step-icon"><Flame /></div>
-              <h3>{t("step_3_title")}</h3>
-              <p>{t("step_3_desc")}</p>
+
+            {/* Solution */}
+            <motion.div variants={fadeUp} className="pvs-card pvs-solution">
+              <div className="pvs-card-header">
+                <Leaf size={28} />
+                <h3>{t("pvs_solution_title" as any)}</h3>
+              </div>
+              <ul className="pvs-list">
+                <li><span className="pvs-icon pvs-good">✓</span>{t("pvs_solution_p1" as any)}</li>
+                <li><span className="pvs-icon pvs-good">✓</span>{t("pvs_solution_p2" as any)}</li>
+              </ul>
             </motion.div>
           </div>
         </motion.div>
       </section>
 
-      {/* 3. Interactive Benefits Switcher */}
-      <section className="section-padding" id="industry-benefits">
-        <motion.div 
-          className="container"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-        >
-          <motion.h2 className="section-title" variants={fadeUpVariant}>
-            {t("home_industry_title")}
-          </motion.h2>
+      {/* ═══════════════════════════════════════════════════════════
+          SECTION 3 — FEEDSTOCK & FUEL ENGINEERING
+      ══════════════════════════════════════════════════════════ */}
+      <section className="feed-section section-padding bg-light">
+        <motion.div className="container" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={stagger}>
+          <motion.p variants={fadeUp} className="section-eyebrow">{t("feed_section_sub" as any)}</motion.p>
+          <motion.h2 variants={fadeUp} className="section-title">{t("feed_section_title" as any)}</motion.h2>
 
-          <div className="tab-switcher">
-            <div className="tab-nav">
-              {industries.map((ind) => {
-                const Icon = ind.icon;
-                return (
-                  <button 
-                    key={ind.id}
-                    className={`tab-btn ${activeTab === ind.id ? "active" : ""}`}
-                    onClick={() => setActiveTab(ind.id)}
-                  >
-                    <Icon className="tab-icon" />
-                    <span>{t(ind.tabTitle as any)}</span>
-                  </button>
-                )
-              })}
+          <motion.div variants={stagger} className="feed-grid">
+            {feedItems.map((item, idx) => (
+              <motion.div
+                key={idx}
+                variants={fadeUp}
+                className={`feed-card ${activeFeed === idx ? "feed-card-active" : ""}`}
+                onClick={() => setActiveFeed(activeFeed === idx ? null : idx)}
+                whileHover={{ y: -6 }}
+              >
+                <div className="feed-emoji">{item.icon}</div>
+                <h4>{t(`${item.key}_title` as any)}</h4>
+                <AnimatePresence>
+                  {activeFeed === idx && (
+                    <motion.p
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="feed-desc"
+                    >
+                      {t(`${item.key}_desc` as any)}
+                    </motion.p>
+                  )}
+                </AnimatePresence>
+                <span className="feed-tap-hint">{activeFeed === idx ? "▲" : "▼"}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Flagship Blend Banner */}
+          <motion.div variants={fadeUp} className="flagship-banner">
+            <div className="flagship-left">
+              <span className="flagship-eyebrow">⭐ {t("feed_flagship_sub" as any)}</span>
+              <h3>{t("feed_flagship_title" as any)}</h3>
+              <p>{t("feed_flagship_desc" as any)}</p>
             </div>
-            
-            <div className="tab-content-container">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeTab}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.3 }}
-                  className="tab-content-card"
-                >
-                  <div className="tab-content-inner">
-                    <h3>{t(industries[activeTab].title as any)}</h3>
-                    <p className="tab-desc">{t(industries[activeTab].desc as any)}</p>
-                    
-                    <div className="tab-metric">
-                      <Zap className="metric-icon" />
-                      <div>
-                        <h4 style={{ fontWeight: 700 }}>Key Impact</h4>
-                        <p>{t(industries[activeTab].metric as any)}</p>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
+            <div className="flagship-right">
+              <div className="gcv-badge">
+                <span className="gcv-num">5,000+</span>
+                <span className="gcv-unit">kcal/kg</span>
+                <span className="gcv-label">Target GCV</span>
+              </div>
             </div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* 4. Scale & Confidence Gallery */}
-      <section className="section-padding bg-light decor-bg">
-        <motion.div 
-          className="container"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-        >
-          <motion.h2 className="section-title" variants={fadeUpVariant}>
-            {t("home_scale_title" as any)}
-          </motion.h2>
-
-          <motion.div className="grid-2" variants={staggerContainer}>
-            <motion.div 
-              className="card" 
-              variants={fadeUpVariant}
-              whileHover={{ y: -5, boxShadow: "var(--shadow-lg)" }}
-            >
-              <div className="card-icon"><Box /></div>
-              <h3>{t("scale_1_title" as any)}</h3>
-              <p>{t("scale_1_desc" as any)}</p>
-            </motion.div>
-
-            <motion.div 
-              className="card" 
-              variants={fadeUpVariant}
-              whileHover={{ y: -5, boxShadow: "var(--shadow-lg)" }}
-            >
-              <div className="card-icon"><FlaskConical /></div>
-              <h3>{t("scale_2_title" as any)}</h3>
-              <p>{t("scale_2_desc" as any)}</p>
-            </motion.div>
           </motion.div>
         </motion.div>
       </section>
 
-      {/* 5. Interactive Cost & CO2 Reduction Estimator */}
-      <section className="section-padding" id="calculator">
-        <motion.div 
-          className="container"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-        >
-          <motion.h2 className="section-title" variants={fadeUpVariant}>
-            {t("calc_title")}
-          </motion.h2>
+      {/* ═══════════════════════════════════════════════════════════
+          SECTION 4 — TECHNICAL SPECIFICATION MATRIX
+      ══════════════════════════════════════════════════════════ */}
+      <section className="section-padding">
+        <motion.div className="container" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={stagger}>
+          <motion.h2 variants={fadeUp} className="section-title">{t("spec_section_title" as any)}</motion.h2>
+          <motion.div variants={fadeUp} className="table-container spec-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>{t("spec_param" as any)}</th>
+                  <th>{t("spec_standard" as any)}</th>
+                  <th className="highlight">{t("spec_premium" as any)}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{t("spec_gcv" as any)}</td>
+                  <td>{t("spec_gcv_std" as any)}</td>
+                  <td className="highlight premium-val">🔥 {t("spec_gcv_prem" as any)}</td>
+                </tr>
+                <tr>
+                  <td>{t("spec_size" as any)}</td>
+                  <td>{t("spec_size_val" as any)}</td>
+                  <td className="highlight">{t("spec_size_val" as any)}</td>
+                </tr>
+                <tr>
+                  <td>{t("spec_moisture" as any)}</td>
+                  <td>{t("spec_moisture_std" as any)}</td>
+                  <td className="highlight">✅ {t("spec_moisture_prem" as any)}</td>
+                </tr>
+                <tr>
+                  <td>{t("spec_ash" as any)}</td>
+                  <td>{t("spec_ash_std" as any)}</td>
+                  <td className="highlight">✅ {t("spec_ash_prem" as any)}</td>
+                </tr>
+                <tr>
+                  <td>{t("spec_quality" as any)}</td>
+                  <td>{t("spec_quality_std" as any)}</td>
+                  <td className="highlight">🏆 {t("spec_quality_prem" as any)}</td>
+                </tr>
+              </tbody>
+            </table>
+          </motion.div>
+        </motion.div>
+      </section>
 
-          <motion.div className="calculator-card" variants={fadeUpVariant}>
-            <div className="calc-inputs">
-              <div className="input-group">
-                <label>{t("calc_fuel_label")}</label>
+      {/* ═══════════════════════════════════════════════════════════
+          SECTION 5 — PROOF OF SCALE
+      ══════════════════════════════════════════════════════════ */}
+      <section className="scale-section section-padding" id="scale">
+        <motion.div className="container" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={stagger}>
+          <motion.h2 variants={fadeUp} className="section-title text-white">{t("scale_section_title" as any)}</motion.h2>
+          <motion.div variants={stagger} className="scale-grid">
+            {[
+              { icon: <Package size={36} />, numKey: "scale_1_num", unitKey: "scale_1_unit", descKey: "scale_1_desc" },
+              { icon: <Factory size={36} />, numKey: "scale_2_num", unitKey: "scale_2_unit", descKey: "scale_2_desc" },
+              { icon: <FlaskConical size={36} />, numKey: "scale_3_num", unitKey: "scale_3_unit", descKey: "scale_3_desc" },
+              { icon: <Sun size={36} />, numKey: "scale_4_num", unitKey: "scale_4_unit", descKey: "scale_4_desc" },
+            ].map((item, i) => (
+              <motion.div key={i} variants={fadeUp} className="scale-card" whileHover={{ y: -6 }}>
+                <div className="scale-icon">{item.icon}</div>
+                <AnimatedNumber value={t(item.numKey as any)} />
+                <div className="scale-unit">{t(item.unitKey as any)}</div>
+                <p className="scale-desc">{t(item.descKey as any)}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════
+          SECTION 6 — ROI & COST ESTIMATOR
+      ══════════════════════════════════════════════════════════ */}
+      <section className="roi-section section-padding bg-light">
+        <motion.div className="container" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={stagger}>
+          <motion.h2 variants={fadeUp} className="section-title">{t("roi_section_title" as any)}</motion.h2>
+          <motion.p variants={fadeUp} className="roi-callout">{t("roi_callout" as any)}</motion.p>
+
+          <motion.div variants={fadeUp} className="roi-card">
+            <div className="roi-inputs">
+              <div className="roi-input-group">
+                <label>{t("roi_fuel_label" as any)}</label>
                 <div className="fuel-selector">
-                  <button className={fuelType === "coal" ? "active" : ""} onClick={() => setFuelType("coal")}>{t("calc_fuel_coal")}</button>
-                  <button className={fuelType === "diesel" ? "active" : ""} onClick={() => setFuelType("diesel")}>{t("calc_fuel_diesel")}</button>
-                  <button className={fuelType === "gas" ? "active" : ""} onClick={() => setFuelType("gas")}>{t("calc_fuel_gas")}</button>
+                  {(["coal", "diesel", "gas"] as const).map((f) => (
+                    <button key={f} className={fuelType === f ? "active" : ""} onClick={() => setFuelType(f)}>
+                      {t(`roi_fuel_${f}` as any)}
+                    </button>
+                  ))}
                 </div>
               </div>
 
-              <div className="input-group">
-                <label>{t("calc_amount_label")} : <strong>{fuelAmount.toLocaleString()}</strong></label>
-                <input 
-                  type="range" 
-                  min="100" 
-                  max="10000" 
-                  step="100"
-                  value={fuelAmount} 
-                  onChange={(e) => setFuelAmount(parseInt(e.target.value))}
+              <div className="roi-input-group">
+                <label>
+                  {t("roi_amount_label" as any)}:{" "}
+                  <strong>₹{monthlySpend.toLocaleString("en-IN")}</strong>
+                </label>
+                <input
+                  type="range"
+                  min={50000}
+                  max={2000000}
+                  step={10000}
+                  value={monthlySpend}
+                  onChange={(e) => setMonthlySpend(+e.target.value)}
                   className="range-slider"
                 />
+                <div className="roi-slider-labels">
+                  <span>₹50K</span><span>₹20L</span>
+                </div>
               </div>
             </div>
 
-            <div className="calc-outputs">
-              <div className="output-box green">
-                <Leaf className="output-icon" />
-                <div className="output-value">{estimatedCo2Savings.toLocaleString()}</div>
-                <div className="output-label">{t("calc_savings_co2")}</div>
-              </div>
-              <div className="output-box gold">
-                <CircleDollarSign className="output-icon" />
-                <div className="output-value">{estimatedCostSavings}</div>
-                <div className="output-label">{t("calc_savings_cost")}</div>
-              </div>
+            <div className="roi-outputs">
+              <motion.div
+                className="roi-output-box roi-green"
+                key={savings}
+                initial={{ scale: 0.9 }}
+                animate={{ scale: 1 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <CircleDollarSign size={32} />
+                <div className="roi-output-val">₹{savings.toLocaleString("en-IN")}</div>
+                <div className="roi-output-label">{t("roi_savings_title" as any)}</div>
+              </motion.div>
+
+              <motion.div
+                className="roi-output-box roi-gold"
+                key={co2Annual}
+                initial={{ scale: 0.9 }}
+                animate={{ scale: 1 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <Leaf size={32} />
+                <div className="roi-output-val">{co2Annual.toLocaleString()}</div>
+                <div className="roi-output-label">{t("roi_co2_title" as any)}</div>
+              </motion.div>
             </div>
           </motion.div>
+        </motion.div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════
+          SECTION 7 — RFQ LEADER FORM
+      ══════════════════════════════════════════════════════════ */}
+      <section className="rfq-section section-padding" id="rfq">
+        <motion.div className="container" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={stagger}>
+          <motion.div variants={fadeUp} className="rfq-header">
+            <h2>{t("rfq_section_title" as any)}</h2>
+            <p>{t("rfq_section_sub" as any)}</p>
+          </motion.div>
+
+          <motion.form
+            variants={fadeUp}
+            className="rfq-form"
+            onSubmit={(e) => { e.preventDefault(); alert("Your RFQ has been submitted! Our team will contact you within 24 hours."); }}
+          >
+            <div className="rfq-row">
+              <div className="rfq-field">
+                <label>{t("rfq_name" as any)}</label>
+                <input type="text" placeholder="Rajesh Kumar" required />
+              </div>
+              <div className="rfq-field">
+                <label>{t("rfq_company" as any)}</label>
+                <input type="text" placeholder="ABC Steel Industries" required />
+              </div>
+            </div>
+            <div className="rfq-row">
+              <div className="rfq-field">
+                <label>{t("rfq_phone" as any)}</label>
+                <input type="tel" placeholder="+91 98765 43210" required />
+              </div>
+              <div className="rfq-field">
+                <label>{t("rfq_email" as any)}</label>
+                <input type="email" placeholder="rajesh@company.com" />
+              </div>
+            </div>
+            <div className="rfq-row">
+              <div className="rfq-field">
+                <label>{t("rfq_boiler" as any)}</label>
+                <input type="text" placeholder="e.g. 5 TPH Fire Tube Boiler / Textile" required />
+              </div>
+              <div className="rfq-field">
+                <label>{t("rfq_size" as any)}</label>
+                <select required>
+                  <option value="">Select size</option>
+                  <option value="6mm">{t("rfq_size_6" as any)}</option>
+                  <option value="8mm">{t("rfq_size_8" as any)}</option>
+                  <option value="10mm">{t("rfq_size_10" as any)}</option>
+                  <option value="custom">{t("rfq_size_custom" as any)}</option>
+                </select>
+              </div>
+            </div>
+            <div className="rfq-row">
+              <div className="rfq-field">
+                <label>{t("rfq_gcv" as any)}</label>
+                <input type="text" placeholder="e.g. 4500 kcal/kg" />
+              </div>
+              <div className="rfq-field">
+                <label>{t("rfq_msg" as any)}</label>
+                <input type="text" placeholder="Monthly quantity, delivery location..." />
+              </div>
+            </div>
+            <motion.button
+              type="submit"
+              className="rfq-submit"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              {t("rfq_submit" as any)} <ArrowRight size={18} />
+            </motion.button>
+          </motion.form>
         </motion.div>
       </section>
     </main>
