@@ -1,0 +1,103 @@
+/* --- Mobile Responsiveness Classes --- */
+
+/* Responsive Flex Layouts */
+.responsive-flex {
+  display: flex;
+  flex-direction: row;
+}
+.responsive-flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+.responsive-flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Base Responsive Hero Classes */
+.responsive-hero-h1 {
+  font-size: 3.5rem !important;
+}
+.responsive-hero-h2 {
+  font-size: 2.8rem !important;
+}
+.responsive-hero-p {
+  font-size: 1.2rem !important;
+}
+.responsive-padding {
+  padding: 6rem 0 !important;
+}
+.responsive-container-padding {
+  padding: 0 2rem !important;
+}
+
+/* Hide/Show utilities */
+.hide-on-mobile {
+  display: flex;
+}
+.show-on-mobile {
+  display: none !important;
+}
+
+/* Default state for mobile nav btn is hidden */
+.mobile-menu-btn {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  /* Layout overrides */
+  .responsive-flex {
+    flex-direction: column !important;
+  }
+  
+  /* Remove flex-basis so elements take full width */
+  .responsive-child {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+  }
+
+  /* Typography overrides */
+  .responsive-hero-h1 {
+    font-size: 2.5rem !important;
+  }
+  .responsive-hero-h2 {
+    font-size: 2rem !important;
+  }
+  .responsive-hero-p {
+    font-size: 1rem !important;
+  }
+
+  /* Padding overrides */
+  .responsive-padding {
+    padding: 3rem 0 !important;
+  }
+  .responsive-container-padding {
+    padding: 0 1rem !important;
+  }
+  .responsive-hero-container-padding {
+    padding: 6rem 1rem 0 1rem !important;
+  }
+
+  /* Navbar specifics */
+  .nav-links {
+    display: none !important;
+  }
+  .mobile-menu-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Utilities */
+  .hide-on-mobile {
+    display: none !important;
+  }
+  .show-on-mobile {
+    display: flex !important;
+  }
+  
+  /* Contact page specific stack */
+  .contact-stack {
+    flex-direction: column !important;
+  }
+}

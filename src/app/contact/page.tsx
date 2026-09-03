@@ -34,15 +34,14 @@ export default function Contact() {
 
       {/* MAIN CARD */}
       <section style={{ padding: "0 1rem" }}>
-        <div className="container" style={{ maxWidth: "1100px", padding: 0 }}>
+        <div className="container responsive-container-padding" style={{ maxWidth: "1100px", padding: 0 }}>
           <motion.div 
             style={{ 
               background: "#ffffff", 
               borderRadius: "24px", 
               boxShadow: "0 20px 40px rgba(0, 0, 0, 0.08)", 
               overflow: "hidden", 
-              display: "flex", 
-              flexWrap: "wrap",
+              display: "flex", flexWrap: "wrap",
               border: "1px solid rgba(0,0,0,0.03)" 
             }}
             initial="hidden"
@@ -56,6 +55,7 @@ export default function Contact() {
             {/* LEFT SIDE: Contact Info */}
             <motion.div 
               variants={fadeUpVariant}
+              className="responsive-child"
               style={{ 
                 flex: "1 1 400px", 
                 position: "relative",

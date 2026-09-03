@@ -160,9 +160,9 @@ export default function Home() {
             <p style={{ color: "#555", fontSize: "1.1rem" }}>No more wasted residue, now the fuel for the nation's clean energy.</p>
           </motion.div>
 
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "2rem", justifyContent: "center", position: "relative", zIndex: 2 }}>
+          <div className="responsive-flex-wrap" style={{ display: "flex", gap: "2rem", justifyContent: "center", position: "relative", zIndex: 2 }}>
             {/* Challenge */}
-            <motion.div variants={fadeUp} style={{ flex: "1 1 400px", background: "#fcf0f0", borderRadius: "24px", padding: "2.5rem", border: "1px solid #fae1e1", boxShadow: "0 20px 40px rgba(220,53,69,0.05)" }}>
+            <motion.div variants={fadeUp} className="responsive-child" style={{ flex: "1 1 400px", background: "#fcf0f0", borderRadius: "24px", padding: "2.5rem", border: "1px solid #fae1e1", boxShadow: "0 20px 40px rgba(220,53,69,0.05)" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "1.5rem" }}>
                 <div style={{ background: "#dc3545", color: "white", padding: "8px", borderRadius: "50%" }}>
                   <TrendingDown size={24} />
@@ -181,7 +181,7 @@ export default function Home() {
             </div>
 
             {/* Solution */}
-            <motion.div variants={fadeUp} style={{ flex: "1 1 400px", background: "#f0fdf4", borderRadius: "24px", padding: "2.5rem", border: "1px solid #dcfce7", boxShadow: "0 20px 40px rgba(22,163,74,0.05)" }}>
+            <motion.div variants={fadeUp} className="responsive-child" style={{ flex: "1 1 400px", background: "#f0fdf4", borderRadius: "24px", padding: "2.5rem", border: "1px solid #dcfce7", boxShadow: "0 20px 40px rgba(22,163,74,0.05)" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "1.5rem" }}>
                 <div style={{ background: "#16a34a", color: "white", padding: "8px", borderRadius: "50%" }}>
                   <Leaf size={24} />
@@ -237,7 +237,7 @@ export default function Home() {
 
           {/* Flagship Blend Banner */}
           <motion.div variants={fadeUp} style={{ background: "linear-gradient(135deg, #0f5132 0%, #1a8b54 100%)", borderRadius: "24px", padding: "2.5rem", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "2rem", color: "white", boxShadow: "0 20px 40px rgba(15,81,50,0.3)" }}>
-            <div style={{ flex: "1 1 300px" }}>
+            <div className="responsive-child" style={{ flex: "1 1 300px" }}>
               <span style={{ display: "inline-block", background: "rgba(255,255,255,0.15)", color: "#fff", padding: "4px 12px", borderRadius: "20px", fontSize: "0.85rem", fontWeight: 600, marginBottom: "1rem", border: "1px solid rgba(255,255,255,0.2)" }}>⭐ {t("feed_flagship_sub" as any)}</span>
               <h3 style={{ fontSize: "2rem", fontWeight: 800, margin: "0 0 1rem 0", color: "white" }}>{t("feed_flagship_title" as any)}</h3>
               <p style={{ opacity: 0.9, fontSize: "0.95rem", lineHeight: 1.6, margin: 0, maxWidth: "450px", color: "white" }}>{t("feed_flagship_desc" as any)}</p>

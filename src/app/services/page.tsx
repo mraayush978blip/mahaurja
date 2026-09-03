@@ -32,12 +32,12 @@ export default function Services() {
         {/* Gradient Overlay */}
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(6,64,43,1) 0%, rgba(6,64,43,0.85) 35%, rgba(6,64,43,0) 100%)" }} />
         
-        <div className="container" style={{ position: "relative", zIndex: 1, padding: "8rem 2rem 0 2rem" }}>
+        <div className="container responsive-hero-container-padding" style={{ position: "relative", zIndex: 1 }}>
           <motion.div initial="hidden" animate="visible" variants={fadeUp} style={{ maxWidth: "600px" }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", border: "1px solid #16a34a", padding: "6px 16px", borderRadius: "20px", color: "#4ade80", fontSize: "0.85rem", fontWeight: 700, letterSpacing: "1px", marginBottom: "1.5rem" }}>
               <Leaf size={14} /> ENGINEERING GREEN FUEL
             </div>
-            <h1 style={{ fontSize: "3.5rem", fontWeight: 800, color: "white", marginBottom: "1rem", lineHeight: 1.1 }}>
+            <h1 className="responsive-hero-h1" style={{ fontWeight: 800, color: "white", marginBottom: "1rem", lineHeight: 1.1 }}>
               {t("services_title" as any)}
             </h1>
             <p style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.8)", lineHeight: 1.6, maxWidth: "400px" }}>
@@ -53,6 +53,7 @@ export default function Services() {
         <div className="container">
           <motion.div 
             initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
+            className="responsive-flex"
             style={{
               background: "white",
               borderRadius: "20px",
@@ -63,7 +64,7 @@ export default function Services() {
               borderLeft: "8px solid #047857"
             }}
           >
-            <div style={{ flex: "1 1 60%", padding: "3rem" }}>
+            <div style={{ flex: "1 1 100%", padding: "3rem" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "1.5rem", justifyContent: "center" }}>
                 <Target size={28} color="#047857" />
                 <h2 style={{ fontSize: "1.8rem", fontWeight: 800, color: "#111", margin: 0 }}>{t("about_mission_title" as any)}</h2>
@@ -72,7 +73,7 @@ export default function Services() {
                 {t("about_mission_desc" as any)}
               </p>
             </div>
-            <div style={{ flex: "1 1 40%", display: "flex", justifyContent: "center", alignItems: "center", padding: "2rem", background: "linear-gradient(90deg, transparent, #f0fdf4)" }}>
+            <div style={{ flex: "1 1 100%", display: "flex", justifyContent: "center", alignItems: "center", padding: "2rem", background: "linear-gradient(90deg, transparent, #f0fdf4)" }}>
               {/* Graphic element matching target */}
               <div style={{ position: "relative", width: "160px", height: "160px", display: "flex", alignItems: "center", justifyContent: "center" }}>
                 <Target size={120} color="#16a34a" strokeWidth={1.5} style={{ opacity: 0.8 }} />
@@ -97,7 +98,7 @@ export default function Services() {
 
             <motion.div variants={stagger} style={{ display: "flex", flexWrap: "wrap", gap: "2rem" }}>
               {/* Thermochemical Card */}
-              <motion.div variants={fadeUp} style={{ flex: "1 1 400px", background: "white", borderRadius: "16px", padding: "2rem", border: "1px solid #e5e7eb", display: "flex", gap: "1.5rem", alignItems: "flex-start", boxShadow: "0 10px 30px rgba(0,0,0,0.02)" }}>
+              <motion.div variants={fadeUp} className="responsive-child" style={{ flex: "1 1 400px", background: "white", borderRadius: "16px", padding: "2rem", border: "1px solid #e5e7eb", display: "flex", gap: "1.5rem", alignItems: "flex-start", boxShadow: "0 10px 30px rgba(0,0,0,0.02)" }}>
                 <div style={{ width: "60px", height: "60px", borderRadius: "12px", background: "#fef3c7", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                   <Thermometer size={28} color="#d97706" />
                 </div>
@@ -108,7 +109,7 @@ export default function Services() {
               </motion.div>
 
               {/* Biochemical Card */}
-              <motion.div variants={fadeUp} style={{ flex: "1 1 400px", background: "white", borderRadius: "16px", padding: "2rem", border: "1px solid #e5e7eb", display: "flex", gap: "1.5rem", alignItems: "flex-start", boxShadow: "0 10px 30px rgba(0,0,0,0.02)" }}>
+              <motion.div variants={fadeUp} className="responsive-child" style={{ flex: "1 1 400px", background: "white", borderRadius: "16px", padding: "2rem", border: "1px solid #e5e7eb", display: "flex", gap: "1.5rem", alignItems: "flex-start", boxShadow: "0 10px 30px rgba(0,0,0,0.02)" }}>
                 <div style={{ width: "60px", height: "60px", borderRadius: "12px", background: "#dcfce7", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                   <FlaskConical size={28} color="#15803d" />
                 </div>
@@ -135,7 +136,7 @@ export default function Services() {
 
             <motion.div variants={stagger} style={{ display: "flex", flexWrap: "wrap", gap: "2rem" }}>
               {/* {t("serv_wood_title" as any)} Card */}
-              <motion.div variants={fadeUp} style={{ flex: "1 1 400px", background: "white", borderRadius: "16px", overflow: "hidden", border: "1px solid #e5e7eb", boxShadow: "0 10px 30px rgba(0,0,0,0.03)" }}>
+              <motion.div variants={fadeUp} className="responsive-child" style={{ flex: "1 1 400px", background: "white", borderRadius: "16px", overflow: "hidden", border: "1px solid #e5e7eb", boxShadow: "0 10px 30px rgba(0,0,0,0.03)" }}>
                 <div style={{ background: "#06402b", padding: "1.2rem 2rem", display: "flex", alignItems: "center", gap: "12px", color: "white" }}>
                   <Leaf size={20} />
                   <h3 style={{ margin: 0, fontSize: "1.2rem", fontWeight: 700 }}>{t("serv_wood_title" as any)}</h3>
@@ -160,7 +161,7 @@ export default function Services() {
               </motion.div>
 
               {/* Agri Residue Card */}
-              <motion.div variants={fadeUp} style={{ flex: "1 1 400px", background: "white", borderRadius: "16px", overflow: "hidden", border: "1px solid #e5e7eb", boxShadow: "0 10px 30px rgba(0,0,0,0.03)" }}>
+              <motion.div variants={fadeUp} className="responsive-child" style={{ flex: "1 1 400px", background: "white", borderRadius: "16px", overflow: "hidden", border: "1px solid #e5e7eb", boxShadow: "0 10px 30px rgba(0,0,0,0.03)" }}>
                 <div style={{ background: "#f59e0b", padding: "1.2rem 2rem", display: "flex", alignItems: "center", gap: "12px", color: "white" }}>
                   <Leaf size={20} />
                   <h3 style={{ margin: 0, fontSize: "1.2rem", fontWeight: 700 }}>Agricultural Residue</h3>
