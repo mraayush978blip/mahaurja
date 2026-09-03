@@ -73,7 +73,7 @@ export default function About() {
           >
             {/* Headquarters */}
             <motion.div 
-              className="bg-white p-8 rounded-xl shadow-md border-t-4 border-primary"
+              className="card border-t-4 border-primary"
               variants={fadeUpVariant}
               whileHover={{ y: -5, boxShadow: "var(--shadow-lg)" }}
             >
@@ -86,7 +86,7 @@ export default function About() {
 
             {/* Manufacturing */}
             <motion.div 
-              className="bg-white p-8 rounded-xl shadow-md border-t-4 border-accent"
+              className="card border-t-4 border-accent"
               variants={fadeUpVariant}
               whileHover={{ y: -5, boxShadow: "var(--shadow-lg)" }}
             >
@@ -99,7 +99,7 @@ export default function About() {
 
             {/* Terminals */}
             <motion.div 
-              className="bg-white p-8 rounded-xl shadow-md border-t-4 border-primary"
+              className="card border-t-4 border-primary"
               variants={fadeUpVariant}
               whileHover={{ y: -5, boxShadow: "var(--shadow-lg)" }}
             >

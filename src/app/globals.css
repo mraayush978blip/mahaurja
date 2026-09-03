@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: var(--primary-color);
+  --color-secondary: var(--secondary-color);
+  --color-accent: var(--accent-color);
+}
+
 /* --- Reset & Base --- */
 :root {
   --primary-color: #064e3b; /* Deep Premium Emerald */
@@ -177,7 +183,7 @@ h1, h2, h3, h4 {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 80px 5% 0 5%;
+  padding: 120px 5% 0 5%;
   position: relative;
   overflow: hidden;
   background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('/assets/images/hero-bg.jpg') no-repeat center center/cover;
@@ -282,6 +288,9 @@ h1, h2, h3, h4 {
 }
 
 /* --- Sections Common --- */
+.page-padding {
+  padding: 140px 5% 4rem 5%;
+}
 .page-header {
   padding: 140px 5% 4rem 5%;
   background: linear-gradient(135deg, var(--bg-light) 0%, rgba(5, 150, 105, 0.08) 100%);
