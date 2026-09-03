@@ -99,44 +99,7 @@ h1, h2, h3, h4 {
 }
 
 /* --- Homepage Intro Animation --- */
-.home-page::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  z-index: 1000;
-  animation: fadeOutBlur 2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
-  pointer-events: none;
-}
-
-@keyframes fadeOutBlur {
-  0%, 60% { opacity: 1; visibility: visible; }
-  100% { opacity: 0; visibility: hidden; }
-}
-
-.home-nav .nav-brand {
-  transform-origin: center center;
-  animation: logoIntro 2.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
-  position: relative;
-  z-index: 1001; /* Above blur overlay */
-}
-
-@keyframes logoIntro {
-  0%, 15%, 60% {
-    /* 45vw = 50vw center - 5vw navbar padding. -50% shifts by half its own width */
-    transform: translate(calc(45vw - 50%), calc(50vh - 1.5rem - 50%)) scale(2.5);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 1;
-  }
-}
+/* (Animations removed to prevent conflict with hero content) */
 
 .nav-brand-text {
   display: flex;
@@ -164,11 +127,6 @@ h1, h2, h3, h4 {
   list-style: none;
 }
 
-.home-nav .nav-links {
-  opacity: 0;
-  animation: fadeIn 1s ease-out 1.8s forwards;
-}
-
 .nav-links a {
   text-decoration: none;
   color: var(--text-dark);
@@ -194,11 +152,6 @@ h1, h2, h3, h4 {
   box-shadow: var(--shadow-sm);
 }
 
-.home-nav .lang-btn {
-  opacity: 0;
-  animation: fadeIn 1s ease-out 1.8s forwards;
-}
-
 .lang-btn:hover {
   background: var(--secondary-color);
   transform: translateY(-2px);
@@ -215,11 +168,6 @@ h1, h2, h3, h4 {
   border: none;
   color: var(--text-dark);
   cursor: pointer;
-}
-
-.home-nav .mobile-menu-btn {
-  opacity: 0;
-  animation: fadeIn 1s ease-out 1.8s forwards;
 }
 
 /* --- Hero Section --- */
@@ -410,6 +358,13 @@ h1, h2, h3, h4 {
   height: 4px;
   background: var(--accent-color);
   border-radius: 2px;
+}
+
+/* --- Container --- */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* --- About & Features Cards --- */
@@ -700,18 +655,6 @@ footer {
   
   .footer-grid {
     gap: 2rem;
-  }
-  
-  /* Mobile-adjusted Intro Animation (Smaller Scale) */
-  @keyframes logoIntro {
-    0%, 15%, 60% {
-      transform: translate(calc(45vw - 50%), calc(50vh - 1.5rem - 50%)) scale(1.4);
-      opacity: 1;
-    }
-    100% {
-      transform: translate(0, 0) scale(1);
-      opacity: 1;
-    }
   }
 }
 
