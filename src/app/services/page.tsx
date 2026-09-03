@@ -145,6 +145,59 @@ export default function Services() {
             </motion.div>
           </motion.div>
         </section>
+        {/* Technical Specifications Data Table */}
+        <section className="mt-16">
+          <motion.h2 className="text-3xl font-bold mb-8 text-primary" variants={fadeUpVariant} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+            {t("specs_title" as any)}
+          </motion.h2>
+
+          <motion.div 
+            className="table-container"
+            variants={fadeUpVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <table>
+              <thead>
+                <tr>
+                  <th>{t("specs_variant" as any)}</th>
+                  <th>{t("specs_gcv" as any)}</th>
+                  <th>{t("specs_moisture" as any)}</th>
+                  <th>{t("specs_ash" as any)}</th>
+                  <th>{t("specs_fines" as any)}</th>
+                  <th>{t("specs_feedstock" as any)}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{t("specs_6mm" as any)}</td>
+                  <td className="font-semibold">4000 - 5000+</td>
+                  <td>{"< 10%"}</td>
+                  <td>{"< 2 - 5%"}</td>
+                  <td>{"< 1%"}</td>
+                  <td>{t("specs_cashew" as any)} / {t("specs_wood" as any)}</td>
+                </tr>
+                <tr className="highlight">
+                  <td>{t("specs_8mm" as any)}</td>
+                  <td className="font-semibold">4000 - 5000+</td>
+                  <td>{"< 10%"}</td>
+                  <td>{"< 2 - 5%"}</td>
+                  <td>{"< 1%"}</td>
+                  <td>{t("specs_wood" as any)} / {t("specs_agro" as any)}</td>
+                </tr>
+                <tr>
+                  <td>{t("specs_10mm" as any)}</td>
+                  <td className="font-semibold">3800 - 4500</td>
+                  <td>{"< 10%"}</td>
+                  <td>{"< 5%"}</td>
+                  <td>{"< 1%"}</td>
+                  <td>{t("specs_agro" as any)} / Custom</td>
+                </tr>
+              </tbody>
+            </table>
+          </motion.div>
+        </section>
       </div>
     </main>
   );

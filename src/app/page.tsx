@@ -2,9 +2,9 @@
 
 import { useTranslation } from "@/hooks/useTranslation";
 import Link from "next/link";
-import { Zap, Leaf, Flame, Factory, Building2, Trees, CircleDollarSign } from "lucide-react";
+import { Zap, Leaf, Flame, Factory, Trees, CircleDollarSign, Building2, FlaskConical, Box } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const fadeUpVariant = {
   hidden: { opacity: 0, y: 30 },
@@ -26,6 +26,14 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState(0);
   const [fuelType, setFuelType] = useState<"coal" | "diesel" | "gas">("coal");
   const [fuelAmount, setFuelAmount] = useState(1000);
+  const [currentRotatorIndex, setCurrentRotatorIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentRotatorIndex((prev) => (prev === 0 ? 1 : 0));
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   // CO2 savings estimates per ton/liter of displaced fuel
   const co2SavingsMap = {
@@ -37,7 +45,7 @@ export default function Home() {
   // Adjusted multiplier for display purposes
   const fuelMultiplier = fuelType === "coal" ? 2.3 : fuelType === "diesel" ? 2.68 : 2.02;
   const estimatedCo2Savings = Math.round(fuelAmount * fuelMultiplier);
-  const estimatedCostSavings = Math.round(fuelAmount * 0.15 * 100); // Dummy financial metric
+  const estimatedCostSavings = "4x";
 
   const industries = [
     {
@@ -58,19 +66,11 @@ export default function Home() {
     },
     {
       id: 2,
-      icon: Building2,
+      icon: Trees,
       tabTitle: "ind_tab_3",
       title: "ind_title_3",
       desc: "ind_desc_3",
       metric: "ind_metric_3"
-    },
-    {
-      id: 3,
-      icon: Trees,
-      tabTitle: "ind_tab_4",
-      title: "ind_title_4",
-      desc: "ind_desc_4",
-      metric: "ind_metric_4"
     }
   ];
 
@@ -86,6 +86,22 @@ export default function Home() {
         >
           <motion.h1 variants={fadeUpVariant}>{t("hero_title")}</motion.h1>
           <motion.h2 variants={fadeUpVariant}>{t("hero_subtitle")}</motion.h2>
+          
+          <motion.div variants={fadeUpVariant} style={{ height: "40px", margin: "1.5rem 0", position: "relative", display: "flex", justifyContent: "center" }}>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentRotatorIndex}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+                style={{ position: "absolute", fontWeight: 600, color: "var(--accent-color)", fontSize: "1.2rem", background: "rgba(245, 158, 11, 0.1)", padding: "0.5rem 1.5rem", borderRadius: "30px" }}
+              >
+                {currentRotatorIndex === 0 ? t("hero_rotator_1" as any) : t("hero_rotator_2" as any)}
+              </motion.div>
+            </AnimatePresence>
+          </motion.div>
+
           <motion.div variants={fadeUpVariant} style={{ marginTop: "2rem" }}>
             <Link href="#how-it-works" className="btn btn-primary">
               {t("hero_cta")}
@@ -110,7 +126,7 @@ export default function Home() {
           <div className="step-tracker">
             <motion.div className="step-card" variants={fadeUpVariant} whileHover={{ y: -5 }}>
               <div className="step-number">1</div>
-              <div className="step-icon"><Leaf /></div>
+              <div className="step-icon"><Trees /></div>
               <h3>{t("step_1_title")}</h3>
               <p>{t("step_1_desc")}</p>
             </motion.div>
@@ -183,7 +199,7 @@ export default function Home() {
                     <div className="tab-metric">
                       <Zap className="metric-icon" />
                       <div>
-                        <h4>Key Impact</h4>
+                        <h4 style={{ fontWeight: 700 }}>Key Impact</h4>
                         <p>{t(industries[activeTab].metric as any)}</p>
                       </div>
                     </div>
@@ -195,8 +211,45 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* 4. Interactive Cost & CO2 Reduction Estimator */}
-      <section className="section-padding bg-light decor-bg" id="calculator">
+      {/* 4. Scale & Confidence Gallery */}
+      <section className="section-padding bg-light decor-bg">
+        <motion.div 
+          className="container"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainer}
+        >
+          <motion.h2 className="section-title" variants={fadeUpVariant}>
+            {t("home_scale_title" as any)}
+          </motion.h2>
+
+          <motion.div className="grid-2" variants={staggerContainer}>
+            <motion.div 
+              className="card" 
+              variants={fadeUpVariant}
+              whileHover={{ y: -5, boxShadow: "var(--shadow-lg)" }}
+            >
+              <div className="card-icon"><Box /></div>
+              <h3>{t("scale_1_title" as any)}</h3>
+              <p>{t("scale_1_desc" as any)}</p>
+            </motion.div>
+
+            <motion.div 
+              className="card" 
+              variants={fadeUpVariant}
+              whileHover={{ y: -5, boxShadow: "var(--shadow-lg)" }}
+            >
+              <div className="card-icon"><FlaskConical /></div>
+              <h3>{t("scale_2_title" as any)}</h3>
+              <p>{t("scale_2_desc" as any)}</p>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* 5. Interactive Cost & CO2 Reduction Estimator */}
+      <section className="section-padding" id="calculator">
         <motion.div 
           className="container"
           initial="hidden"
@@ -241,7 +294,7 @@ export default function Home() {
               </div>
               <div className="output-box gold">
                 <CircleDollarSign className="output-icon" />
-                <div className="output-value">${estimatedCostSavings.toLocaleString()}</div>
+                <div className="output-value">{estimatedCostSavings}</div>
                 <div className="output-label">{t("calc_savings_cost")}</div>
               </div>
             </div>

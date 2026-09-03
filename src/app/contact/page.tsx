@@ -135,8 +135,6 @@ export default function Contact() {
                   <option value="buy">{t("contact_opt_buy")}</option>
                   <option value="sell">{t("contact_opt_sell")}</option>
                   <option value="sustainability">{t("contact_opt_sus")}</option>
-                  <option value="media">{t("contact_opt_media")}</option>
-                  <option value="hr">{t("contact_opt_hr")}</option>
                 </select>
               </div>
 

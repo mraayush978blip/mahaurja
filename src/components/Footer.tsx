@@ -24,6 +24,7 @@ export function Footer() {
           <p><strong>{t("contact_name")}</strong> - Founder & Director</p>
           <p><Phone style={{ width: "16px", display: "inline-block", verticalAlign: "middle", marginRight: "8px" }} /> +91 9340212401</p>
           <p><Mail style={{ width: "16px", display: "inline-block", verticalAlign: "middle", marginRight: "8px" }} /> harsh@bharatindustrialrenewables.com</p>
+          <p><strong>LLPIN :</strong> ACS-7398</p>
           <p style={{ display: "flex", gap: "8px", alignItems: "flex-start" }}>
             <MapPin style={{ width: "16px", flexShrink: 0, marginTop: "4px" }} /> 
             <span>288, Lokmanya Tilak Path, Ujjain Road, Railway Crossing ke paas, Badnagar, Jila Ujjain (M.P.) 456771</span>
