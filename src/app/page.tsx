@@ -289,10 +289,10 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <motion.div variants={fadeUp} style={{ background: "#fff", borderRadius: "24px", overflow: "hidden", boxShadow: "0 20px 40px rgba(0,0,0,0.06)", border: "1px solid #eaeaea", maxWidth: "1000px", margin: "0 auto" }}>
-            
+          <motion.div variants={fadeUp} style={{ background: "#fff", borderRadius: "24px", overflowX: "auto", boxShadow: "0 20px 40px rgba(0,0,0,0.06)", border: "1px solid #eaeaea", maxWidth: "1000px", margin: "0 auto" }}>
+            <div style={{ minWidth: "700px" }}>
             {/* Header Row */}
-            <div className="hide-on-mobile" style={{ display: "flex", background: "#0c5836", color: "#fff", fontWeight: 700, fontSize: "1.1rem" }}>
+            <div style={{ display: "flex", background: "#0c5836", color: "#fff", fontWeight: 700, fontSize: "1.1rem" }}>
               <div style={{ flex: "1.2", padding: "1.5rem", display: "flex", alignItems: "center", gap: "10px" }}>
                 <FlaskConical size={20} /> {t("spec_param" as any)}
               </div>
@@ -332,29 +332,28 @@ export default function Home() {
                 premiumIcon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>, premiumTitle: t("spec_quality_prem" as any), premiumDesc: "Better durability and reliable operation"
               }
             ].map((row, idx) => (
-              <div key={idx} className="responsive-flex" style={{ display: "flex", borderBottom: idx !== 4 ? "1px solid #eaeaea" : "none", color: "#333" }}>
+              <div key={idx} style={{ display: "flex", borderBottom: idx !== 4 ? "1px solid #eaeaea" : "none", color: "#333" }}>
                 <div style={{ flex: "1.2", padding: "1.5rem", display: "flex", alignItems: "center", gap: "16px", fontWeight: 600 }}>
                   <div style={{ width: "40px", height: "40px", borderRadius: "50%", background: row.iconBg, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                     {row.icon}
                   </div>
                   {row.feature}
                 </div>
-                <div className="responsive-child" style={{ flex: "1", padding: "1.5rem", borderLeft: "1px solid #eaeaea", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", color: "#666", fontWeight: 500 }}>
-                  <div className="show-on-mobile" style={{ fontSize: "0.8rem", color: "#aaa", textTransform: "uppercase", marginBottom: "4px" }}>{t("spec_standard" as any)}</div>
+                <div style={{ flex: "1", padding: "1.5rem", borderLeft: "1px solid #eaeaea", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", color: "#666", fontWeight: 500 }}>
                   {row.normal}
                 </div>
-                <div className="responsive-child" style={{ flex: "1.2", padding: "1.5rem", background: "#f0fdf4", borderLeft: "1px solid #dcfce7", display: "flex", alignItems: "center", gap: "16px" }}>
+                <div style={{ flex: "1.2", padding: "1.5rem", background: "#f0fdf4", borderLeft: "1px solid #dcfce7", display: "flex", alignItems: "center", gap: "16px" }}>
                   <div style={{ width: "48px", height: "48px", borderRadius: "50%", background: "#dcfce7", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                     {row.premiumIcon}
                   </div>
                   <div>
-                    <div className="show-on-mobile" style={{ fontSize: "0.8rem", color: "#16a34a", textTransform: "uppercase", marginBottom: "4px" }}>{t("spec_premium" as any)}</div>
                     <div style={{ fontWeight: 800, color: "#115e3b", fontSize: "1.1rem" }}>{row.premiumTitle}</div>
                     <div style={{ fontSize: "0.85rem", color: "#16a34a", marginTop: "4px", fontWeight: 500 }}>{row.premiumDesc}</div>
                   </div>
                 </div>
               </div>
             ))}
+            </div>
           </motion.div>
 
           {/* Bottom Badges */}
