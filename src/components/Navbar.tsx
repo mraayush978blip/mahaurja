@@ -111,36 +111,39 @@ export function Navbar() {
               top: 0,
               right: 0,
               width: "300px",
+              maxWidth: "85vw",
               height: "100vh",
-              background: "var(--white)",
+              background: "#051f11", // Dark green theme
               zIndex: 2001,
-              boxShadow: "-10px 0 30px rgba(0,0,0,0.1)",
+              boxShadow: "-10px 0 30px rgba(0,0,0,0.3)",
               display: "flex",
               flexDirection: "column",
-              padding: "2rem"
+              padding: "1.5rem",
+              overflowY: "auto"
             }}
           >
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "3rem" }}>
-              <Link href="/" className="nav-brand" style={{ gap: "0.5rem" }} onClick={() => setIsMobileMenuOpen(false)}>
-                <img src="/assets/images/logo.png" alt="Mahaurja Logo" style={{ height: "56px", objectFit: "contain" }} />
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2rem", paddingBottom: "1rem", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
+              <Link href="/" className="nav-brand" style={{ gap: "0.5rem", background: "white", padding: "0.5rem", borderRadius: "10px" }} onClick={() => setIsMobileMenuOpen(false)}>
+                <img src="/assets/images/logo.png" alt="Mahaurja Logo" style={{ height: "40px", objectFit: "contain" }} />
               </Link>
-              <button onClick={() => setIsMobileMenuOpen(false)} style={{ background: "none", border: "none", cursor: "pointer", color: "var(--text-dark)" }}>
-                <X size={28} />
+              <button onClick={() => setIsMobileMenuOpen(false)} style={{ background: "rgba(255,255,255,0.1)", border: "none", cursor: "pointer", color: "white", padding: "0.5rem", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <X size={24} />
               </button>
             </div>
             
-            <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-              <Link href="/" onClick={() => setIsMobileMenuOpen(false)} style={{ padding: "0.5rem 0", borderBottom: "1px solid rgba(0,0,0,0.05)", fontSize: "1.1rem", color: pathname === "/" ? "var(--primary-color)" : "var(--text-dark)", fontWeight: pathname === "/" ? 700 : 500 }}>{t("nav_home")}</Link>
-              <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} style={{ padding: "0.5rem 0", borderBottom: "1px solid rgba(0,0,0,0.05)", fontSize: "1.1rem", color: pathname === "/about" ? "var(--primary-color)" : "var(--text-dark)", fontWeight: pathname === "/about" ? 700 : 500 }}>{t("nav_about")}</Link>
-              <Link href="/services" onClick={() => setIsMobileMenuOpen(false)} style={{ padding: "0.5rem 0", borderBottom: "1px solid rgba(0,0,0,0.05)", fontSize: "1.1rem", color: pathname === "/services" ? "var(--primary-color)" : "var(--text-dark)", fontWeight: pathname === "/services" ? 700 : 500 }}>{t("nav_services")}</Link>
-
-              <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} style={{ padding: "0.5rem 0", borderBottom: "1px solid rgba(0,0,0,0.05)", fontSize: "1.1rem", color: pathname === "/contact" ? "var(--primary-color)" : "var(--text-dark)", fontWeight: pathname === "/contact" ? 700 : 500 }}>{t("nav_contact")}</Link>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", flex: "1 0 auto" }}>
+              <Link href="/" onClick={() => setIsMobileMenuOpen(false)} style={{ padding: "1rem", borderRadius: "12px", background: pathname === "/" ? "rgba(255,255,255,0.1)" : "transparent", fontSize: "1.1rem", color: pathname === "/" ? "#4ade80" : "#cbd5e1", fontWeight: pathname === "/" ? 700 : 500, transition: "all 0.2s" }}>{t("nav_home")}</Link>
+              <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} style={{ padding: "1rem", borderRadius: "12px", background: pathname === "/about" ? "rgba(255,255,255,0.1)" : "transparent", fontSize: "1.1rem", color: pathname === "/about" ? "#4ade80" : "#cbd5e1", fontWeight: pathname === "/about" ? 700 : 500, transition: "all 0.2s" }}>{t("nav_about")}</Link>
+              <Link href="/services" onClick={() => setIsMobileMenuOpen(false)} style={{ padding: "1rem", borderRadius: "12px", background: pathname === "/services" ? "rgba(255,255,255,0.1)" : "transparent", fontSize: "1.1rem", color: pathname === "/services" ? "#4ade80" : "#cbd5e1", fontWeight: pathname === "/services" ? 700 : 500, transition: "all 0.2s" }}>{t("nav_services")}</Link>
+              <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} style={{ padding: "1rem", borderRadius: "12px", background: pathname === "/contact" ? "rgba(255,255,255,0.1)" : "transparent", fontSize: "1.1rem", color: pathname === "/contact" ? "#4ade80" : "#cbd5e1", fontWeight: pathname === "/contact" ? 700 : 500, transition: "all 0.2s" }}>{t("nav_contact")}</Link>
             </div>
 
-            <div style={{ marginTop: "auto" }}>
+            <div style={{ marginTop: "2rem", paddingBottom: "2rem" }}>
               <button 
                 onClick={toggleLang} 
-                style={{ width: "100%", padding: "1rem", background: "var(--primary-color)", color: "white", border: "none", borderRadius: "30px", fontWeight: 600, fontSize: "1rem" }}
+                style={{ width: "100%", padding: "1rem", background: "#16a34a", color: "white", border: "none", borderRadius: "12px", fontWeight: 600, fontSize: "1rem", cursor: "pointer", transition: "background 0.2s" }}
+                onMouseOver={(e) => e.currentTarget.style.background = "#15803d"}
+                onMouseOut={(e) => e.currentTarget.style.background = "#16a34a"}
               >
                 Switch Language (EN / हिंदी)
               </button>
