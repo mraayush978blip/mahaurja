@@ -160,7 +160,7 @@ export default function Home() {
             <p style={{ color: "#555", fontSize: "1.1rem" }}>No more wasted residue, now the fuel for the nation's clean energy.</p>
           </motion.div>
 
-          <div className="responsive-flex-wrap" style={{ display: "flex", gap: "2rem", justifyContent: "center", position: "relative", zIndex: 2 }}>
+          <div className="responsive-flex-wrap" style={{ display: "flex", gap: "5rem", justifyContent: "center", alignItems: "flex-start", position: "relative", zIndex: 2 }}>
             {/* Challenge */}
             <motion.div variants={fadeUp} className="responsive-child" style={{ flex: "1 1 400px", background: "#fcf0f0", borderRadius: "24px", padding: "2.5rem", border: "1px solid #fae1e1", boxShadow: "0 20px 40px rgba(220,53,69,0.05)" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "1.5rem" }}>
@@ -175,13 +175,18 @@ export default function Home() {
               </ul>
             </motion.div>
 
-            {/* Middle Arrow */}
-            <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%, -50%)", width: "48px", height: "48px", background: "#115e3b", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", color: "white", zIndex: 10, boxShadow: "0 10px 20px rgba(17,94,59,0.2)" }} className="hide-on-mobile">
-              <ArrowRight size={24} />
+            {/* Connecting Flexible Rope */}
+            <div className="hide-on-mobile" style={{ position: "absolute", left: "50%", top: "45%", transform: "translate(-50%, -50%)", width: "120px", height: "120px", zIndex: 1, pointerEvents: "none" }}>
+              <svg width="100%" height="100%" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ overflow: "visible" }}>
+                {/* Flexible dashed rope path curving from top-left to bottom-right */}
+                <path d="M 0,30 C 60,30 60,100 120,100" stroke="#16a34a" strokeWidth="4" strokeDasharray="10 10" strokeLinecap="round" />
+                {/* Arrowhead at the end of the rope */}
+                <path d="M 105,85 L 120,100 L 105,115" stroke="#16a34a" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </div>
 
             {/* Solution */}
-            <motion.div variants={fadeUp} className="responsive-child" style={{ flex: "1 1 400px", background: "#f0fdf4", borderRadius: "24px", padding: "2.5rem", border: "1px solid #dcfce7", boxShadow: "0 20px 40px rgba(22,163,74,0.05)" }}>
+            <motion.div variants={fadeUp} className="responsive-child" style={{ flex: "1 1 400px", background: "#f0fdf4", borderRadius: "24px", padding: "2.5rem", border: "1px solid #dcfce7", boxShadow: "0 20px 40px rgba(22,163,74,0.05)", marginTop: "4rem" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "1.5rem" }}>
                 <div style={{ background: "#16a34a", color: "white", padding: "8px", borderRadius: "50%" }}>
                   <Leaf size={24} />

@@ -57,6 +57,11 @@ export function Navbar() {
           </Link>
         </li>
         <li>
+          <Link href="/faq" className={pathname === "/faq" ? "active" : ""}>
+            FAQ
+          </Link>
+        </li>
+        <li>
           <Link href="/contact" className={pathname === "/contact" ? "active" : ""}>
             {t("nav_contact")}
           </Link>
@@ -135,6 +140,7 @@ export function Navbar() {
               <Link href="/" onClick={() => setIsMobileMenuOpen(false)} style={{ padding: "1rem", borderRadius: "12px", background: pathname === "/" ? "rgba(255,255,255,0.1)" : "transparent", fontSize: "1.1rem", color: pathname === "/" ? "#4ade80" : "#cbd5e1", fontWeight: pathname === "/" ? 700 : 500, transition: "all 0.2s" }}>{t("nav_home")}</Link>
               <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} style={{ padding: "1rem", borderRadius: "12px", background: pathname === "/about" ? "rgba(255,255,255,0.1)" : "transparent", fontSize: "1.1rem", color: pathname === "/about" ? "#4ade80" : "#cbd5e1", fontWeight: pathname === "/about" ? 700 : 500, transition: "all 0.2s" }}>{t("nav_about")}</Link>
               <Link href="/services" onClick={() => setIsMobileMenuOpen(false)} style={{ padding: "1rem", borderRadius: "12px", background: pathname === "/services" ? "rgba(255,255,255,0.1)" : "transparent", fontSize: "1.1rem", color: pathname === "/services" ? "#4ade80" : "#cbd5e1", fontWeight: pathname === "/services" ? 700 : 500, transition: "all 0.2s" }}>{t("nav_services")}</Link>
+              <Link href="/faq" onClick={() => setIsMobileMenuOpen(false)} style={{ padding: "1rem", borderRadius: "12px", background: pathname === "/faq" ? "rgba(255,255,255,0.1)" : "transparent", fontSize: "1.1rem", color: pathname === "/faq" ? "#4ade80" : "#cbd5e1", fontWeight: pathname === "/faq" ? 700 : 500, transition: "all 0.2s" }}>FAQ</Link>
               <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} style={{ padding: "1rem", borderRadius: "12px", background: pathname === "/contact" ? "rgba(255,255,255,0.1)" : "transparent", fontSize: "1.1rem", color: pathname === "/contact" ? "#4ade80" : "#cbd5e1", fontWeight: pathname === "/contact" ? 700 : 500, transition: "all 0.2s" }}>{t("nav_contact")}</Link>
             </div>
 

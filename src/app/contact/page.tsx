@@ -280,6 +280,41 @@ export default function Contact() {
           </motion.div>
         </div>
       </section>
+
+      {/* MAP SECTION */}
+      <section style={{ padding: "4rem 2rem 0 2rem" }}>
+        <div className="container responsive-container-padding" style={{ maxWidth: "1400px", margin: "0 auto", padding: 0 }}>
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }} 
+            whileInView={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 0.6 }} 
+            viewport={{ once: true }}
+            style={{
+              width: "100%",
+              borderRadius: "24px",
+              overflow: "hidden",
+              border: "4px solid #dcfce7",
+              boxShadow: "0 20px 40px rgba(22, 163, 74, 0.15)",
+              background: "#115e3b",
+              transition: "transform 0.3s ease, box-shadow 0.3s ease"
+            }}
+            whileHover={{ scale: 1.01, boxShadow: "0 25px 50px rgba(22, 163, 74, 0.25)" }}
+          >
+            <a 
+              href="https://maps.app.goo.gl/YG5JFpEyDqnC76A59" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              style={{ display: "block", width: "100%" }}
+            >
+              <img 
+                src="/assets/images/mapdes.png" 
+                alt="Mahaurja Plant Location" 
+                style={{ width: "100%", height: "auto", display: "block" }}
+              />
+            </a>
+          </motion.div>
+        </div>
+      </section>
     </main>
   );
 }
