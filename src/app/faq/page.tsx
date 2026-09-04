@@ -65,13 +65,13 @@ export default function FAQ() {
       <section style={{ 
         position: "relative", 
         width: "100%", 
-        minHeight: "500px", 
+        minHeight: "200px", 
         backgroundImage: "url('/assets/images/hero-bg.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         display: "flex",
         alignItems: "center",
-        padding: "8rem 0 4rem 0"
+        padding: "6rem 0 1rem 0"
       }}>
         {/* Dark gradient overlay so text is readable */}
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "linear-gradient(to right, rgba(6,64,36,0.9) 0%, rgba(6,64,36,0.6) 40%, rgba(6,64,36,0.1) 100%)" }} />
