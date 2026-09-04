@@ -33,8 +33,8 @@ export default function Contact() {
       </section>
 
       {/* MAIN CARD */}
-      <section style={{ padding: "0 1rem" }}>
-        <div className="container responsive-container-padding" style={{ maxWidth: "1100px", padding: 0 }}>
+      <section style={{ padding: "0 2rem" }}>
+        <div className="container responsive-container-padding" style={{ maxWidth: "1400px", margin: "0 auto", padding: 0 }}>
           <motion.div 
             style={{ 
               background: "#ffffff", 
@@ -125,14 +125,14 @@ export default function Contact() {
                     </div>
                   </div>
                   
-                  <div style={{ display: "flex", alignItems: "flex-start", gap: "1.2rem" }}>
-                    <div style={{ width: "42px", height: "42px", borderRadius: "12px", background: "rgba(255,255,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, border: "1px solid rgba(255,255,255,0.15)" }}>
+                  <a href="https://maps.app.goo.gl/YG5JFpEyDqnC76A59" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "flex-start", gap: "1.2rem", textDecoration: "none" }} className="group">
+                    <div style={{ width: "42px", height: "42px", borderRadius: "12px", background: "rgba(255,255,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, border: "1px solid rgba(255,255,255,0.15)" }} className="group-hover:bg-[#16a34a] transition-colors">
                       <MapPin size={18} color="white" />
                     </div>
                     <div style={{ display: "flex", alignItems: "center", minHeight: "42px" }}>
-                      <span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.8)", lineHeight: 1.5 }}>288, Lokmanya Tilak Path, Ujjain Road,<br/>Railway Crossing ke paas, Badnagar,<br/>Jila Ujjain (M.P.) 456771</span>
+                      <span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.8)", lineHeight: 1.5 }} className="group-hover:text-white transition-colors">288, Lokmanya Tilak Path, Ujjain Road,<br/>Railway Crossing ke paas, Badnagar,<br/>Jila Ujjain (M.P.) 456771</span>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
               

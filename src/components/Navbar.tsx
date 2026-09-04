@@ -62,7 +62,7 @@ export function Navbar() {
           </Link>
         </li>
         <li>
-          <button onClick={toggleLang} className="lang-btn" style={{ fontWeight: 600, padding: "0.5rem 1rem", background: "rgba(0,0,0,0.05)", borderRadius: "20px" }}>
+          <button onClick={toggleLang} className="lang-btn">
             EN | हिंदी
           </button>
         </li>

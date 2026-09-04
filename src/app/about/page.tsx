@@ -28,7 +28,7 @@ export default function About() {
         backgroundPosition: "center",
         display: "flex",
         alignItems: "center",
-        padding: "4rem 0"
+        padding: "8rem 0 4rem 0"
       }}>
         {/* Dark gradient overlay so text is readable */}
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "linear-gradient(to right, rgba(6,64,36,0.9) 0%, rgba(6,64,36,0.6) 40%, rgba(6,64,36,0.1) 100%)" }} />
@@ -154,10 +154,10 @@ export default function About() {
                 </div>
                 <h3 style={{ fontSize: "1.5rem", fontWeight: 700, marginBottom: "1rem", color: "white" }}>{t("about_hq_title")}</h3>
                 <p style={{ opacity: 0.9, color: "white", fontSize: "0.95rem", lineHeight: 1.6, marginBottom: "2rem", flex: 1 }}>{t("about_hq_desc")}</p>
-                <div style={{ background: "rgba(0,0,0,0.2)", padding: "1.2rem", borderRadius: "12px" }}>
+                <a href="https://maps.app.goo.gl/YG5JFpEyDqnC76A59" target="_blank" rel="noopener noreferrer" style={{ background: "rgba(0,0,0,0.2)", padding: "1.2rem", borderRadius: "12px", display: "block", textDecoration: "none" }} className="group hover:bg-black/40 transition-colors">
                   <div style={{ fontSize: "0.75rem", color: "#fcd34d", fontWeight: 700, letterSpacing: "1px", marginBottom: "8px" }}><MapPin size={12} style={{ display: "inline", marginRight: "4px" }} /> ADDRESS</div>
-                  <div style={{ fontSize: "0.85rem", opacity: 0.9, lineHeight: 1.5, color: "white" }}>288, Lokmanya Tilak Path, Near Railway Crossing, Ujjain Road, Barnagar, Dist. Ujjain (MP) 456771</div>
-                </div>
+                  <div style={{ fontSize: "0.85rem", opacity: 0.9, lineHeight: 1.5, color: "white" }} className="group-hover:text-[#fcd34d] transition-colors">288, Lokmanya Tilak Path, Near Railway Crossing, Ujjain Road, Barnagar, Dist. Ujjain (MP) 456771</div>
+                </a>
               </motion.div>
 
               {/* Card 2 (Featured) */}

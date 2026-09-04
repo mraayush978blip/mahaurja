@@ -7,18 +7,9 @@ export function Splash() {
   const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
-    // Check if we've already shown the splash screen in this session
-    const hasSeenSplash = sessionStorage.getItem("hasSeenSplash");
-    
-    if (hasSeenSplash) {
-      setShowSplash(false);
-      return;
-    }
-
-    // Show splash for 2 seconds, then fade out and set session flag
+    // Show splash for 2 seconds, then fade out
     const timer = setTimeout(() => {
       setShowSplash(false);
-      sessionStorage.setItem("hasSeenSplash", "true");
     }, 2000);
 
     return () => clearTimeout(timer);
@@ -50,7 +41,7 @@ export function Splash() {
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            style={{ maxWidth: "80%", maxHeight: "80%", objectFit: "contain" }}
+            style={{ width: "250px", height: "auto", maxWidth: "80%", objectFit: "contain" }}
           />
         </motion.div>
       )}

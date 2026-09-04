@@ -406,7 +406,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════
           SECTION 6 — ROI & COST ESTIMATOR
       ══════════════════════════════════════════════════════════ */}
-      <section className="roi-section section-padding" style={{ background: "#f9fcfb" }}>
+      <section className="roi-section section-padding" style={{ background: "#f9fcfb", paddingBottom: "1rem" }}>
         <motion.div className="container" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={stagger}>
           
           <motion.div variants={fadeUp} style={{ textAlign: "center", marginBottom: "2.5rem" }}>
@@ -424,7 +424,7 @@ export default function Home() {
             </div>
           </motion.div>
 
-          <motion.div variants={fadeUp} style={{ background: "#fff", borderRadius: "24px", padding: "2rem", boxShadow: "0 20px 50px rgba(0,0,0,0.06)", border: "1px solid #eaeaea", display: "flex", gap: "2rem", flexWrap: "wrap", maxWidth: "1000px", margin: "0 auto" }}>
+          <motion.div variants={fadeUp} style={{ background: "#fff", borderRadius: "24px", padding: "2rem", boxShadow: "0 20px 50px rgba(0,0,0,0.06)", border: "1px solid #eaeaea", display: "flex", gap: "2rem", flexWrap: "wrap", maxWidth: "1200px", margin: "0 auto" }}>
             
             {/* Left Column (Inputs) */}
             <div style={{ flex: "1 1 450px", display: "flex", flexDirection: "column", gap: "2rem" }}>
@@ -514,7 +514,7 @@ export default function Home() {
           </motion.div>
           
           {/* Bottom Badges */}
-          <motion.div variants={fadeUp} style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "1rem", marginTop: "1rem", maxWidth: "1000px", margin: "1.5rem auto 0" }}>
+          <motion.div variants={fadeUp} style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "1rem", marginTop: "1rem", maxWidth: "1200px", margin: "1.5rem auto 0" }}>
             {[
               { icon: <CircleDollarSign color="#16a34a" size={24} />, title: "Low Cost", desc: "Reduced fuel cost and higher savings" },
               { icon: <TrendingUp color="#16a34a" size={24} />, title: "Higher Profits", desc: "More energy, better efficiency, and better returns" },
