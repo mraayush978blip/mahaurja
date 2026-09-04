@@ -103,4 +103,30 @@
   .contact-stack {
     flex-direction: column !important;
   }
+
+  /* Shrink all large padding blocks on mobile */
+  div[style*="padding: 3rem"],
+  div[style*="padding: 4rem"],
+  div[style*="padding: 2rem"],
+  div[style*="padding: 6rem"],
+  div[style*="padding: 8rem"] {
+    padding: 1.5rem !important;
+  }
+
+  /* Shrink all large gaps on mobile */
+  div[style*="gap: 2rem"],
+  div[style*="gap: 3rem"],
+  div[style*="gap: 4rem"] {
+    gap: 1rem !important;
+  }
+
+  /* Shrink massive margins */
+  div[style*="margin-bottom: 3rem"],
+  div[style*="marginBottom: 3rem"] {
+    margin-bottom: 1.5rem !important;
+  }
+  div[style*="margin-top: 3rem"],
+  div[style*="marginTop: 3rem"] {
+    margin-top: 1.5rem !important;
+  }
 }
