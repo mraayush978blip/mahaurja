@@ -33,8 +33,11 @@ export function Navbar() {
     }
   }, [isMobileMenuOpen]);
 
+  const isHeroPage = ["/", "/faq", "/about", "/services"].includes(pathname);
+  const isTransparent = isHeroPage && !isScrolled;
+
   return (
-    <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
+    <nav className={`navbar ${isScrolled ? "scrolled" : ""} ${isTransparent ? "transparent" : ""}`}>
       <Link href="/" className="nav-brand">
         <img src="/assets/images/logo.png" alt="Mahaurja Logo" style={{ height: "72px", objectFit: "contain" }} />
       </Link>
