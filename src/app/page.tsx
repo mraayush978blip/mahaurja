@@ -292,7 +292,7 @@ export default function Home() {
           <motion.div variants={fadeUp} style={{ background: "#fff", borderRadius: "24px", overflow: "hidden", boxShadow: "0 20px 40px rgba(0,0,0,0.06)", border: "1px solid #eaeaea", maxWidth: "1000px", margin: "0 auto" }}>
             
             {/* Header Row */}
-            <div style={{ display: "flex", background: "#0c5836", color: "#fff", fontWeight: 700, fontSize: "1.1rem" }}>
+            <div className="hide-on-mobile" style={{ display: "flex", background: "#0c5836", color: "#fff", fontWeight: 700, fontSize: "1.1rem" }}>
               <div style={{ flex: "1.2", padding: "1.5rem", display: "flex", alignItems: "center", gap: "10px" }}>
                 <FlaskConical size={20} /> {t("spec_param" as any)}
               </div>

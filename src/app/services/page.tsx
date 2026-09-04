@@ -200,8 +200,8 @@ export default function Services() {
               <div style={{ width: "40px", height: "4px", background: "#f59e0b", margin: "0 auto", borderRadius: "2px" }} />
             </motion.div>
 
-            <motion.div variants={fadeUp} style={{ background: "white", borderRadius: "16px", overflow: "hidden", border: "1px solid #e5e7eb", boxShadow: "0 10px 30px rgba(0,0,0,0.03)" }}>
-              <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "center" }}>
+            <motion.div variants={fadeUp} style={{ background: "white", borderRadius: "16px", overflowX: "auto", border: "1px solid #e5e7eb", boxShadow: "0 10px 30px rgba(0,0,0,0.03)" }}>
+              <table style={{ width: "100%", minWidth: "600px", borderCollapse: "collapse", textAlign: "center" }}>
                 <thead>
                   <tr>
                     <th style={{ background: "#06402b", color: "white", padding: "1.2rem", fontWeight: 700, width: "33%" }}>{t("spec_param" as any)}</th>
