@@ -410,7 +410,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════
           SECTION 6 — ROI & COST ESTIMATOR
       ══════════════════════════════════════════════════════════ */}
-      <section className="roi-section section-padding" style={{ background: "#f9fcfb", paddingBottom: "1rem" }}>
+      <section className="roi-section section-padding" style={{ background: "#f9fcfb", paddingBottom: "4rem" }}>
         <motion.div className="container" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={stagger}>
           
           <motion.div variants={fadeUp} style={{ textAlign: "center", marginBottom: "2.5rem" }}>
@@ -478,6 +478,16 @@ export default function Home() {
                 </div>
               </div>
 
+              <div style={{ background: "#fafafa", border: "1px dashed #d4d4d8", borderRadius: "16px", padding: "1.5rem", display: "flex", gap: "1rem", alignItems: "center" }}>
+                <div style={{ width: "40px", height: "40px", background: "#f0fdf4", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <TrendingDown size={20} color="#16a34a" />
+                </div>
+                <div>
+                  <h4 style={{ margin: 0, fontSize: "0.95rem", color: "#222", fontWeight: 700 }}>Data-Driven Estimates</h4>
+                  <p style={{ margin: "4px 0 0 0", fontSize: "0.85rem", color: "#666", lineHeight: 1.4 }}>Our calculator uses industry-average calorific values and carbon emission factors to project your real-world savings.</p>
+                </div>
+              </div>
+
               <div style={{ background: "#f0fdf4", padding: "1rem", borderRadius: "12px", display: "flex", alignItems: "center", gap: "10px", color: "#166534", fontSize: "0.85rem", fontWeight: 500, marginTop: "auto" }}>
                 <Clock size={16} /> Adjust the slider or select a fuel to see the estimate.
               </div>
@@ -500,15 +510,15 @@ export default function Home() {
                 </div>
               </div>
 
-              <div style={{ background: "linear-gradient(135deg, #ea580c 0%, #f97316 100%)", borderRadius: "20px", padding: "2rem", color: "#fff", textAlign: "center", position: "relative", overflow: "hidden", flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                <Leaf size={150} color="#fff" style={{ position: "absolute", right: "-30px", bottom: "-30px", opacity: 0.1, transform: "rotate(-15deg)" }} />
+              <div style={{ background: "#f0fdf4", border: "2px solid #dcfce7", borderRadius: "20px", padding: "2rem", color: "#064024", textAlign: "center", position: "relative", overflow: "hidden", flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                <Leaf size={150} color="#16a34a" style={{ position: "absolute", right: "-30px", bottom: "-30px", opacity: 0.05, transform: "rotate(-15deg)" }} />
                 <div style={{ display: "flex", justifyContent: "center", marginBottom: "1rem" }}>
-                  <div style={{ width: "36px", height: "36px", background: "rgba(255,255,255,0.2)", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center" }}><Leaf size={20} color="#fff" /></div>
+                  <div style={{ width: "36px", height: "36px", background: "#dcfce7", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center" }}><Leaf size={20} color="#16a34a" /></div>
                 </div>
-                <div style={{ fontSize: "0.9rem", fontWeight: 600, opacity: 0.9, marginBottom: "8px" }}>{t("roi_co2_title" as any)}</div>
-                <div style={{ fontSize: "3rem", fontWeight: 800, lineHeight: 1, marginBottom: "1.5rem" }}>{co2Annual.toLocaleString()}</div>
+                <div style={{ fontSize: "0.9rem", fontWeight: 700, opacity: 0.8, marginBottom: "8px" }}>{t("roi_co2_title" as any)}</div>
+                <div style={{ fontSize: "3rem", fontWeight: 800, lineHeight: 1, marginBottom: "1.5rem", color: "#16a34a" }}>{co2Annual.toLocaleString()}</div>
                 <div>
-                  <span style={{ display: "inline-block", background: "rgba(255,255,255,0.2)", padding: "4px 12px", borderRadius: "20px", fontSize: "0.8rem", fontWeight: 500, backdropFilter: "blur(4px)" }}>
+                  <span style={{ display: "inline-block", background: "#dcfce7", color: "#166534", padding: "4px 12px", borderRadius: "20px", fontSize: "0.8rem", fontWeight: 700 }}>
                     🍃 Clean Air, Better Tomorrow
                   </span>
                 </div>
