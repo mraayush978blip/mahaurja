@@ -29,7 +29,7 @@ export default function Services() {
         overflow: "hidden"
       }}>
         <Image 
-          src="/assets/images/about.png" 
+          src="/assets/images/about.webp" 
           alt="Services Mahaurja" 
           fill 
           style={{ objectFit: "cover", objectPosition: "center" }}

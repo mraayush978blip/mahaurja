@@ -30,7 +30,7 @@ export default function About() {
         overflow: "hidden"
       }}>
         <Image 
-          src="/assets/images/about.png" 
+          src="/assets/images/about.webp" 
           alt="About Mahaurja" 
           fill 
           style={{ objectFit: "cover", objectPosition: "center" }}

@@ -110,7 +110,7 @@ export default function FAQ() {
         overflow: "hidden"
       }}>
         <Image 
-          src="/assets/images/hero-bg.jpg" 
+          src="/assets/images/hero-bg.webp" 
           alt="FAQ Mahaurja" 
           fill 
           style={{ objectFit: "cover", objectPosition: "center" }}

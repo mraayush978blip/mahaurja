@@ -370,7 +370,7 @@ export default function Contact() {
             >
               <div className="hide-on-mobile" style={{ width: "100%", display: "block" }}>
                 <Image 
-                  src="/assets/images/mapdes.png" 
+                  src="/assets/images/mapdes.webp" 
                   alt="Mahaurja Plant Location" 
                   width={1400}
                   height={800}
@@ -379,7 +379,7 @@ export default function Contact() {
               </div>
               <div className="show-on-mobile" style={{ width: "100%", display: "block" }}>
                 <Image 
-                  src="/assets/images/mapp.png" 
+                  src="/assets/images/mapp.webp" 
                   alt="Mahaurja Plant Location Mobile" 
                   width={800}
                   height={800}
