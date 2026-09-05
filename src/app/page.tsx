@@ -2,6 +2,7 @@
 
 import { useTranslation } from "@/hooks/useTranslation";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Flame, Factory, Leaf, Trees, Sun, FlaskConical,
   CircleDollarSign, TrendingDown, ShieldCheck, Zap,
@@ -244,7 +245,9 @@ export default function Home() {
                   </div>
                 </div>
                 {/* Bottom Half (Image) */}
-                <div style={{ width: "100%", height: "180px", flexShrink: 0, backgroundImage: `url(${item.image})`, backgroundSize: "cover", backgroundPosition: "center" }} />
+                <div style={{ width: "100%", height: "180px", flexShrink: 0, position: "relative", overflow: "hidden" }}>
+                  <Image src={item.image} alt={item.key} fill style={{ objectFit: "cover", objectPosition: "center" }} />
+                </div>
               </motion.div>
             ))}
           </motion.div>

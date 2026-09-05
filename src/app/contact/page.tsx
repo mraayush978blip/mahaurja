@@ -4,6 +4,7 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { User, Phone, Mail, MapPin, Send, Leaf, Building, Factory, Flame, Clock, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Image from "next/image";
 
 const fadeUpVariant = {
   hidden: { opacity: 0, y: 30 },
@@ -367,14 +368,24 @@ export default function Contact() {
               rel="noopener noreferrer"
               style={{ display: "block", width: "100%" }}
             >
-              <picture>
-                <source media="(max-width: 768px)" srcSet="/assets/images/mapp.png" />
-                <img 
+              <div className="hide-on-mobile" style={{ width: "100%", display: "block" }}>
+                <Image 
                   src="/assets/images/mapdes.png" 
                   alt="Mahaurja Plant Location" 
+                  width={1400}
+                  height={800}
                   style={{ width: "100%", height: "auto", display: "block" }}
                 />
-              </picture>
+              </div>
+              <div className="show-on-mobile" style={{ width: "100%", display: "block" }}>
+                <Image 
+                  src="/assets/images/mapp.png" 
+                  alt="Mahaurja Plant Location Mobile" 
+                  width={800}
+                  height={800}
+                  style={{ width: "100%", height: "auto", display: "block" }}
+                />
+              </div>
             </a>
           </motion.div>
         </div>

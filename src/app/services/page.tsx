@@ -3,6 +3,7 @@
 import { useTranslation } from "@/hooks/useTranslation";
 import { motion } from "framer-motion";
 import { Flame, FlaskConical, Leaf, Thermometer, Activity, CheckCircle, Target } from "lucide-react";
+import Image from "next/image";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -23,14 +24,19 @@ export default function Services() {
       <section style={{ 
         position: "relative", 
         height: "500px", 
-        backgroundImage: "url('/assets/images/about.png')", 
-        backgroundSize: "cover", 
-        backgroundPosition: "center",
         display: "flex",
-        alignItems: "center"
+        alignItems: "center",
+        overflow: "hidden"
       }}>
+        <Image 
+          src="/assets/images/about.png" 
+          alt="Services Mahaurja" 
+          fill 
+          style={{ objectFit: "cover", objectPosition: "center" }}
+          priority 
+        />
         {/* Gradient Overlay */}
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(6,64,43,1) 0%, rgba(6,64,43,0.85) 35%, rgba(6,64,43,0) 100%)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(6,64,43,1) 0%, rgba(6,64,43,0.85) 35%, rgba(6,64,43,0) 100%)", zIndex: 1 }} />
         
         <div className="container responsive-hero-container-padding" style={{ position: "relative", zIndex: 1 }}>
           <motion.div initial="hidden" animate="visible" variants={fadeUp} style={{ maxWidth: "600px" }}>

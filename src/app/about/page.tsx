@@ -3,6 +3,7 @@
 import { useTranslation } from "@/hooks/useTranslation";
 import { Building, Factory, Anchor, Target, Leaf, Users, MapPin, Phone, Mail, CheckCircle2, Sun, BarChart3, Building2, Trees } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -23,15 +24,20 @@ export default function About() {
         position: "relative", 
         width: "100%", 
         minHeight: "500px", 
-        backgroundImage: "url('/assets/images/about.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
         display: "flex",
         alignItems: "center",
-        padding: "8rem 0 4rem 0"
+        padding: "8rem 0 4rem 0",
+        overflow: "hidden"
       }}>
+        <Image 
+          src="/assets/images/about.png" 
+          alt="About Mahaurja" 
+          fill 
+          style={{ objectFit: "cover", objectPosition: "center" }}
+          priority 
+        />
         {/* Dark gradient overlay so text is readable */}
-        <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "linear-gradient(to right, rgba(6,64,36,0.9) 0%, rgba(6,64,36,0.6) 40%, rgba(6,64,36,0.1) 100%)" }} />
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "linear-gradient(to right, rgba(6,64,36,0.9) 0%, rgba(6,64,36,0.6) 40%, rgba(6,64,36,0.1) 100%)", zIndex: 1 }} />
         
         <div className="container" style={{ position: "relative", zIndex: 2 }}>
           <motion.div initial="hidden" animate="visible" variants={stagger} style={{ maxWidth: "600px", color: "white" }}>

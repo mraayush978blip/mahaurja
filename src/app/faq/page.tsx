@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import Image from "next/image";
 import { HelpCircle, Clock, Leaf, Truck, ShieldCheck, Plus, Minus, Headset, ArrowRight } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
 import Link from "next/link";
@@ -103,15 +104,20 @@ export default function FAQ() {
         position: "relative", 
         width: "100%", 
         minHeight: "200px", 
-        backgroundImage: "url('/assets/images/hero-bg.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
         display: "flex",
         alignItems: "center",
-        padding: "6rem 0 1rem 0"
+        padding: "6rem 0 1rem 0",
+        overflow: "hidden"
       }}>
+        <Image 
+          src="/assets/images/hero-bg.jpg" 
+          alt="FAQ Mahaurja" 
+          fill 
+          style={{ objectFit: "cover", objectPosition: "center" }}
+          priority 
+        />
         {/* Dark gradient overlay so text is readable */}
-        <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "linear-gradient(to right, rgba(6,64,36,0.9) 0%, rgba(6,64,36,0.6) 40%, rgba(6,64,36,0.1) 100%)" }} />
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, background: "linear-gradient(to right, rgba(6,64,36,0.9) 0%, rgba(6,64,36,0.6) 40%, rgba(6,64,36,0.1) 100%)", zIndex: 1 }} />
         
         <div className="container responsive-hero-container-padding" style={{ position: "relative", zIndex: 2 }}>
           <motion.div initial="hidden" animate="visible" variants={stagger} style={{ maxWidth: "600px", color: "white" }}>
