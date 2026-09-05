@@ -98,9 +98,54 @@
   .show-on-mobile {
     display: flex !important;
   }
-  
-  /* Contact page specific stack */
+
+  /* Contact Page Mobile Edge-to-Edge */
+  .contact-section-wrapper {
+    padding: 0 !important;
+  }
+  .contact-section-wrapper .responsive-container-padding {
+    padding: 0 !important;
+  }
+  .contact-main-card {
+    border-radius: 0 !important;
+    border: none !important;
+  }
+
+  .contact-main-wrapper {
+    padding-bottom: 0 !important;
+  }
+  .contact-map-section {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .contact-map-section .responsive-container-padding {
+    padding: 0 !important;
+  }
+  .contact-map-card {
+    border-radius: 0 !important;
+    border: none !important;
+  }
+
+  /* Scale Section (Proof of Scale) */
   .contact-stack {
+    flex-direction: column !important;
+  }
+  
+  /* Horizontal swipe cards for mobile */
+  .mobile-swipe-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 1rem !important;
+    gap: 1rem !important;
+    align-items: stretch !important;
+  }
+  .mobile-swipe-grid > div {
+    flex: 0 0 75% !important;
+    scroll-snap-align: center;
+    height: auto !important;
+    display: flex !important;
     flex-direction: column !important;
   }
 
@@ -128,5 +173,70 @@
   div[style*="margin-top: 3rem"],
   div[style*="marginTop: 3rem"] {
     margin-top: 1.5rem !important;
+  }
+
+  /* PVS Card Mobile Overrides */
+  .pvs-container { gap: 0 !important; }
+  .pvs-card { padding: 1.5rem !important; }
+  .pvs-solution { margin-top: 0 !important; }
+
+  /* Badges Mobile Overrides */
+  .badges-container { gap: 0.75rem !important; }
+
+  /* Stack tech specs nicely on mobile */
+  .tech-spec-cards-container {
+    gap: 1.5rem !important;
+  }
+  .tech-spec-card {
+    border-radius: 20px !important;
+  }
+  
+  /* Stack inner spec grid vertically on mobile */
+  .spec-card-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Make flagship banner wider on mobile but keep curved corners */
+  .flagship-banner {
+    margin-left: -4vw !important;
+    margin-right: -4vw !important;
+    border-radius: 24px !important;
+  }
+  
+  /* Arrange ROI outputs side-by-side compactly on mobile */
+  .roi-outputs {
+    flex-direction: row !important;
+    gap: 0.5rem !important;
+  }
+  .roi-outputs > div {
+    padding: 1rem 0.5rem !important;
+    border-radius: 16px !important;
+  }
+  .roi-outputs .leaf-icon-bg {
+    display: none !important;
+  }
+  .roi-outputs > div > div:nth-child(2) {
+    margin-bottom: 0.5rem !important;
+  }
+  .roi-outputs > div > div:nth-child(3) {
+    font-size: 0.75rem !important;
+  }
+  .roi-outputs > div > div:nth-child(4) {
+    font-size: 1.5rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+  .roi-outputs > div > div:nth-child(5) span {
+    font-size: 0.65rem !important;
+    padding: 4px 6px !important;
+  }
+  
+  /* Timeline Tech Specs Mobile Overrides */
+  .timeline-left, .timeline-right {
+    width: 100% !important;
+    align-self: center !important;
+    transform: none !important;
+  }
+  .timeline-rope {
+    display: none !important;
   }
 }

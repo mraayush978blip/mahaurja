@@ -121,9 +121,14 @@ export function Navbar() {
               width: "300px",
               maxWidth: "85vw",
               height: "100vh",
-              background: "#051f11", // Dark green theme
+              background: "rgba(6, 64, 36, 0.75)", // Green glassmorphism
+              backdropFilter: "blur(16px) saturate(180%)",
+              WebkitBackdropFilter: "blur(16px) saturate(180%)",
+              borderLeft: "1px solid rgba(255, 255, 255, 0.15)",
+              borderTopLeftRadius: "32px",
+              borderBottomLeftRadius: "32px",
               zIndex: 2001,
-              boxShadow: "-10px 0 30px rgba(0,0,0,0.3)",
+              boxShadow: "-10px 0 40px rgba(0,0,0,0.5)",
               display: "flex",
               flexDirection: "column",
               padding: "1.5rem",
@@ -139,7 +144,7 @@ export function Navbar() {
               </button>
             </div>
             
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", flex: "1 0 auto" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
               <Link href="/" onClick={() => setIsMobileMenuOpen(false)} style={{ padding: "1rem", borderRadius: "12px", background: pathname === "/" ? "rgba(255,255,255,0.1)" : "transparent", fontSize: "1.1rem", color: pathname === "/" ? "#4ade80" : "#cbd5e1", fontWeight: pathname === "/" ? 700 : 500, transition: "all 0.2s" }}>{t("nav_home")}</Link>
               <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} style={{ padding: "1rem", borderRadius: "12px", background: pathname === "/about" ? "rgba(255,255,255,0.1)" : "transparent", fontSize: "1.1rem", color: pathname === "/about" ? "#4ade80" : "#cbd5e1", fontWeight: pathname === "/about" ? 700 : 500, transition: "all 0.2s" }}>{t("nav_about")}</Link>
               <Link href="/services" onClick={() => setIsMobileMenuOpen(false)} style={{ padding: "1rem", borderRadius: "12px", background: pathname === "/services" ? "rgba(255,255,255,0.1)" : "transparent", fontSize: "1.1rem", color: pathname === "/services" ? "#4ade80" : "#cbd5e1", fontWeight: pathname === "/services" ? 700 : 500, transition: "all 0.2s" }}>{t("nav_services")}</Link>
@@ -147,7 +152,7 @@ export function Navbar() {
               <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} style={{ padding: "1rem", borderRadius: "12px", background: pathname === "/contact" ? "rgba(255,255,255,0.1)" : "transparent", fontSize: "1.1rem", color: pathname === "/contact" ? "#4ade80" : "#cbd5e1", fontWeight: pathname === "/contact" ? 700 : 500, transition: "all 0.2s" }}>{t("nav_contact")}</Link>
             </div>
 
-            <div style={{ marginTop: "2rem", paddingBottom: "2rem" }}>
+            <div style={{ marginTop: "1rem", paddingBottom: "1rem" }}>
               <button 
                 onClick={toggleLang} 
                 style={{ width: "100%", padding: "1rem", background: "#16a34a", color: "white", border: "none", borderRadius: "12px", fontWeight: 600, fontSize: "1rem", cursor: "pointer", transition: "background 0.2s" }}

@@ -29,7 +29,7 @@ function AnimatedNumber({ value, suffix = "" }: { value: string; suffix?: string
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, type: "spring" }}
-      className="font-black text-5xl md:text-6xl text-white leading-none"
+      className="font-black text-3xl sm:text-4xl md:text-6xl text-white leading-none"
     >
       {value}
       {suffix}
@@ -160,9 +160,9 @@ export default function Home() {
             <p style={{ color: "#555", fontSize: "1.1rem" }}>No more wasted residue, now the fuel for the nation's clean energy.</p>
           </motion.div>
 
-          <div className="responsive-flex-wrap" style={{ display: "flex", gap: "5rem", justifyContent: "center", alignItems: "flex-start", position: "relative", zIndex: 2 }}>
+          <div className="responsive-flex-wrap pvs-container" style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", position: "relative", zIndex: 2 }}>
             {/* Challenge */}
-            <motion.div variants={fadeUp} className="responsive-child" style={{ flex: "1 1 400px", background: "#fcf0f0", borderRadius: "24px", padding: "2.5rem", border: "1px solid #fae1e1", boxShadow: "0 20px 40px rgba(220,53,69,0.05)" }}>
+            <motion.div variants={fadeUp} className="responsive-child pvs-card pvs-challenge" style={{ flex: "1 1 400px", background: "#fcf0f0", borderRadius: "24px", border: "1px solid #fae1e1", boxShadow: "0 20px 40px rgba(220,53,69,0.05)" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "1.5rem" }}>
                 <div style={{ background: "#dc3545", color: "white", padding: "8px", borderRadius: "50%" }}>
                   <TrendingDown size={24} />
@@ -175,7 +175,7 @@ export default function Home() {
               </ul>
             </motion.div>
 
-            {/* Connecting Flexible Rope */}
+            {/* Connecting Flexible Rope (Desktop) */}
             <div className="hide-on-mobile" style={{ position: "absolute", left: "50%", top: "45%", transform: "translate(-50%, -50%)", width: "120px", height: "120px", zIndex: 1, pointerEvents: "none" }}>
               <svg width="100%" height="100%" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ overflow: "visible" }}>
                 {/* Flexible dashed rope path curving from top-left to bottom-right */}
@@ -185,8 +185,17 @@ export default function Home() {
               </svg>
             </div>
 
+            {/* Connecting Flexible Rope (Mobile) */}
+            <div className="show-on-mobile" style={{ display: "none", width: "100%", height: "60px", alignItems: "center", justifyContent: "center", zIndex: 1, pointerEvents: "none", marginTop: "1rem", marginBottom: "0rem" }}>
+              <svg width="40" height="60" viewBox="0 0 40 60" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ overflow: "visible" }}>
+                {/* Wavy rope path */}
+                <path d="M 20,0 C 5,20 35,40 20,60" stroke="#16a34a" strokeWidth="2.5" strokeDasharray="5 5" strokeLinecap="round" />
+                <path d="M 12,50 L 20,60 L 28,50" stroke="#16a34a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+
             {/* Solution */}
-            <motion.div variants={fadeUp} className="responsive-child" style={{ flex: "1 1 400px", background: "#f0fdf4", borderRadius: "24px", padding: "2.5rem", border: "1px solid #dcfce7", boxShadow: "0 20px 40px rgba(22,163,74,0.05)", marginTop: "4rem" }}>
+            <motion.div variants={fadeUp} className="responsive-child pvs-card pvs-solution" style={{ flex: "1 1 400px", background: "#f0fdf4", borderRadius: "24px", border: "1px solid #dcfce7", boxShadow: "0 20px 40px rgba(22,163,74,0.05)" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "1.5rem" }}>
                 <div style={{ background: "#16a34a", color: "white", padding: "8px", borderRadius: "50%" }}>
                   <Leaf size={24} />
@@ -216,7 +225,7 @@ export default function Home() {
             <p style={{ color: "#555", fontSize: "1.1rem" }}>{t("feed_section_sub" as any)}</p>
           </motion.div>
 
-          <motion.div variants={stagger} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1.5rem", marginBottom: "3rem" }}>
+          <motion.div variants={stagger} className="mobile-swipe-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1.5rem", marginBottom: "3rem" }}>
             {feedItems.map((item, idx) => (
               <motion.div
                 key={idx}
@@ -241,9 +250,12 @@ export default function Home() {
           </motion.div>
 
           {/* Flagship Blend Banner */}
-          <motion.div variants={fadeUp} style={{ background: "linear-gradient(135deg, #0f5132 0%, #1a8b54 100%)", borderRadius: "24px", padding: "2.5rem", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "2rem", color: "white", boxShadow: "0 20px 40px rgba(15,81,50,0.3)" }}>
+          <motion.div className="flagship-banner" variants={fadeUp} style={{ background: "linear-gradient(135deg, #0f5132 0%, #1a8b54 100%)", borderRadius: "24px", padding: "2.5rem", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "2rem", color: "white", boxShadow: "0 20px 40px rgba(15,81,50,0.3)" }}>
             <div className="responsive-child" style={{ flex: "1 1 300px" }}>
-              <span style={{ display: "inline-block", background: "rgba(255,255,255,0.15)", color: "#fff", padding: "4px 12px", borderRadius: "20px", fontSize: "0.85rem", fontWeight: 600, marginBottom: "1rem", border: "1px solid rgba(255,255,255,0.2)" }}>⭐ {t("feed_flagship_sub" as any)}</span>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1rem", flexWrap: "wrap", gap: "10px" }}>
+                <span style={{ display: "inline-block", background: "rgba(255,255,255,0.15)", color: "#fff", padding: "4px 12px", borderRadius: "20px", fontSize: "0.85rem", fontWeight: 600, border: "1px solid rgba(255,255,255,0.2)" }}>⭐ {t("feed_flagship_sub" as any)}</span>
+                <span className="show-on-mobile" style={{ display: "none", background: "rgba(250,204,21,0.2)", color: "#facc15", padding: "4px 12px", borderRadius: "20px", fontSize: "0.85rem", fontWeight: 700, border: "1px solid rgba(250,204,21,0.3)" }}>🔥 5,000+ kcal/kg</span>
+              </div>
               <h3 style={{ fontSize: "2rem", fontWeight: 800, margin: "0 0 1rem 0", color: "white" }}>{t("feed_flagship_title" as any)}</h3>
               <p style={{ opacity: 0.9, fontSize: "0.95rem", lineHeight: 1.6, margin: 0, maxWidth: "450px", color: "white" }}>{t("feed_flagship_desc" as any)}</p>
             </div>
@@ -255,7 +267,7 @@ export default function Home() {
                 <div style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "0.9rem", fontWeight: 500 }}><ShieldCheck size={18} color="#60a5fa" /> 100% Sustainable Fuel</div>
               </div>
 
-              <div style={{ background: "rgba(0,0,0,0.2)", border: "2px solid rgba(255,255,255,0.2)", borderRadius: "16px", padding: "1.5rem", textAlign: "center", minWidth: "200px" }}>
+              <div className="hide-on-mobile" style={{ background: "rgba(0,0,0,0.2)", border: "2px solid rgba(255,255,255,0.2)", borderRadius: "16px", padding: "1.5rem", textAlign: "center", minWidth: "200px" }}>
                 <div style={{ fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "1px", opacity: 0.8, marginBottom: "8px" }}>TARGET GCV</div>
                 <div style={{ fontSize: "2.5rem", fontWeight: 900, color: "#facc15", lineHeight: 1 }}>5,000+</div>
                 <div style={{ fontSize: "1rem", fontWeight: 600, marginTop: "4px" }}>🔥 kcal/kg</div>
@@ -273,10 +285,19 @@ export default function Home() {
         <div style={{ position: "absolute", top: "-20px", left: "-50px", transform: "rotate(135deg)", opacity: 0.15, filter: "blur(8px)", zIndex: 1 }}>
           <Leaf size={300} color="#16a34a" strokeWidth={1} fill="#16a34a" />
         </div>
-        <div style={{ position: "absolute", top: "20%", right: "-80px", transform: "rotate(-45deg)", opacity: 0.15, filter: "blur(10px)", zIndex: 1 }}>
+        <div style={{ position: "absolute", top: "15%", right: "-80px", transform: "rotate(-45deg)", opacity: 0.12, filter: "blur(10px)", zIndex: 1 }}>
           <Leaf size={250} color="#15803d" strokeWidth={1} fill="#15803d" />
         </div>
-        <div style={{ position: "absolute", bottom: "-50px", left: "15%", transform: "rotate(45deg)", opacity: 0.1, filter: "blur(12px)", zIndex: 1 }}>
+        <div style={{ position: "absolute", top: "35%", left: "8%", transform: "rotate(60deg)", opacity: 0.1, filter: "blur(14px)", zIndex: 1 }}>
+          <Leaf size={400} color="#4ade80" strokeWidth={1} fill="#4ade80" />
+        </div>
+        <div style={{ position: "absolute", top: "55%", right: "5%", transform: "rotate(-120deg)", opacity: 0.08, filter: "blur(18px)", zIndex: 1 }}>
+          <Leaf size={450} color="#166534" strokeWidth={1} fill="#166534" />
+        </div>
+        <div style={{ position: "absolute", top: "75%", left: "-60px", transform: "rotate(25deg)", opacity: 0.15, filter: "blur(10px)", zIndex: 1 }}>
+          <Leaf size={280} color="#22c55e" strokeWidth={1} fill="#22c55e" />
+        </div>
+        <div style={{ position: "absolute", bottom: "-50px", right: "20%", transform: "rotate(-75deg)", opacity: 0.1, filter: "blur(12px)", zIndex: 1 }}>
           <Leaf size={350} color="#4ade80" strokeWidth={1} fill="#4ade80" />
         </div>
 
@@ -294,75 +315,99 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <motion.div variants={fadeUp} style={{ background: "#fff", borderRadius: "24px", overflowX: "auto", boxShadow: "0 20px 40px rgba(0,0,0,0.06)", border: "1px solid #eaeaea", maxWidth: "1000px", margin: "0 auto" }}>
-            <div style={{ minWidth: "700px" }}>
-            {/* Header Row */}
-            <div style={{ display: "flex", background: "#0c5836", color: "#fff", fontWeight: 700, fontSize: "1.1rem" }}>
-              <div style={{ flex: "1.2", padding: "1.5rem", display: "flex", alignItems: "center", gap: "10px" }}>
-                <FlaskConical size={20} /> {t("spec_param" as any)}
-              </div>
-              <div style={{ flex: "1", padding: "1.5rem", borderLeft: "1px solid rgba(255,255,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                {t("spec_standard" as any)}
-              </div>
-              <div style={{ flex: "1.2", padding: "1.5rem", background: "#116b43", display: "flex", alignItems: "center", justifyContent: "center", gap: "10px" }}>
-                <Leaf size={20} /> {t("spec_premium" as any)}
-              </div>
-            </div>
-
-            {/* Body Rows */}
+          <motion.div className="tech-spec-cards-container" variants={fadeUp} style={{ display: "flex", flexDirection: "column", gap: "1.5rem", width: "100%", margin: "0 auto" }}>
             {[
               { 
-                icon: <Flame color="#16a34a" size={20} />, iconBg: "#dcfce7", feature: t("spec_gcv" as any), 
+                icon: <Flame color="#ea580c" size={24} />, iconBg: "#ffedd5", feature: t("spec_gcv" as any), subTitle: "Gross Calorific Value",
                 normal: t("spec_gcv_std" as any), 
-                premiumIcon: <Flame color="#ea580c" size={24} />, premiumTitle: "5,000+ kcal/kg", premiumDesc: t("spec_gcv_prem" as any)
+                premiumTitle: "5,000+ kcal/kg", premiumDesc: t("spec_gcv_prem" as any)
               },
               { 
-                icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="#16a34a"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>, iconBg: "#dcfce7", feature: t("spec_moisture" as any), 
+                icon: <Droplet color="#16a34a" size={24} />, iconBg: "#dcfce7", feature: t("spec_moisture" as any), subTitle: "",
                 normal: t("spec_moisture_std" as any), 
-                premiumIcon: <svg width="24" height="24" viewBox="0 0 24 24" fill="#16a34a"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>, premiumTitle: t("spec_moisture_prem" as any), premiumDesc: t("spec_moisture_prem" as any)
+                premiumTitle: t("spec_moisture_prem" as any), premiumDesc: t("spec_moisture_prem" as any)
               },
               { 
-                icon: <Sun color="#16a34a" size={20} />, iconBg: "#dcfce7", feature: t("spec_ash" as any), 
-                normal: `${t("spec_ash_std" as any)} | ${t("spec_ash_std" as any)}`, 
-                premiumIcon: <ShieldCheck color="#16a34a" size={24} />, premiumTitle: t("spec_ash_prem" as any), premiumDesc: t("spec_ash_prem" as any)
+                icon: <Sun color="#facc15" size={24} />, iconBg: "#fef9c3", feature: t("spec_ash" as any), subTitle: "",
+                normal: t("spec_ash_std" as any), 
+                premiumTitle: t("spec_ash_prem" as any), premiumDesc: t("spec_ash_prem" as any)
               },
               { 
-                icon: <Leaf color="#16a34a" size={20} />, iconBg: "#dcfce7", feature: "Smoke & Dust", 
+                icon: <Cloud color="#14b8a6" size={24} />, iconBg: "#ccfbf1", feature: "Smoke & Dust", subTitle: "",
                 normal: "High Volume", 
-                premiumIcon: <ShieldCheck color="#16a34a" size={24} />, premiumTitle: "Minimal Emissions", premiumDesc: "Clean and Eco-friendly"
+                premiumTitle: "Minimal Emissions", premiumDesc: "Clean and Eco-friendly"
               },
               { 
-                icon: <ShieldCheck color="#16a34a" size={20} />, iconBg: "#dcfce7", feature: t("spec_quality" as any), 
+                icon: <ShieldCheck color="#3b82f6" size={24} />, iconBg: "#dbeafe", feature: t("spec_quality" as any), subTitle: "",
                 normal: t("spec_quality_std" as any), 
-                premiumIcon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>, premiumTitle: t("spec_quality_prem" as any), premiumDesc: "Better durability and reliable operation"
+                premiumTitle: t("spec_quality_prem" as any), premiumDesc: "Better durability and reliable operation"
+              },
+              {
+                icon: <ShieldCheck color="#16a34a" size={24} />, iconBg: "#dcfce7", feature: "Consistent Quality. Proven Performance.", subTitle: "Every batch is tested, verified & delivered to power your operations smoothly.",
+                normal: "", premiumTitle: "", premiumDesc: "", isFull: true
               }
-            ].map((row, idx) => (
-              <div key={idx} style={{ display: "flex", borderBottom: idx !== 4 ? "1px solid #eaeaea" : "none", color: "#333" }}>
-                <div style={{ flex: "1.2", padding: "1.5rem", display: "flex", alignItems: "center", gap: "16px", fontWeight: 600 }}>
-                  <div style={{ width: "40px", height: "40px", borderRadius: "50%", background: row.iconBg, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    {row.icon}
+            ].map((row, idx, arr) => (
+              <div key={idx} style={{ display: "contents" }}>
+                {row.isFull ? (
+                  <div className="tech-spec-full-card" style={{ gridColumn: "1 / -1", background: "#f0fdf4", borderRadius: "20px", padding: "1.5rem 2rem", display: "flex", alignItems: "center", gap: "1.5rem", border: "1px solid #bbf7d0", boxShadow: "0 10px 30px rgba(0,0,0,0.1)", width: "100%", alignSelf: "center", marginTop: "0.5rem" }}>
+                    <div style={{ width: "60px", height: "60px", borderRadius: "50%", background: "#22c55e", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, boxShadow: "0 4px 10px rgba(34,197,94,0.3)" }}>
+                      <ShieldCheck color="#fff" size={30} />
+                    </div>
+                    <div>
+                      <div style={{ fontWeight: 800, color: "#166534", fontSize: "1.3rem", marginBottom: "4px" }}>{row.feature}</div>
+                      <div style={{ color: "#15803d", fontSize: "1rem" }}>{row.subTitle}</div>
+                    </div>
                   </div>
-                  {row.feature}
-                </div>
-                <div style={{ flex: "1", padding: "1.5rem", borderLeft: "1px solid #eaeaea", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", color: "#666", fontWeight: 500 }}>
-                  {row.normal}
-                </div>
-                <div style={{ flex: "1.2", padding: "1.5rem", background: "#f0fdf4", borderLeft: "1px solid #dcfce7", display: "flex", alignItems: "center", gap: "16px" }}>
-                  <div style={{ width: "48px", height: "48px", borderRadius: "50%", background: "#dcfce7", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    {row.premiumIcon}
+                ) : (
+                  <div className={`tech-spec-card ${idx % 2 === 0 ? 'timeline-left' : 'timeline-right'}`} style={{ background: "#fff", borderRadius: "20px", padding: "1.5rem", boxShadow: "0 10px 30px rgba(0,0,0,0.1)", border: "1px solid #eaeaea", display: "flex", flexDirection: "column", gap: "1rem" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                      <div style={{ width: "48px", height: "48px", borderRadius: "50%", background: row.iconBg, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                        {row.icon}
+                      </div>
+                      <div>
+                        <div style={{ fontWeight: 800, color: "#1a1a1a", fontSize: "1.1rem" }}>{row.feature}</div>
+                        {row.subTitle && <div style={{ fontSize: "0.85rem", color: "#666", marginTop: "2px" }}>{row.subTitle}</div>}
+                      </div>
+                    </div>
+                    <div className="spec-card-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.5rem", marginTop: "0.5rem", background: "#f9fafb", borderRadius: "12px", padding: "0.5rem", alignItems: "stretch" }}>
+                      <div style={{ padding: "1rem", display: "flex", flexDirection: "column", justifyContent: "center", height: "100%" }}>
+                        <div style={{ fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "1px", color: "#888", fontWeight: 700, marginBottom: "8px" }}>STANDARD</div>
+                        <div style={{ fontSize: "0.95rem", color: "#444", fontWeight: 500 }}>{row.normal}</div>
+                      </div>
+                      <div style={{ background: "#f0fdf4", border: "1px solid #dcfce7", borderRadius: "12px", padding: "1rem", display: "flex", flexDirection: "column", justifyContent: "center", position: "relative", height: "100%" }}>
+                        <div style={{ fontSize: "0.65rem", background: "#dcfce7", color: "#166534", padding: "2px 6px", borderRadius: "10px", fontWeight: 800, display: "inline-block", width: "max-content", marginBottom: "8px" }}>MAHAURJA ADVANTAGE</div>
+                        <div style={{ fontWeight: 800, color: "#16a34a", fontSize: "1.15rem", lineHeight: 1.2 }}>{row.premiumTitle}</div>
+                        <div style={{ fontSize: "0.8rem", color: "#4b5563", marginTop: "6px" }}>{row.premiumDesc}</div>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <div style={{ fontWeight: 800, color: "#115e3b", fontSize: "1.1rem" }}>{row.premiumTitle}</div>
-                    <div style={{ fontSize: "0.85rem", color: "#16a34a", marginTop: "4px", fontWeight: 500 }}>{row.premiumDesc}</div>
+                )}
+                
+                {/* Connecting Rope Arrow (Mobile Only) */}
+                {idx < arr.length - 2 && (
+                  <div className="show-on-mobile" style={{ display: "none", width: "100%", height: "60px", alignItems: "center", justifyContent: "center", pointerEvents: "none", zIndex: 1, marginTop: "-5px", marginBottom: "-5px" }}>
+                    <svg width="40" height="60" viewBox="0 0 40 60" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ overflow: "visible", transform: idx % 2 === 0 ? "scaleX(1)" : "scaleX(-1)" }}>
+                      <path d="M 20,0 C 5,20 35,40 20,60" stroke="#16a34a" strokeWidth="2.5" strokeDasharray="5 5" strokeLinecap="round" />
+                      <path d="M 12,50 L 20,60 L 28,50" stroke="#16a34a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
                   </div>
-                </div>
+                )}
+                
+                {/* Connecting Curved Rope Arrow (Desktop Only) */}
+                {idx < arr.length - 2 && !row.isFull && (
+                  <div className="hide-on-mobile" style={{ display: "flex", width: "100%", height: "60px", alignItems: "center", justifyContent: "center", pointerEvents: "none", zIndex: 1, marginTop: "-10px", marginBottom: "-10px" }}>
+                    <svg width="150" height="60" viewBox="0 0 150 60" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ overflow: "visible", transform: idx % 2 === 0 ? "scaleX(1)" : "scaleX(-1)" }}>
+                      <path d="M 0,0 C 0,30 150,30 150,60" stroke="#16a34a" strokeWidth="3" strokeDasharray="6 6" strokeLinecap="round" />
+                      <path d="M 140,50 L 150,60 L 160,50" stroke="#16a34a" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                )}
               </div>
             ))}
-            </div>
           </motion.div>
 
           {/* Bottom Badges */}
-          <motion.div variants={fadeUp} style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "1.5rem", marginTop: "2rem", maxWidth: "1000px", margin: "2rem auto 0" }}>
+          <motion.div className="badges-container" variants={fadeUp} style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "1.5rem", marginTop: "2rem", maxWidth: "1000px", margin: "2rem auto 0" }}>
             {[
               { icon: <Leaf color="#fff" size={18} />, bg: "#16a34a", title: "More Energy", desc: "Better energy generation through high calorific value" },
               { icon: <span style={{ fontSize: "14px", fontWeight: 800, color: "#fff" }}>CO₂</span>, bg: "#0f5132", title: "Low Emissions", desc: "Eco-friendly and clean operation" },
@@ -428,7 +473,7 @@ export default function Home() {
             </div>
           </motion.div>
 
-          <motion.div variants={fadeUp} style={{ background: "#fff", borderRadius: "24px", padding: "2rem", boxShadow: "0 20px 50px rgba(0,0,0,0.06)", border: "1px solid #eaeaea", display: "flex", gap: "2rem", flexWrap: "wrap", maxWidth: "1200px", margin: "0 auto" }}>
+          <motion.div variants={fadeUp} style={{ background: "linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%)", borderRadius: "24px", padding: "2rem", boxShadow: "0 20px 50px rgba(22,163,74,0.08)", border: "1px solid #dcfce7", display: "flex", gap: "2rem", flexWrap: "wrap", maxWidth: "1200px", margin: "0 auto" }}>
             
             {/* Left Column (Inputs) */}
             <div style={{ flex: "1 1 450px", display: "flex", flexDirection: "column", gap: "2rem" }}>
@@ -478,7 +523,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div style={{ background: "#fafafa", border: "1px dashed #d4d4d8", borderRadius: "16px", padding: "1.5rem", display: "flex", gap: "1rem", alignItems: "center" }}>
+              <div className="hide-on-mobile" style={{ background: "#fafafa", border: "1px dashed #d4d4d8", borderRadius: "16px", padding: "1.5rem", display: "flex", gap: "1rem", alignItems: "center" }}>
                 <div style={{ width: "40px", height: "40px", background: "#f0fdf4", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                   <TrendingDown size={20} color="#16a34a" />
                 </div>
@@ -488,13 +533,13 @@ export default function Home() {
                 </div>
               </div>
 
-              <div style={{ background: "#f0fdf4", padding: "1rem", borderRadius: "12px", display: "flex", alignItems: "center", gap: "10px", color: "#166534", fontSize: "0.85rem", fontWeight: 500, marginTop: "auto" }}>
+              <div className="hide-on-mobile" style={{ background: "#f0fdf4", padding: "1rem", borderRadius: "12px", display: "flex", alignItems: "center", gap: "10px", color: "#166534", fontSize: "0.85rem", fontWeight: 500, marginTop: "auto" }}>
                 <Clock size={16} /> Adjust the slider or select a fuel to see the estimate.
               </div>
             </div>
 
             {/* Right Column (Outputs) */}
-            <div style={{ flex: "1 1 350px", display: "flex", flexDirection: "column", gap: "1rem" }}>
+            <div className="roi-outputs" style={{ flex: "1 1 350px", display: "flex", flexDirection: "column", gap: "1rem" }}>
               
               <div style={{ background: "linear-gradient(135deg, #0f5132 0%, #16a34a 100%)", borderRadius: "20px", padding: "2rem", color: "#fff", textAlign: "center", position: "relative", overflow: "hidden", flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
                 <Leaf size={150} color="#fff" style={{ position: "absolute", right: "-30px", bottom: "-30px", opacity: 0.1, transform: "rotate(-15deg)" }} />

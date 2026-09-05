@@ -2,7 +2,7 @@
 
 import { useTranslation } from "@/hooks/useTranslation";
 import Link from "next/link";
-
+import { Phone, MessageCircle, Mail, MapPin } from "lucide-react";
 export function Footer() {
   const { t } = useTranslation();
 
@@ -37,13 +37,11 @@ export function Footer() {
             </div>
             
             <ul className="flex flex-col space-y-4 text-[13px] text-slate-300">
-              <li><Link href="/about" className="hover:text-white transition-colors">About</Link></li>
-              <li><Link href="/services" className="hover:text-white transition-colors">Products</Link></li>
+              <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
+              <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
+              <li><Link href="/services" className="hover:text-white transition-colors">Services & Technology</Link></li>
               <li><Link href="/faq" className="hover:text-white transition-colors">FAQ</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Shipping and Delivery Policy</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Refund Return Policy</Link></li>
-              <li><Link href="#" className="hover:text-white transition-colors">Terms and Conditions</Link></li>
+              <li><Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
             </ul>
           </div>
           
@@ -57,21 +55,33 @@ export function Footer() {
               <div className="h-[1px] bg-slate-700 flex-1"></div>
             </div>
             
-            <div className="flex flex-col space-y-4 text-[13px] text-slate-300 leading-relaxed">
-              <div>
-                <span className="text-slate-300">Phone: </span>
-                <a href="tel:+919340212401" className="hover:text-white transition-colors">+91 9340 212 401</a>
+            <div className="flex flex-col space-y-6 text-[13px] text-slate-300 leading-relaxed">
+              <div className="flex flex-col gap-2">
+                <span className="text-slate-400">Phone & WhatsApp:</span>
+                <div className="flex flex-wrap gap-3">
+                  <a href="tel:+919340212401" className="flex items-center gap-1.5 text-[#4ade80] hover:text-white transition-colors bg-[#4ade80]/10 px-3 py-1.5 rounded-lg border border-[#4ade80]/20 font-medium">
+                    <Phone size={14} /> Call
+                  </a>
+                  <a href="https://wa.me/919340212401" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-[#22c55e] hover:text-white transition-colors bg-[#22c55e]/10 px-3 py-1.5 rounded-lg border border-[#22c55e]/20 font-medium">
+                    <MessageCircle size={14} /> WhatsApp
+                  </a>
+                </div>
               </div>
-              <div>
-                <span className="text-slate-300">Email: </span>
-                <a href="mailto:harsh@bharatindustrialrenewables.com" className="hover:text-white transition-colors">harsh@bharatindustrialrenewables.com</a>
+              <div className="flex flex-col gap-2">
+                <span className="text-slate-400">Email:</span>
+                <a href="mailto:harsh@bharatindustrialrenewables.com" className="flex items-center gap-2 text-slate-300 hover:text-[#4ade80] transition-colors underline underline-offset-4 decoration-slate-700 hover:decoration-[#4ade80]">
+                  <Mail size={16} /> harsh@bharatindustrialrenewables.com
+                </a>
               </div>
-              <div>
-                <span className="text-slate-300">Address: </span>
-                <a href="https://maps.app.goo.gl/YG5JFpEyDqnC76A59" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                  288, Lokmanya Tilak Path, Ujjain Road,<br/>
-                  Railway Crossing ke paas, Badnagar,<br/>
-                  Jila Ujjain (M.P.) 456771. India
+              <div className="flex flex-col gap-2">
+                <span className="text-slate-400">Address:</span>
+                <a href="https://maps.app.goo.gl/YG5JFpEyDqnC76A59" target="_blank" rel="noopener noreferrer" className="flex items-start gap-2 text-slate-300 hover:text-[#4ade80] transition-colors group">
+                  <MapPin size={18} className="mt-1 flex-shrink-0 text-slate-500 group-hover:text-[#4ade80] transition-colors" />
+                  <span className="underline underline-offset-4 decoration-slate-700 group-hover:decoration-[#4ade80] transition-colors">
+                    288, Lokmanya Tilak Path, Ujjain Road,<br/>
+                    Railway Crossing ke paas, Badnagar,<br/>
+                    Jila Ujjain (M.P.) 456771. India
+                  </span>
                 </a>
               </div>
             </div>

@@ -120,7 +120,7 @@ h1, h2, h3, h4 {
   color: #fff;
 }
 .navbar.transparent .nav-brand img {
-  filter: brightness(0) invert(1);
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.7)) drop-shadow(0 0 24px rgba(255, 255, 255, 0.4));
 }
 
 .nav-brand {
@@ -527,8 +527,13 @@ th, td {
 }
 
 tr:hover td {
-  background: #f9fafb;
+  background-color: #f9fafb;
 }
+
+/* Problem vs Solution Section Spacing */
+.pvs-container { gap: 5rem; }
+.pvs-card { padding: 2.5rem; }
+.pvs-solution { margin-top: 4rem; }
 
 th {
   background: var(--primary-color);
@@ -914,7 +919,29 @@ footer {
   transition: all 0.3s ease;
 }
 .fuel-selector button:hover {
-  background: #f8fafc;
+  background: #f9fafb;
+}
+
+/* Tech Spec Card Hover Effects */
+.tech-spec-card, .tech-spec-full-card {
+  transition: all 0.3s ease;
+}
+.tech-spec-card:hover, .tech-spec-full-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(22,163,74,0.12) !important;
+  border-color: rgba(22, 163, 74, 0.5) !important;
+}
+
+/* Timeline Layout for Tech Specs (Desktop) */
+@media (min-width: 769px) {
+  .tech-spec-card.timeline-left {
+    align-self: flex-start;
+    width: 70%;
+  }
+  .tech-spec-card.timeline-right {
+    align-self: flex-end;
+    width: 70%;
+  }
 }
 .fuel-selector button.active {
   background: var(--primary-color);
@@ -1371,7 +1398,9 @@ footer {
   .scale-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 480px) {
-  .scale-grid { grid-template-columns: 1fr; }
+  .scale-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .scale-card { padding: 1.5rem 1.5rem; }
+  .scale-icon { margin-bottom: 0.75rem; transform: scale(1); }
 }
 
 /* ═══════════════════════════════════════════════════════════════════

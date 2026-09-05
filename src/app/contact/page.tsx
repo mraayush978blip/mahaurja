@@ -3,6 +3,7 @@
 import { useTranslation } from "@/hooks/useTranslation";
 import { User, Phone, Mail, MapPin, Send, Leaf, Building, Factory, Flame, Clock, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const fadeUpVariant = {
   hidden: { opacity: 0, y: 30 },
@@ -12,8 +13,40 @@ const fadeUpVariant = {
 export default function Contact() {
   const { t } = useTranslation();
 
+  const [inquiryType, setInquiryType] = useState("company");
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    phone: "",
+    email: "",
+    boiler: "",
+    size: "",
+    gcv: "",
+    info: ""
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    let text = "";
+    if (inquiryType === "company") {
+      text = `*New Company Inquiry*\n\n*Name:* ${formData.name}\n*Company:* ${formData.company}\n*Phone:* ${formData.phone}\n*Email:* ${formData.email}\n*Boiler Type:* ${formData.boiler || 'N/A'}\n*Pellet Size:* ${formData.size || 'N/A'}\n*Target GCV:* ${formData.gcv || 'N/A'}\n*Additional Info:* ${formData.info || 'None'}`;
+    } else if (inquiryType === "individual") {
+      text = `*New Individual Customer Inquiry*\n\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*Email:* ${formData.email}\n*Requirements:* ${formData.info || 'None'}`;
+    } else {
+      text = `*New General Enquiry*\n\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*Email:* ${formData.email}\n*Message:* ${formData.info || 'None'}`;
+    }
+
+    const encodedText = encodeURIComponent(text);
+    window.open(`https://wa.me/919340212401?text=${encodedText}`, "_blank");
+  };
+
   return (
-    <main style={{ backgroundColor: "#f8fafc", paddingBottom: "6rem", minHeight: "100vh" }}>
+    <main className="contact-main-wrapper" style={{ backgroundColor: "#f8fafc", paddingBottom: "6rem", minHeight: "100vh" }}>
       
       {/* HEADER SECTION */}
       <section style={{ padding: "8rem 0 3rem 0", textAlign: "center" }}>
@@ -33,9 +66,10 @@ export default function Contact() {
       </section>
 
       {/* MAIN CARD */}
-      <section style={{ padding: "0 2rem" }}>
+      <section className="contact-section-wrapper" style={{ padding: "0 2rem" }}>
         <div className="container responsive-container-padding" style={{ maxWidth: "1400px", margin: "0 auto", padding: 0 }}>
           <motion.div 
+            className="contact-main-card"
             style={{ 
               background: "#ffffff", 
               borderRadius: "24px", 
@@ -154,9 +188,30 @@ export default function Contact() {
               </div>
               
               <form 
-                onSubmit={(e) => { e.preventDefault(); alert('Your information has been successfully sent!'); }} 
+                onSubmit={handleSubmit} 
                 style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
               >
+                {/* INQUIRY TYPE DROPDOWN */}
+                <div style={{ marginBottom: "0.5rem" }}>
+                  <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.85rem", fontWeight: 600, color: "#374151" }}>
+                    Inquiry Type <span style={{ color: "#ef4444" }}>*</span>
+                  </label>
+                  <div style={{ position: "relative" }}>
+                    <select 
+                      value={inquiryType} 
+                      onChange={(e) => setInquiryType(e.target.value)}
+                      style={{ width: "100%", padding: "1rem 1rem", border: "2px solid #16a34a", borderRadius: "8px", background: "#f0fdf4", fontFamily: "inherit", fontSize: "1rem", fontWeight: 600, color: "#166534", outline: "none", transition: "all 0.2s", appearance: "none", cursor: "pointer" }}
+                    >
+                      <option value="company">Industrial / Company Purchase</option>
+                      <option value="individual">Individual Customer Purchase</option>
+                      <option value="general">General Enquiry / Other</option>
+                    </select>
+                    <div style={{ position: "absolute", right: "16px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "#166534" }}>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </div>
+                  </div>
+                </div>
+
                 <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
                   <div style={{ flex: "1 1 45%" }}>
                     <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.85rem", fontWeight: 600, color: "#374151" }}>
@@ -166,20 +221,22 @@ export default function Contact() {
                       <div style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "#9ca3af" }}>
                         <User size={18} />
                       </div>
-                      <input type="text" placeholder="Rajesh Kumar" required style={{ width: "100%", padding: "0.8rem 1rem 0.8rem 2.5rem", border: "1px solid #d1d5db", borderRadius: "8px", background: "#ffffff", fontFamily: "inherit", fontSize: "0.95rem", outline: "none", transition: "all 0.2s" }} onFocus={(e) => { e.target.style.borderColor = "#16a34a"; e.target.style.boxShadow = "0 0 0 3px rgba(22,163,74,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; e.target.style.boxShadow = "none"; }} />
+                      <input name="name" value={formData.name} onChange={handleChange} type="text" placeholder="Rajesh Kumar" required style={{ width: "100%", padding: "0.8rem 1rem 0.8rem 2.5rem", border: "1px solid #d1d5db", borderRadius: "8px", background: "#ffffff", fontFamily: "inherit", fontSize: "0.95rem", outline: "none", transition: "all 0.2s" }} onFocus={(e) => { e.target.style.borderColor = "#16a34a"; e.target.style.boxShadow = "0 0 0 3px rgba(22,163,74,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; e.target.style.boxShadow = "none"; }} />
                     </div>
                   </div>
-                  <div style={{ flex: "1 1 45%" }}>
-                    <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.85rem", fontWeight: 600, color: "#374151" }}>
-                      {t("rfq_company" as any)} <span style={{ color: "#ef4444" }}>*</span>
-                    </label>
-                    <div style={{ position: "relative" }}>
-                      <div style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "#9ca3af" }}>
-                        <Building size={18} />
+                  {inquiryType === "company" && (
+                    <div style={{ flex: "1 1 45%" }}>
+                      <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.85rem", fontWeight: 600, color: "#374151" }}>
+                        {t("rfq_company" as any)} <span style={{ color: "#ef4444" }}>*</span>
+                      </label>
+                      <div style={{ position: "relative" }}>
+                        <div style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "#9ca3af" }}>
+                          <Building size={18} />
+                        </div>
+                        <input name="company" value={formData.company} onChange={handleChange} type="text" placeholder="ABC Steel Industries" required style={{ width: "100%", padding: "0.8rem 1rem 0.8rem 2.5rem", border: "1px solid #d1d5db", borderRadius: "8px", background: "#ffffff", fontFamily: "inherit", fontSize: "0.95rem", outline: "none", transition: "all 0.2s" }} onFocus={(e) => { e.target.style.borderColor = "#16a34a"; e.target.style.boxShadow = "0 0 0 3px rgba(22,163,74,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; e.target.style.boxShadow = "none"; }} />
                       </div>
-                      <input type="text" placeholder="ABC Steel Industries" required style={{ width: "100%", padding: "0.8rem 1rem 0.8rem 2.5rem", border: "1px solid #d1d5db", borderRadius: "8px", background: "#ffffff", fontFamily: "inherit", fontSize: "0.95rem", outline: "none", transition: "all 0.2s" }} onFocus={(e) => { e.target.style.borderColor = "#16a34a"; e.target.style.boxShadow = "0 0 0 3px rgba(22,163,74,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; e.target.style.boxShadow = "none"; }} />
                     </div>
-                  </div>
+                  )}
                 </div>
                 
                 <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
@@ -191,7 +248,7 @@ export default function Contact() {
                       <div style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "#9ca3af" }}>
                         <Phone size={18} />
                       </div>
-                      <input type="tel" placeholder="+91 98765 43210" required style={{ width: "100%", padding: "0.8rem 1rem 0.8rem 2.5rem", border: "1px solid #d1d5db", borderRadius: "8px", background: "#ffffff", fontFamily: "inherit", fontSize: "0.95rem", outline: "none", transition: "all 0.2s" }} onFocus={(e) => { e.target.style.borderColor = "#16a34a"; e.target.style.boxShadow = "0 0 0 3px rgba(22,163,74,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; e.target.style.boxShadow = "none"; }} />
+                      <input name="phone" value={formData.phone} onChange={handleChange} type="tel" placeholder="+91 98765 43210" required style={{ width: "100%", padding: "0.8rem 1rem 0.8rem 2.5rem", border: "1px solid #d1d5db", borderRadius: "8px", background: "#ffffff", fontFamily: "inherit", fontSize: "0.95rem", outline: "none", transition: "all 0.2s" }} onFocus={(e) => { e.target.style.borderColor = "#16a34a"; e.target.style.boxShadow = "0 0 0 3px rgba(22,163,74,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; e.target.style.boxShadow = "none"; }} />
                     </div>
                   </div>
                   <div style={{ flex: "1 1 45%" }}>
@@ -202,63 +259,66 @@ export default function Contact() {
                       <div style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "#9ca3af" }}>
                         <Mail size={18} />
                       </div>
-                      <input type="email" placeholder="rajesh@company.com" required style={{ width: "100%", padding: "0.8rem 1rem 0.8rem 2.5rem", border: "1px solid #d1d5db", borderRadius: "8px", background: "#ffffff", fontFamily: "inherit", fontSize: "0.95rem", outline: "none", transition: "all 0.2s" }} onFocus={(e) => { e.target.style.borderColor = "#16a34a"; e.target.style.boxShadow = "0 0 0 3px rgba(22,163,74,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; e.target.style.boxShadow = "none"; }} />
+                      <input name="email" value={formData.email} onChange={handleChange} type="email" placeholder="rajesh@example.com" required style={{ width: "100%", padding: "0.8rem 1rem 0.8rem 2.5rem", border: "1px solid #d1d5db", borderRadius: "8px", background: "#ffffff", fontFamily: "inherit", fontSize: "0.95rem", outline: "none", transition: "all 0.2s" }} onFocus={(e) => { e.target.style.borderColor = "#16a34a"; e.target.style.boxShadow = "0 0 0 3px rgba(22,163,74,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; e.target.style.boxShadow = "none"; }} />
                     </div>
                   </div>
                 </div>
                 
-                <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
-                  <div style={{ flex: "1 1 45%" }}>
-                    <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.85rem", fontWeight: 600, color: "#374151" }}>
-                      {t("rfq_boiler" as any)}
-                    </label>
-                    <div style={{ position: "relative" }}>
-                      <div style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "#9ca3af" }}>
-                        <Factory size={18} />
+                {inquiryType === "company" && (
+                  <>
+                    <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
+                      <div style={{ flex: "1 1 45%" }}>
+                        <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.85rem", fontWeight: 600, color: "#374151" }}>
+                          {t("rfq_boiler" as any)}
+                        </label>
+                        <div style={{ position: "relative" }}>
+                          <div style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "#9ca3af" }}>
+                            <Factory size={18} />
+                          </div>
+                          <input name="boiler" value={formData.boiler} onChange={handleChange} type="text" placeholder="e.g. 5 TPH Fire Tube Boiler" style={{ width: "100%", padding: "0.8rem 1rem 0.8rem 2.5rem", border: "1px solid #d1d5db", borderRadius: "8px", background: "#ffffff", fontFamily: "inherit", fontSize: "0.95rem", outline: "none", transition: "all 0.2s" }} onFocus={(e) => { e.target.style.borderColor = "#16a34a"; e.target.style.boxShadow = "0 0 0 3px rgba(22,163,74,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; e.target.style.boxShadow = "none"; }} />
+                        </div>
                       </div>
-                      <input type="text" placeholder="e.g. 5 TPH Fire Tube Boiler" style={{ width: "100%", padding: "0.8rem 1rem 0.8rem 2.5rem", border: "1px solid #d1d5db", borderRadius: "8px", background: "#ffffff", fontFamily: "inherit", fontSize: "0.95rem", outline: "none", transition: "all 0.2s" }} onFocus={(e) => { e.target.style.borderColor = "#16a34a"; e.target.style.boxShadow = "0 0 0 3px rgba(22,163,74,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; e.target.style.boxShadow = "none"; }} />
+                      <div style={{ flex: "1 1 45%" }}>
+                        <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.85rem", fontWeight: 600, color: "#374151" }}>
+                          {t("rfq_size" as any)}
+                        </label>
+                        <div style={{ position: "relative" }}>
+                          <div style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "#9ca3af", pointerEvents: "none" }}>
+                            <Clock size={18} />
+                          </div>
+                          <select name="size" value={formData.size} onChange={handleChange} style={{ width: "100%", padding: "0.8rem 1rem 0.8rem 2.5rem", border: "1px solid #d1d5db", borderRadius: "8px", background: "#ffffff", fontFamily: "inherit", fontSize: "0.95rem", outline: "none", transition: "all 0.2s", appearance: "none" }} onFocus={(e) => { e.target.style.borderColor = "#16a34a"; e.target.style.boxShadow = "0 0 0 3px rgba(22,163,74,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; e.target.style.boxShadow = "none"; }}>
+                            <option value="">Select size</option>
+                            <option value="6mm">6mm - Industrial Use</option>
+                            <option value="8mm">8mm - High Efficiency</option>
+                            <option value="10mm">10mm - Large Plants</option>
+                            <option value="custom">Custom Size</option>
+                          </select>
+                          <div style={{ position: "absolute", right: "12px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none" }}>
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <div style={{ flex: "1 1 45%" }}>
-                    <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.85rem", fontWeight: 600, color: "#374151" }}>
-                      {t("rfq_size" as any)}
-                    </label>
-                    <div style={{ position: "relative" }}>
-                      <div style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "#9ca3af", pointerEvents: "none" }}>
-                        <Clock size={18} />
-                      </div>
-                      <select style={{ width: "100%", padding: "0.8rem 1rem 0.8rem 2.5rem", border: "1px solid #d1d5db", borderRadius: "8px", background: "#ffffff", fontFamily: "inherit", fontSize: "0.95rem", outline: "none", transition: "all 0.2s", appearance: "none" }} onFocus={(e) => { e.target.style.borderColor = "#16a34a"; e.target.style.boxShadow = "0 0 0 3px rgba(22,163,74,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; e.target.style.boxShadow = "none"; }}>
-                        <option value="">Select size</option>
-                        <option value="6mm">6mm - Industrial Use</option>
-                        <option value="8mm">8mm - High Efficiency</option>
-                        <option value="10mm">10mm - Large Plants</option>
-                        <option value="custom">Custom Size</option>
-                      </select>
-                      {/* Custom dropdown arrow */}
-                      <div style={{ position: "absolute", right: "12px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none" }}>
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+
+                    <div>
+                      <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.85rem", fontWeight: 600, color: "#374151" }}>
+                        Target GCV (kcal/kg)
+                      </label>
+                      <div style={{ position: "relative" }}>
+                        <div style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "#9ca3af" }}>
+                          <Flame size={18} />
+                        </div>
+                        <input name="gcv" value={formData.gcv} onChange={handleChange} type="text" placeholder="e.g. 4500 kcal/kg" style={{ width: "100%", padding: "0.8rem 1rem 0.8rem 2.5rem", border: "1px solid #d1d5db", borderRadius: "8px", background: "#ffffff", fontFamily: "inherit", fontSize: "0.95rem", outline: "none", transition: "all 0.2s" }} onFocus={(e) => { e.target.style.borderColor = "#16a34a"; e.target.style.boxShadow = "0 0 0 3px rgba(22,163,74,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; e.target.style.boxShadow = "none"; }} />
                       </div>
                     </div>
-                  </div>
-                </div>
+                  </>
+                )}
 
                 <div>
                   <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.85rem", fontWeight: 600, color: "#374151" }}>
-                    Target GCV (kcal/kg)
+                    {inquiryType === "general" ? "Message" : "Additional Information / Requirements"}
                   </label>
-                  <div style={{ position: "relative" }}>
-                    <div style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "#9ca3af" }}>
-                      <Flame size={18} />
-                    </div>
-                    <input type="text" placeholder="e.g. 4500 kcal/kg" style={{ width: "100%", padding: "0.8rem 1rem 0.8rem 2.5rem", border: "1px solid #d1d5db", borderRadius: "8px", background: "#ffffff", fontFamily: "inherit", fontSize: "0.95rem", outline: "none", transition: "all 0.2s" }} onFocus={(e) => { e.target.style.borderColor = "#16a34a"; e.target.style.boxShadow = "0 0 0 3px rgba(22,163,74,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; e.target.style.boxShadow = "none"; }} />
-                  </div>
-                </div>
-
-                <div>
-                  <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.85rem", fontWeight: 600, color: "#374151" }}>
-                    Additional Information / Requirements
-                  </label>
-                  <textarea placeholder="Monthly quantity, delivery location..." rows={3} style={{ width: "100%", padding: "1rem", border: "1px solid #d1d5db", borderRadius: "8px", background: "#ffffff", fontFamily: "inherit", fontSize: "0.95rem", outline: "none", resize: "vertical", transition: "all 0.2s" }} onFocus={(e) => { e.target.style.borderColor = "#16a34a"; e.target.style.boxShadow = "0 0 0 3px rgba(22,163,74,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; e.target.style.boxShadow = "none"; }} />
+                  <textarea name="info" value={formData.info} onChange={handleChange} placeholder={inquiryType === "general" ? "How can we help you?" : "Monthly quantity, delivery location..."} rows={3} style={{ width: "100%", padding: "1rem", border: "1px solid #d1d5db", borderRadius: "8px", background: "#ffffff", fontFamily: "inherit", fontSize: "0.95rem", outline: "none", resize: "vertical", transition: "all 0.2s" }} onFocus={(e) => { e.target.style.borderColor = "#16a34a"; e.target.style.boxShadow = "0 0 0 3px rgba(22,163,74,0.1)"; }} onBlur={(e) => { e.target.style.borderColor = "#d1d5db"; e.target.style.boxShadow = "none"; }} />
                 </div>
                 
                 <motion.button 
@@ -282,9 +342,10 @@ export default function Contact() {
       </section>
 
       {/* MAP SECTION */}
-      <section style={{ padding: "4rem 2rem 0 2rem" }}>
+      <section className="contact-map-section" style={{ padding: "4rem 2rem 0 2rem" }}>
         <div className="container responsive-container-padding" style={{ maxWidth: "1400px", margin: "0 auto", padding: 0 }}>
           <motion.div 
+            className="contact-map-card"
             initial={{ opacity: 0, y: 30 }} 
             whileInView={{ opacity: 1, y: 0 }} 
             transition={{ duration: 0.6 }} 
@@ -306,11 +367,14 @@ export default function Contact() {
               rel="noopener noreferrer"
               style={{ display: "block", width: "100%" }}
             >
-              <img 
-                src="/assets/images/mapdes.png" 
-                alt="Mahaurja Plant Location" 
-                style={{ width: "100%", height: "auto", display: "block" }}
-              />
+              <picture>
+                <source media="(max-width: 768px)" srcSet="/assets/images/mapp.png" />
+                <img 
+                  src="/assets/images/mapdes.png" 
+                  alt="Mahaurja Plant Location" 
+                  style={{ width: "100%", height: "auto", display: "block" }}
+                />
+              </picture>
             </a>
           </motion.div>
         </div>
