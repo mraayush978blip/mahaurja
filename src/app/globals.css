@@ -6,6 +6,18 @@
   --color-accent: var(--accent-color);
 }
 
+/* Production Protection */
+html.production-protection {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+html.production-protection img {
+  pointer-events: none;
+}
+
 /* --- Reset & Base --- */
 :root {
   --primary-color: #064e3b; /* Deep Premium Emerald */
