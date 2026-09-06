@@ -161,7 +161,7 @@ export default function Home() {
             <p style={{ color: "#555", fontSize: "1.1rem" }}>No more wasted residue, now the fuel for the nation's clean energy.</p>
           </motion.div>
 
-          <div className="responsive-flex-wrap pvs-container" style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", position: "relative", zIndex: 2 }}>
+          <div className="responsive-flex-wrap pvs-container" style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", position: "relative", zIndex: 2, gap: "5rem" }}>
             {/* Challenge */}
             <motion.div variants={fadeUp} className="responsive-child pvs-card pvs-challenge" style={{ flex: "1 1 400px", background: "#fcf0f0", borderRadius: "24px", border: "1px solid #fae1e1", boxShadow: "0 20px 40px rgba(220,53,69,0.05)" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "1.5rem" }}>
@@ -177,21 +177,22 @@ export default function Home() {
             </motion.div>
 
             {/* Connecting Flexible Rope (Desktop) */}
-            <div className="hide-on-mobile" style={{ position: "absolute", left: "50%", top: "45%", transform: "translate(-50%, -50%)", width: "120px", height: "120px", zIndex: 1, pointerEvents: "none" }}>
-              <svg width="100%" height="100%" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ overflow: "visible" }}>
-                {/* Flexible dashed rope path curving from top-left to bottom-right */}
-                <path d="M 0,30 C 60,30 60,100 120,100" stroke="#16a34a" strokeWidth="4" strokeDasharray="10 10" strokeLinecap="round" />
-                {/* Arrowhead at the end of the rope */}
-                <path d="M 105,85 L 120,100 L 105,115" stroke="#16a34a" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+            <div className="hide-on-mobile" style={{ position: "absolute", left: "50%", top: "45%", transform: "translate(-50%, -50%)", width: "80px", height: "80px", zIndex: 1, pointerEvents: "none" }}>
+              <svg width="100%" height="100%" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ overflow: "visible" }}>
+                {/* Flexible dashed rope path curving from top-left to bottom-right, ending horizontally */}
+                <path d="M 0,20 C 30,20 30,60 55,60 L 68,60" stroke="#16a34a" strokeWidth="4" strokeDasharray="8 8" strokeLinecap="round" />
+                {/* Filled Arrowhead pointing right */}
+                <path d="M 60,52 L 76,60 L 60,68 Z" fill="#16a34a" />
               </svg>
             </div>
 
             {/* Connecting Flexible Rope (Mobile) */}
-            <div className="show-on-mobile" style={{ display: "none", width: "100%", height: "60px", alignItems: "center", justifyContent: "center", zIndex: 1, pointerEvents: "none", marginTop: "1rem", marginBottom: "0rem" }}>
+            <div className="show-on-mobile" style={{ display: "none", width: "100%", height: "60px", alignItems: "center", justifyContent: "center", zIndex: 1, pointerEvents: "none", marginTop: "-10px", marginBottom: "-10px" }}>
               <svg width="40" height="60" viewBox="0 0 40 60" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ overflow: "visible" }}>
-                {/* Wavy rope path */}
-                <path d="M 20,0 C 5,20 35,40 20,60" stroke="#16a34a" strokeWidth="2.5" strokeDasharray="5 5" strokeLinecap="round" />
-                <path d="M 12,50 L 20,60 L 28,50" stroke="#16a34a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                {/* Wavy rope path ending vertically */}
+                <path d="M 20,0 C 5,20 35,30 20,40 L 20,48" stroke="#16a34a" strokeWidth="2.5" strokeDasharray="5 5" strokeLinecap="round" />
+                {/* Filled Arrowhead pointing down */}
+                <path d="M 13,42 L 20,56 L 27,42 Z" fill="#16a34a" />
               </svg>
             </div>
 
@@ -390,8 +391,8 @@ export default function Home() {
                 {idx < arr.length - 2 && (
                   <div className="show-on-mobile" style={{ display: "none", width: "100%", height: "60px", alignItems: "center", justifyContent: "center", pointerEvents: "none", zIndex: 1, marginTop: "-5px", marginBottom: "-5px" }}>
                     <svg width="40" height="60" viewBox="0 0 40 60" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ overflow: "visible", transform: idx % 2 === 0 ? "scaleX(1)" : "scaleX(-1)" }}>
-                      <path d="M 20,0 C 5,20 35,40 20,60" stroke="#16a34a" strokeWidth="2.5" strokeDasharray="5 5" strokeLinecap="round" />
-                      <path d="M 12,50 L 20,60 L 28,50" stroke="#16a34a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M 20,0 C 5,20 35,30 20,42 L 20,52" stroke="#16a34a" strokeWidth="2.5" strokeDasharray="5 5" strokeLinecap="round" />
+                      <path d="M 13,47 L 20,60 L 27,47 Z" fill="#16a34a" />
                     </svg>
                   </div>
                 )}
@@ -400,8 +401,8 @@ export default function Home() {
                 {idx < arr.length - 2 && !row.isFull && (
                   <div className="hide-on-mobile" style={{ display: "flex", width: "100%", height: "60px", alignItems: "center", justifyContent: "center", pointerEvents: "none", zIndex: 1, marginTop: "-10px", marginBottom: "-10px" }}>
                     <svg width="150" height="60" viewBox="0 0 150 60" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ overflow: "visible", transform: idx % 2 === 0 ? "scaleX(1)" : "scaleX(-1)" }}>
-                      <path d="M 0,0 C 0,30 150,30 150,60" stroke="#16a34a" strokeWidth="3" strokeDasharray="6 6" strokeLinecap="round" />
-                      <path d="M 140,50 L 150,60 L 160,50" stroke="#16a34a" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M 0,0 C 0,35 150,15 150,38 L 150,52" stroke="#16a34a" strokeWidth="3" strokeDasharray="6 6" strokeLinecap="round" />
+                      <path d="M 142,46 L 150,60 L 158,46 Z" fill="#16a34a" />
                     </svg>
                   </div>
                 )}

@@ -363,12 +363,12 @@ export default function Contact() {
             whileHover={{ scale: 1.01, boxShadow: "0 25px 50px rgba(22, 163, 74, 0.25)" }}
           >
             <a 
-              href="https://maps.app.goo.gl/YG5JFpEyDqnC76A59" 
+              href="https://www.google.com/maps?q=23.0635604,75.3764817" 
               target="_blank" 
               rel="noopener noreferrer"
-              style={{ display: "block", width: "100%" }}
+              style={{ display: "block", width: "100%", position: "relative", zIndex: 10, cursor: "pointer" }}
             >
-              <div className="hide-on-mobile" style={{ width: "100%", display: "block" }}>
+              <div className="hide-on-mobile" style={{ width: "100%", display: "block", pointerEvents: "none" }}>
                 <Image 
                   src="/assets/images/mapdes.webp" 
                   alt="Mahaurja Plant Location" 
