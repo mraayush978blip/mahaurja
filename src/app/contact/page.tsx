@@ -142,23 +142,23 @@ export default function Contact() {
                     </div>
                   </div>
                   
-                  <div style={{ display: "flex", alignItems: "flex-start", gap: "1.2rem" }}>
-                    <div style={{ width: "42px", height: "42px", borderRadius: "12px", background: "rgba(255,255,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, border: "1px solid rgba(255,255,255,0.15)" }}>
+                  <a href="tel:+919340212401" style={{ display: "flex", alignItems: "flex-start", gap: "1.2rem", textDecoration: "none" }} className="group">
+                    <div style={{ width: "42px", height: "42px", borderRadius: "12px", background: "rgba(255,255,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, border: "1px solid rgba(255,255,255,0.15)" }} className="group-hover:bg-[#16a34a] transition-colors">
                       <Phone size={18} color="white" />
                     </div>
                     <div style={{ display: "flex", alignItems: "center", minHeight: "42px" }}>
-                      <span style={{ fontSize: "1rem", color: "rgba(255,255,255,0.9)", fontWeight: 500 }}>+91 9340212401</span>
+                      <span style={{ fontSize: "1rem", color: "rgba(255,255,255,0.9)", fontWeight: 500 }} className="group-hover:text-white transition-colors">+91 9340212401</span>
                     </div>
-                  </div>
+                  </a>
                   
-                  <div style={{ display: "flex", alignItems: "flex-start", gap: "1.2rem" }}>
-                    <div style={{ width: "42px", height: "42px", borderRadius: "12px", background: "rgba(255,255,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, border: "1px solid rgba(255,255,255,0.15)" }}>
+                  <a href="mailto:harsh@bharatindustrialrenewables.com" style={{ display: "flex", alignItems: "flex-start", gap: "1.2rem", textDecoration: "none" }} className="group">
+                    <div style={{ width: "42px", height: "42px", borderRadius: "12px", background: "rgba(255,255,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, border: "1px solid rgba(255,255,255,0.15)" }} className="group-hover:bg-[#16a34a] transition-colors">
                       <Mail size={18} color="white" />
                     </div>
                     <div style={{ display: "flex", alignItems: "center", minHeight: "42px" }}>
-                      <a href="mailto:harsh@bharatindustrialrenewables.com" style={{ fontSize: "0.95rem", color: "rgba(255,255,255,0.9)", textDecoration: "none", wordBreak: "break-all" }}>harsh@bharatindustrialrenewables.com</a>
+                      <span style={{ fontSize: "0.95rem", color: "rgba(255,255,255,0.9)", wordBreak: "break-all" }} className="group-hover:text-white transition-colors">harsh@bharatindustrialrenewables.com</span>
                     </div>
-                  </div>
+                  </a>
                   
                   <a href="https://maps.app.goo.gl/YG5JFpEyDqnC76A59" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "flex-start", gap: "1.2rem", textDecoration: "none" }} className="group">
                     <div style={{ width: "42px", height: "42px", borderRadius: "12px", background: "rgba(255,255,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, border: "1px solid rgba(255,255,255,0.15)" }} className="group-hover:bg-[#16a34a] transition-colors">

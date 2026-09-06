@@ -6,7 +6,7 @@ import Image from "next/image";
 import {
   Flame, Factory, Leaf, Trees, Sun, FlaskConical,
   CircleDollarSign, TrendingDown, ShieldCheck, Zap,
-  ChevronRight, Wheat, Package, ArrowRight,
+  ChevronRight, ChevronDown, Wheat, Package, ArrowRight,
   Droplet, Clock, TrendingUp, Cloud
 } from "lucide-react";
 import { motion, AnimatePresence, useInView, type Variants } from "framer-motion";
@@ -132,11 +132,11 @@ export default function Home() {
 
           {/* CTAs */}
           <motion.div variants={fadeUp} className="hero-ctas">
-            <Link href="#rfq" className="btn-hero-primary">
-              {t("hero_cta_primary" as any)} <ArrowRight size={18} />
+            <Link href="/about" className="btn-hero-primary">
+              About Us <ArrowRight size={18} />
             </Link>
-            <Link href="#scale" className="btn-hero-secondary">
-              {t("hero_cta_secondary" as any)}
+            <Link href="/contact" className="btn-hero-secondary">
+              Contact Us
             </Link>
           </motion.div>
         </motion.div>
@@ -477,17 +477,17 @@ export default function Home() {
             </div>
           </motion.div>
 
-          <motion.div variants={fadeUp} style={{ background: "linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%)", borderRadius: "24px", padding: "2rem", boxShadow: "0 20px 50px rgba(22,163,74,0.08)", border: "1px solid #dcfce7", display: "flex", gap: "2rem", flexWrap: "wrap", maxWidth: "1200px", margin: "0 auto" }}>
+          <motion.div variants={fadeUp} style={{ background: "#fff", borderRadius: "24px", padding: "3rem", boxShadow: "0 20px 60px rgba(0,0,0,0.05)", border: "1px solid #eaeaea", maxWidth: "1400px", margin: "0 auto", display: "flex", flexWrap: "wrap", gap: "4rem" }}>
             
-            {/* Left Column (Inputs) */}
-            <div style={{ flex: "1 1 450px", display: "flex", flexDirection: "column", gap: "2rem" }}>
-              
+            {/* Controls (Left Side) */}
+            <div style={{ flex: "1 1 350px", display: "flex", flexDirection: "column", gap: "2.5rem" }}>
               <div>
+                <h3 style={{ fontSize: "1.4rem", fontWeight: 800, color: "#111827", marginBottom: "1.5rem" }}>Fuel & Usage</h3>
                 <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "1rem", fontWeight: 700, color: "#222", fontSize: "1.1rem" }}>
-                  <div style={{ background: "#eefdf4", padding: "6px", borderRadius: "8px" }}><Factory size={18} color="#16a34a" /></div>
+                  <div style={{ background: "#f3f4f6", padding: "6px", borderRadius: "8px" }}><Factory size={18} color="#4b5563" /></div>
                   {t("roi_fuel_label" as any)}
                 </div>
-                <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+                <div className="hide-on-mobile" style={{ flexDirection: "column", gap: "10px" }}>
                   {[
                     { key: "coal", label: t("roi_fuel_coal" as any), icon: <Package size={16} /> },
                     { key: "diesel", label: t("roi_fuel_diesel" as any), icon: <Droplet size={16} /> },
@@ -497,20 +497,50 @@ export default function Home() {
                       key={f.key} 
                       onClick={() => setFuelType(f.key as any)}
                       style={{ 
-                        flex: 1, padding: "12px 10px", borderRadius: "12px", border: fuelType === f.key ? "none" : "1px solid #ddd", 
-                        background: fuelType === f.key ? "#0f5132" : "#fff", color: fuelType === f.key ? "#fff" : "#444", 
-                        fontWeight: 600, display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", fontSize: "0.9rem", transition: "all 0.2s" 
+                        width: "100%", padding: "14px 16px", borderRadius: "12px", border: fuelType === f.key ? "none" : "1px solid #ddd", 
+                        background: fuelType === f.key ? "#111827" : "#fff", color: fuelType === f.key ? "#fff" : "#444", 
+                        fontWeight: 600, display: "flex", alignItems: "center", justifyContent: "flex-start", gap: "12px", fontSize: "1rem", transition: "all 0.2s" 
                       }}
                     >
                       {f.icon} {f.label}
                     </button>
                   ))}
                 </div>
+
+                <div className="show-on-mobile" style={{ position: "relative", width: "100%" }}>
+                  <select 
+                    value={fuelType}
+                    onChange={(e) => setFuelType(e.target.value as any)}
+                    style={{ 
+                      width: "100%", 
+                      padding: "14px 16px", 
+                      paddingRight: "40px", 
+                      borderRadius: "12px", 
+                      border: "2px solid #e5e7eb", 
+                      background: "#fff", 
+                      color: "#111827", 
+                      fontWeight: 700, 
+                      fontSize: "1rem", 
+                      appearance: "none", 
+                      cursor: "pointer", 
+                      outline: "none",
+                      transition: "border-color 0.2s"
+                    }}
+                    onFocus={(e) => e.target.style.borderColor = "#16a34a"}
+                    onBlur={(e) => e.target.style.borderColor = "#e5e7eb"}
+                  >
+                    <option value="coal">Coal</option>
+                    <option value="diesel">Diesel / LPG</option>
+                    <option value="gas">Natural Gas</option>
+                  </select>
+                  <ChevronDown size={20} color="#6b7280" style={{ position: "absolute", right: "16px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none" }} />
+                </div>
               </div>
 
               <div>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "1rem", fontWeight: 700, color: "#222" }}>
-                  <span style={{ fontSize: "1.1rem" }}>{t("roi_amount_label" as any)}: <span style={{ color: "#16a34a" }}>₹{monthlySpend.toLocaleString("en-IN")}</span></span>
+                  <span style={{ fontSize: "1.1rem" }}>{t("roi_amount_label" as any)}: </span>
+                  <span style={{ color: "#111827", fontSize: "1.5rem" }}>₹{monthlySpend.toLocaleString("en-IN")}</span>
                 </div>
                 <input
                   type="range"
@@ -519,57 +549,84 @@ export default function Home() {
                   step={10000}
                   value={monthlySpend}
                   onChange={(e) => setMonthlySpend(+e.target.value)}
-                  style={{ width: "100%", height: "8px", borderRadius: "4px", appearance: "none", background: `linear-gradient(to right, #0f5132 ${(monthlySpend - 50000) / 19500}%, #e5e7eb ${(monthlySpend - 50000) / 19500}%)`, outline: "none" }}
+                  style={{ width: "100%", height: "12px", borderRadius: "6px", appearance: "none", background: `linear-gradient(to right, #111827 ${(monthlySpend - 50000) / 19500}%, #e5e7eb ${(monthlySpend - 50000) / 19500}%)`, outline: "none", cursor: "pointer" }}
                   className="custom-range"
                 />
-                <div style={{ display: "flex", justifyContent: "space-between", marginTop: "8px", fontSize: "0.85rem", color: "#666", fontWeight: 600 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", marginTop: "12px", fontSize: "0.85rem", color: "#9ca3af", fontWeight: 600 }}>
                   <span>₹50K</span><span>₹20L</span>
                 </div>
               </div>
-
-              <div className="hide-on-mobile" style={{ background: "#fafafa", border: "1px dashed #d4d4d8", borderRadius: "16px", padding: "1.5rem", display: "flex", gap: "1rem", alignItems: "center" }}>
-                <div style={{ width: "40px", height: "40px", background: "#f0fdf4", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                  <TrendingDown size={20} color="#16a34a" />
-                </div>
-                <div>
-                  <h4 style={{ margin: 0, fontSize: "0.95rem", color: "#222", fontWeight: 700 }}>Data-Driven Estimates</h4>
-                  <p style={{ margin: "4px 0 0 0", fontSize: "0.85rem", color: "#666", lineHeight: 1.4 }}>Our calculator uses industry-average calorific values and carbon emission factors to project your real-world savings.</p>
-                </div>
-              </div>
-
-              <div className="hide-on-mobile" style={{ background: "#f0fdf4", padding: "1rem", borderRadius: "12px", display: "flex", alignItems: "center", gap: "10px", color: "#166534", fontSize: "0.85rem", fontWeight: 500, marginTop: "auto" }}>
-                <Clock size={16} /> Adjust the slider or select a fuel to see the estimate.
-              </div>
             </div>
 
-            {/* Right Column (Outputs) */}
-            <div className="roi-outputs" style={{ flex: "1 1 350px", display: "flex", flexDirection: "column", gap: "1rem" }}>
+            {/* Visualizer (Right Side) */}
+            <div style={{ flex: "2 1 600px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+              <h3 style={{ fontSize: "1.4rem", fontWeight: 800, color: "#111827", marginBottom: "2rem" }}>Your Financial Impact</h3>
               
-              <div style={{ background: "linear-gradient(135deg, #0f5132 0%, #16a34a 100%)", borderRadius: "20px", padding: "2rem", color: "#fff", textAlign: "center", position: "relative", overflow: "hidden", flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                <Leaf size={150} color="#fff" style={{ position: "absolute", right: "-30px", bottom: "-30px", opacity: 0.1, transform: "rotate(-15deg)" }} />
-                <div style={{ display: "flex", justifyContent: "center", marginBottom: "1rem" }}>
-                  <div style={{ width: "36px", height: "36px", background: "rgba(255,255,255,0.2)", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center" }}><CircleDollarSign size={20} color="#fff" /></div>
-                </div>
-                <div style={{ fontSize: "0.9rem", fontWeight: 600, opacity: 0.9, marginBottom: "8px" }}>{t("roi_savings_title" as any)}</div>
-                <div style={{ fontSize: "3rem", fontWeight: 800, lineHeight: 1, marginBottom: "1.5rem" }}>₹{savings.toLocaleString("en-IN")}</div>
+              <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+                {/* Fossil Fuel Bar */}
                 <div>
-                  <span style={{ display: "inline-block", background: "rgba(255,255,255,0.15)", padding: "4px 12px", borderRadius: "20px", fontSize: "0.8rem", fontWeight: 500, backdropFilter: "blur(4px)" }}>
-                    ↗ Your savings, your profit
-                  </span>
+                  <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px", flexWrap: "wrap", gap: "10px" }}>
+                    <span style={{ fontWeight: 700, color: "#ef4444", fontSize: "1rem", display: "flex", alignItems: "center", gap: "6px" }}><TrendingDown size={18} /> Current {fuelType === "coal" ? "Coal" : fuelType === "diesel" ? "Diesel" : "Gas"} Spend</span>
+                    <span style={{ fontWeight: 800, color: "#ef4444", fontSize: "1.2rem" }}>₹{monthlySpend.toLocaleString("en-IN")}</span>
+                  </div>
+                  <div style={{ width: "100%", height: "40px", background: "#fee2e2", borderRadius: "20px", overflow: "hidden", border: "1px solid #fca5a5" }}>
+                    <motion.div 
+                      layout
+                      initial={{ width: 0 }} 
+                      animate={{ width: "100%" }} 
+                      transition={{ type: "spring", bounce: 0, duration: 0.8 }} 
+                      style={{ height: "100%", background: "linear-gradient(90deg, #ef4444, #dc2626)" }} 
+                    />
+                  </div>
+                </div>
+
+                {/* Bio-Pellets Bar */}
+                <div>
+                  <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px", flexWrap: "wrap", gap: "10px" }}>
+                    <span style={{ fontWeight: 700, color: "#16a34a", fontSize: "1rem", display: "flex", alignItems: "center", gap: "6px" }}><Leaf size={18} /> MAHAURJA Bio-Pellets</span>
+                    <span style={{ fontWeight: 800, color: "#16a34a", fontSize: "1.2rem" }}>₹{(monthlySpend - savings).toLocaleString("en-IN")}</span>
+                  </div>
+                  <div style={{ width: "100%", height: "40px", background: "#f3f4f6", borderRadius: "20px", overflow: "hidden", display: "flex", border: "1px solid #e5e7eb" }}>
+                    <motion.div 
+                      layout
+                      initial={{ width: 0 }} 
+                      animate={{ width: `${((monthlySpend - savings) / monthlySpend) * 100}%` }} 
+                      transition={{ type: "spring", bounce: 0, duration: 0.8 }} 
+                      style={{ height: "100%", background: "linear-gradient(90deg, #22c55e, #16a34a)" }} 
+                    />
+                    <motion.div 
+                      layout
+                      initial={{ width: 0, opacity: 0 }} 
+                      animate={{ width: `${(savings / monthlySpend) * 100}%`, opacity: 1 }} 
+                      transition={{ type: "spring", bounce: 0, duration: 0.8 }} 
+                      style={{ height: "100%", background: "repeating-linear-gradient(45deg, #dcfce7, #dcfce7 10px, #bbf7d0 10px, #bbf7d0 20px)", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", borderLeft: "2px solid #fff" }} 
+                    >
+                      <span className="pure-profit-text" style={{ fontSize: "clamp(0.7rem, 2vw, 0.9rem)", fontWeight: 800, color: "#166534", whiteSpace: "nowrap", padding: "0 10px", textShadow: "0 1px 2px rgba(255,255,255,0.8)" }}>PURE PROFIT: ₹{savings.toLocaleString("en-IN")}</span>
+                    </motion.div>
+                  </div>
                 </div>
               </div>
 
-              <div style={{ background: "#f0fdf4", border: "2px solid #dcfce7", borderRadius: "20px", padding: "2rem", color: "#064024", textAlign: "center", position: "relative", overflow: "hidden", flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                <Leaf size={150} color="#16a34a" style={{ position: "absolute", right: "-30px", bottom: "-30px", opacity: 0.05, transform: "rotate(-15deg)" }} />
-                <div style={{ display: "flex", justifyContent: "center", marginBottom: "1rem" }}>
-                  <div style={{ width: "36px", height: "36px", background: "#dcfce7", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center" }}><Leaf size={20} color="#16a34a" /></div>
+              {/* Bottom Highlights */}
+              <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap", marginTop: "3rem" }}>
+                <div style={{ flex: "1 1 250px", background: "linear-gradient(135deg, #0f5132 0%, #16a34a 100%)", borderRadius: "20px", padding: "2rem", color: "#fff", display: "flex", alignItems: "center", gap: "1.5rem", boxShadow: "0 10px 30px rgba(22,163,74,0.2)" }}>
+                  <div className="hide-on-mobile" style={{ background: "rgba(255,255,255,0.2)", width: "60px", height: "60px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <CircleDollarSign size={32} color="#fff" />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: "0.85rem", fontWeight: 600, opacity: 0.9, textTransform: "uppercase", letterSpacing: "1px" }}>Total Monthly Savings</div>
+                    <div style={{ fontSize: "2.2rem", fontWeight: 800, lineHeight: 1, marginTop: "4px" }}>₹{savings.toLocaleString("en-IN")}</div>
+                  </div>
                 </div>
-                <div style={{ fontSize: "0.9rem", fontWeight: 700, opacity: 0.8, marginBottom: "8px" }}>{t("roi_co2_title" as any)}</div>
-                <div style={{ fontSize: "3rem", fontWeight: 800, lineHeight: 1, marginBottom: "1.5rem", color: "#16a34a" }}>{co2Annual.toLocaleString()}</div>
-                <div>
-                  <span style={{ display: "inline-block", background: "#dcfce7", color: "#166534", padding: "4px 12px", borderRadius: "20px", fontSize: "0.8rem", fontWeight: 700 }}>
-                    🍃 Clean Air, Better Tomorrow
-                  </span>
+
+                <div style={{ flex: "1 1 250px", background: "#f0fdf4", border: "1px solid #dcfce7", borderRadius: "20px", padding: "2rem", display: "flex", alignItems: "center", gap: "1.5rem" }}>
+                  <div className="hide-on-mobile" style={{ background: "#dcfce7", width: "60px", height: "60px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <Leaf size={32} color="#16a34a" />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: "0.85rem", fontWeight: 700, color: "#166534", textTransform: "uppercase", letterSpacing: "1px" }}>CO₂ Saved Annually</div>
+                    <div style={{ fontSize: "2.2rem", fontWeight: 800, lineHeight: 1, marginTop: "4px", color: "#16a34a" }}>{co2Annual.toLocaleString()} <span style={{ fontSize: "0.9rem" }}>Tons</span></div>
+                  </div>
                 </div>
               </div>
 

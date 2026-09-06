@@ -226,44 +226,29 @@ export default function About() {
             }}>
             
             {/* Avatar & Name */}
-            <div style={{ flex: "1 1 200px", textAlign: "center", minWidth: "200px" }}>
-              <div style={{ width: "120px", height: "120px", borderRadius: "50%", margin: "0 auto 1.5rem", overflow: "hidden", border: "4px solid #0c5836", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <div style={{ flex: "1 1 300px", textAlign: "center", minWidth: "300px" }}>
+              <div style={{ width: "220px", height: "220px", borderRadius: "50%", margin: "0 auto 1.5rem", overflow: "hidden", border: "6px solid #0c5836", boxShadow: "0 15px 30px rgba(12, 88, 54, 0.15)" }}>
                 <img src="/assets/images/ceo.jpg" alt="Harsh Jain" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
               </div>
-              <h2 style={{ fontSize: "1.8rem", fontWeight: 800, color: "#111", margin: "0 0 4px 0" }}>Harsh Jain</h2>
-              <div style={{ fontSize: "0.85rem", fontWeight: 700, color: "#ea580c", textTransform: "uppercase", letterSpacing: "1px" }}>FOUNDER & DIRECTOR</div>
-              <div style={{ fontSize: "0.85rem", fontWeight: 700, color: "#ea580c", textTransform: "uppercase", letterSpacing: "1px" }}>MAHAURJA</div>
+              <h2 style={{ fontSize: "2.2rem", fontWeight: 800, color: "#111", margin: "0 0 6px 0" }}>Harsh Jain</h2>
+              <div style={{ fontSize: "0.95rem", fontWeight: 700, color: "#ea580c", textTransform: "uppercase", letterSpacing: "1.5px" }}>FOUNDER & DIRECTOR</div>
+              <div style={{ fontSize: "0.95rem", fontWeight: 700, color: "#ea580c", textTransform: "uppercase", letterSpacing: "1.5px" }}>MAHAURJA</div>
             </div>
 
             {/* Bio & Pills */}
             <div style={{ flex: "2 1 400px", padding: "0 1rem" }}>
-              <p style={{ fontSize: "1.05rem", color: "#555", lineHeight: 1.7, margin: "0 0 1.5rem 0" }}>
+              <h3 style={{ fontSize: "1.8rem", fontWeight: 800, color: "#064024", marginBottom: "1rem" }}>Leading the Green Revolution</h3>
+              <p style={{ fontSize: "1.15rem", color: "#444", lineHeight: 1.8, margin: "0 0 2rem 0" }}>
                 Driving India's biomass energy revolution through precision-engineered pellet solutions. Building MAHAURJA to replace fossil fuels with clean, cost-effective, and reliable green thermal power for industrial India.
               </p>
-              <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-                <span style={{ display: "flex", alignItems: "center", gap: "6px", background: "#f0fdf4", color: "#166534", padding: "6px 12px", borderRadius: "20px", fontSize: "0.85rem", fontWeight: 600, border: "1px solid #dcfce7" }}><Leaf size={14} /> Green Energy Pioneer</span>
-                <span style={{ display: "flex", alignItems: "center", gap: "6px", background: "#f0fdf4", color: "#166534", padding: "6px 12px", borderRadius: "20px", fontSize: "0.85rem", fontWeight: 600, border: "1px solid #dcfce7" }}><Factory size={14} /> Industrial Innovation</span>
-                <span style={{ display: "flex", alignItems: "center", gap: "6px", background: "#f0fdf4", color: "#166534", padding: "6px 12px", borderRadius: "20px", fontSize: "0.85rem", fontWeight: 600, border: "1px solid #dcfce7" }}><Trees size={14} /> Zero Deforestation</span>
+              <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+                <span style={{ display: "flex", alignItems: "center", gap: "8px", background: "#f0fdf4", color: "#166534", padding: "8px 16px", borderRadius: "20px", fontSize: "0.95rem", fontWeight: 700, border: "1px solid #dcfce7" }}><Leaf size={16} /> Green Energy Pioneer</span>
+                <span style={{ display: "flex", alignItems: "center", gap: "8px", background: "#f0fdf4", color: "#166534", padding: "8px 16px", borderRadius: "20px", fontSize: "0.95rem", fontWeight: 700, border: "1px solid #dcfce7" }}><Factory size={16} /> Industrial Innovation</span>
+                <span style={{ display: "flex", alignItems: "center", gap: "8px", background: "#f0fdf4", color: "#166534", padding: "8px 16px", borderRadius: "20px", fontSize: "0.95rem", fontWeight: 700, border: "1px solid #dcfce7" }}><Trees size={16} /> Zero Deforestation</span>
               </div>
             </div>
 
-            {/* Contact Blocks */}
-            <div style={{ flex: "1 1 250px", display: "flex", flexDirection: "column", gap: "1rem" }}>
-              <div style={{ background: "#f9fafb", border: "1px solid #f3f4f6", padding: "1.2rem", borderRadius: "12px", display: "flex", alignItems: "center", gap: "1rem" }}>
-                <div style={{ width: "36px", height: "36px", borderRadius: "50%", background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 4px rgba(0,0,0,0.05)", flexShrink: 0 }}><Phone size={16} color="#444" /></div>
-                <div>
-                  <div style={{ fontSize: "0.75rem", color: "#777", fontWeight: 600, letterSpacing: "0.5px" }}>PHONE</div>
-                  <div style={{ fontSize: "0.95rem", fontWeight: 700, color: "#111" }}>+91 9340212401</div>
-                </div>
-              </div>
-              <div style={{ background: "#f9fafb", border: "1px solid #f3f4f6", padding: "1.2rem", borderRadius: "12px", display: "flex", alignItems: "center", gap: "1rem" }}>
-                <div style={{ width: "36px", height: "36px", borderRadius: "50%", background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 4px rgba(0,0,0,0.05)", flexShrink: 0 }}><Mail size={16} color="#444" /></div>
-                <div>
-                  <div style={{ fontSize: "0.75rem", color: "#777", fontWeight: 600, letterSpacing: "0.5px" }}>EMAIL</div>
-                  <div style={{ fontSize: "0.85rem", fontWeight: 700, color: "#111", wordBreak: "break-all" }}>harsh@bharatindustrial<br/>renewables.com</div>
-                </div>
-              </div>
-            </div>
+
 
           </motion.div>
         </div>
