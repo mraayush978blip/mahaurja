@@ -97,10 +97,10 @@ h1, h2, h3, h4 {
   align-items: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-  transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+  transition: background 0.05s ease-out, 
               padding 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
-              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
-              border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+              box-shadow 0.1s ease-out, 
+              border-color 0.1s ease-out;
 }
 
 .navbar.scrolled {
