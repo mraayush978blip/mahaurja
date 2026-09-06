@@ -8,7 +8,7 @@ export const translations = {
     nav_contact: "Contact Us",
 
     // --- SECTION 1: HERO ---
-    hero_h1: "Displace Coal. Grow Trees. Power a Cleaner Tomorrow.",
+    hero_h1: "Displace Coal, <span style='color: #ea580c'>Grow Trees,</span> Power a Cleaner <span style='color: #ea580c'>Tomorrow.</span>",
     hero_h2: "MAHAURJA: Custom-Engineered Biomass Pellets replacing fossil fuels 24/7 with reliable, high-energy green thermal power.",
     hero_rotator_1: "⚡ Every grain has energy, greenery at every step!",
     hero_rotator_2: "💰 Save money, protect the environment!",
@@ -161,10 +161,10 @@ export const translations = {
     nav_contact: "संपर्क करें",
 
     // --- SECTION 1: HERO ---
-    hero_h1: "कोयला विस्थापित करें। पेड़ उगाएं। एक हरित भारत का निर्माण करें।",
-    hero_h2: "महाऊर्जा: आपके प्लांट की थर्मल आवश्यकताओं के अनुसार तैयार किए गए कस्टम बायोमास पेलेट्स, जो उद्योगों को देते हैं 24x7 निरंतर और सुरक्षित ग्रीन एनर्जी।",
-    hero_rotator_1: "⚡ हर कण में ऊर्जा, हर कदम पर हरियाली!",
-    hero_rotator_2: "💰 बचत भी, पर्यावरण संरक्षण भी!",
+    hero_h1: "कोयला विस्थापित करें। <span style='color: #ea580c'>पेड़ उगाएं।</span> एक हरित भारत का <span style='color: #ea580c'>निर्माण करें।</span>",
+    hero_h2: "MAHAURJA: कस्टम-इंजीनियर्ड बायोमास पेलेट्स, जो विश्वसनीय और उच्च ऊर्जा वाली हरित तापीय ऊर्जा के साथ 24/7 जीवाश्म ईंधन की जगह लेते हैं।",
+    hero_rotator_1: "⚡ हर दाने में ऊर्जा, हर कदम पर हरियाली!",
+    hero_rotator_2: "💰 पैसे बचाएं, पर्यावरण की रक्षा करें!",
     hero_cta_primary: "कस्टम फ्यूल कोटेशन का अनुरोध करें",
     hero_cta_secondary: "हमारा इंफ्रास्ट्रक्चर देखें",
 

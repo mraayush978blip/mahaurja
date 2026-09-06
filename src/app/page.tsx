@@ -106,9 +106,11 @@ export default function Home() {
             <Leaf size={14} /> BHARAT INDUSTRIAL & RENEWABLES LLP
           </motion.div>
 
-          <motion.h1 variants={fadeUp} className="hero-h1">
-            {t("hero_h1" as any)}
-          </motion.h1>
+          <motion.h1 
+            variants={fadeUp} 
+            className="hero-h1"
+            dangerouslySetInnerHTML={{ __html: t("hero_h1" as any) }}
+          />
 
           <motion.p variants={fadeUp} className="hero-h2">
             {t("hero_h2" as any)}

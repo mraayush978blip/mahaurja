@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Mukta, Noto_Sans_Devanagari } from "next/font/google";
+import { Inter, Mukta, Noto_Sans_Devanagari, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { TranslationProvider } from "@/hooks/useTranslation";
 import { Navbar } from "@/components/Navbar";
@@ -8,6 +8,7 @@ import { Footer } from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const mukta = Mukta({ weight: ["400", "500", "600", "700"], subsets: ["latin", "devanagari"], variable: "--font-mukta" });
 const notoSans = Noto_Sans_Devanagari({ weight: ["400", "600", "700", "800"], subsets: ["devanagari"], variable: "--font-noto-sans" });
+const playfair = Playfair_Display({ weight: ["400", "600", "700", "900"], subsets: ["latin"], variable: "--font-playfair" });
 
 export const metadata: Metadata = {
   title: "Mahaurja - Bharat Industrial & Renewables",
@@ -43,7 +44,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.variable} ${mukta.variable} ${notoSans.variable}`}>
+      <body className={`${inter.variable} ${mukta.variable} ${notoSans.variable} ${playfair.variable}`}>
         <TranslationProvider>
           <Splash />
           <Navbar />
