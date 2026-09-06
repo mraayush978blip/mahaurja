@@ -14,14 +14,33 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Check on mount
-    
-    return () => window.removeEventListener("scroll", handleScroll);
+    // Mobile browsers (especially iOS Safari) can throttle or pause scroll events.
+    // IntersectionObserver is much more performant and reliable across all devices.
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // If the top element is not intersecting, we have scrolled down
+        setIsScrolled(!entry.isIntersecting);
+      },
+      { threshold: [1], rootMargin: "-50px 0px 0px 0px" } // trigger when scrolled 50px
+    );
+
+    // Create a virtual element at the top of the page if it doesn't exist
+    let topSentinel = document.getElementById("nav-scroll-sentinel");
+    if (!topSentinel) {
+      topSentinel = document.createElement("div");
+      topSentinel.id = "nav-scroll-sentinel";
+      topSentinel.style.position = "absolute";
+      topSentinel.style.top = "0";
+      topSentinel.style.left = "0";
+      topSentinel.style.width = "100%";
+      topSentinel.style.height = "1px";
+      topSentinel.style.visibility = "hidden";
+      document.body.prepend(topSentinel);
+    }
+
+    observer.observe(topSentinel);
+
+    return () => observer.disconnect();
   }, []);
 
   // Prevent scrolling when mobile menu is open

@@ -13,6 +13,25 @@ const playfair = Playfair_Display({ weight: ["400", "600", "700", "900"], subset
 export const metadata: Metadata = {
   title: "Mahaurja - Bharat Industrial & Renewables",
   description: "Clean Energy • Empowered Future",
+  openGraph: {
+    title: "Mahaurja - Bharat Industrial & Renewables",
+    description: "Custom-Engineered Biomass Pellets replacing fossil fuels 24/7 with reliable, high-energy green thermal power.",
+    images: [
+      {
+        url: "/assets/images/about.png",
+        width: 1200,
+        height: 630,
+        alt: "Mahaurja Clean Energy",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mahaurja - Bharat Industrial & Renewables",
+    description: "Clean Energy • Empowered Future",
+    images: ["/assets/images/about.png"],
+  },
 };
 
 export const viewport: Viewport = {
